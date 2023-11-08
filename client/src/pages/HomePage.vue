@@ -5,7 +5,7 @@
         <p class="transparent-bg rounded text-center">User cars <i class="mdi mdi-car"></i></p>
       </div>
       <div class="col-4 col-md-2 fs-3 text-white text-center mt-3">
-        <p class="m-0 transparent-bg rounded">Filter<i class="mdi mdi-filter"></i></p>
+        <button class="m-0 transparent-bg rounded text-white btn btn fs-5">Filter<i class="mdi mdi-filter"></i></button>
       </div>
     </section>
     <section class="row">
