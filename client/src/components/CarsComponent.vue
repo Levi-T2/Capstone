@@ -16,8 +16,8 @@
         </div>
 
         <div class="d-flex  fw-bold justify-content-evenly">
-            <button class="btn btn-success fw-bold">Mod List</button>
-            <button class="btn btn-primary fw-bold">Like Car</button>
+            <button class="btn btn-success fw-bold">Mod List<i class="mdi mdi-cog mx-1"></i></button>
+            <button class="btn btn-primary fw-bold">Like Car<i class="mdi mdi-heart mx-1"></i></button>
         </div>
 
         <div class="d-flex  fw-bold justify-content-center pt-2">
