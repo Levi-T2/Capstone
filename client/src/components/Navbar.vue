@@ -1,8 +1,8 @@
 <template>
-  <nav class=" sticky-top navbar navbar-expand-lg navbar-dark headcolor px-3">
+  <nav class="navbar navbar-expand-lg navbar-dark headcolor px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex flex-column align-items-center">
-        <p class="fs-1 "><em>Auto-Tunes</em></p>
+      <div class="d-flex flex-column">
+        <p class="fs-1 fw-bold m-0"><em>Auto-Tunes</em></p>
       </div>
     </router-link>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
@@ -43,7 +43,7 @@ a:hover {
 }
 
 .headcolor {
-  background-color: rgba(128, 128, 128, 0.448);
+  background-color: #021e38;
 }
 
 .navbar-nav .router-link-exact-active {

@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="sticky-top">
     <Navbar />
   </header>
   <main>
@@ -39,7 +39,7 @@ footer {
 }
 
 .headcolor {
-  background-color: rgba(128, 128, 128, 0.448);
+  background-color: #021e38;
 }
 
 body {
