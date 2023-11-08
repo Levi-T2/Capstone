@@ -7,14 +7,19 @@ class ModificationService {
         return mods
     }
     async getModificationById(modId) {
-        const mod = await dbContext.Modifications.findById(modId)
+        const mod = await dbContext.Modifications.findById(modId).populate('car')
         if (!mod) {
             throw new BadRequest(`This is not a valid modification id: ${modId}`)
         }
         return mod
     }
+    async getModificationsByCarId(carId) {
+        const mods = await dbContext.Modifications.find({ carId: carId }).populate('creator car')
+        return mods
+    }
     async createModification(modData) {
         const mod = await dbContext.Modifications.create(modData)
+        await mod.populate('creator')
         await mod.populate('car')
         return mod
     }
