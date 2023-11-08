@@ -10,6 +10,7 @@ export class CarsController extends BaseController {
             .get('/:carId', this.getCarById)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createCar)
+            .delete('/:carId', this.destroyCar)
 
     }
 
@@ -37,6 +38,16 @@ export class CarsController extends BaseController {
             carData.creatorId = userId
             const car = await carsService.createCar(carData)
             return response.send(car)
+        } catch (error) {
+            next(error)
+        }
+    }
+    async destroyCar(request, response, next) {
+        try {
+            const carId = request.params.carId
+            const userId = request.userInfo.id
+            const destroyedCar = await carsService.destroyCar(carId, userId)
+            return response.send(destroyedCar)
         } catch (error) {
             next(error)
         }
