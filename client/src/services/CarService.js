@@ -20,9 +20,12 @@ import { api } from "./AxiosService";
             AppState.cars.push(newCar)
         }
 
-        async getCarById(){
-            
-        }
+        async getCarById(carId) {
+            AppState.activeCar = null;
+            const res = await api.get(`api/cars/${carId}`);
+            logger.log("got car by ID", res.data);
+            AppState.activeCar = new Car(res.data);
+          }
 
         async destroyCar(carId) {
             const res = await api.delete(`api/cars/${carId}`);
