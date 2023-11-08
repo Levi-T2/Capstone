@@ -10,6 +10,7 @@ import { api } from "./AxiosService";
             const res = await api.get('api/cars')
             logger.log(res.data)
             AppState.cars = res.data.map((car) => new Car(car))
+            logger.log (AppState.cars)
         }
 
         async postCar(){

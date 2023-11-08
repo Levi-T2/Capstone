@@ -1,6 +1,10 @@
 <template>
-  <div>
-
+  <div class="container-fluid">
+    <section class="row">
+      <div v-for="car in cars" :key="car.id" class="col-4">
+        <CarsComponent :carProp="car"/>
+      </div>
+    </section>
   </div>
 </template>
 
