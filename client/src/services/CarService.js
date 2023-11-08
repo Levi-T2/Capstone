@@ -13,8 +13,8 @@ import { api } from "./AxiosService";
             logger.log (AppState.cars)
         }
 
-        async postCar(){
-            const res = await api.post('api/cars')
+        async postCar(carData){
+            const res = await api.post('api/cars', carData)
             logger.log('created car', res.data)
             const newCar = new Car(res.data)
             AppState.cars.push(newCar)
