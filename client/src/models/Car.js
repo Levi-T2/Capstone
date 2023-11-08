@@ -8,7 +8,7 @@
             this.engine = data.engine
             this.make = data.make
             this.mpg = data.mpg
-            this.hadTurbo = data.hasTurbo
+            this.hasTurbo = data.hasTurbo
             this.isSupercharged = data.isSupercharged
             this.seatCapacity = data.seatCapacity
             this.horsepower = data.horsepower
@@ -19,6 +19,7 @@
             this.drivetrain = data.drivetrain
             this.bodyType = data.bodyType
             this.fuelType = data.fuelType
+            this.creator = data.creator
 
         }
     }
