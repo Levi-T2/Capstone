@@ -1,25 +1,15 @@
 <template>
   <div class="container-fluid">
-    <section class="row">
-
-      <div class="text-center">
-
-
-        <div class="col-12 d-flex justify-content-around pt-3">
-
-          <button class="btn fs-5 transparent-bg text-light">
-            User's Cars <i class="mdi mdi-car"></i>
-          </button>
-
-          <button class="btn fs-5 transparent-bg text-light">
-            Filter By <i class="mdi mdi-arrow-down-drop-circle-outline"></i>
-          </button>
-        </div>
-
+    <section class="row justify-content-between">
+      <div class="col-6 col-md-2 fs-3 text-white mt-3">
+      <p class="transparent-bg rounded text-center">User cars <i class="mdi mdi-car"></i></p>   
       </div>
-
-
-      <div v-for="car in cars" :key="car.id" class="col-12 col-md-4 p-5">
+      <div class="col-4 col-md-2 fs-3 text-white text-center mt-3">
+        <p class="m-0 transparent-bg rounded">Filter<i class="mdi mdi-filter"></i></p>
+      </div>
+    </section>
+    <section class="row">
+      <div v-for="car in cars" :key="car.id" class="col-12 col-md-4">
         <CarsComponent :carProp="car" />
       </div>
     </section>
@@ -56,6 +46,10 @@ export default {
 
 <style scoped lang="scss">
 .transparent-bg {
-  background-color: rgba(0, 0, 0, 0.278);
+    background-color: rgba(0, 0, 0, 0.278);
+}
+
+.user-cars{
+  width: 30%;
 }
 </style>
