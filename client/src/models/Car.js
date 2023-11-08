@@ -3,12 +3,12 @@
     export class Car{
         constructor(data){
             this.id = data.id
-            this.model - data.model
+            this.model = data.model
             this.year = data.year
             this.engine = data.engine
             this.make = data.make
             this.mpg = data.mpg
-            this.hadTurbo = data.hasTurbo
+            this.hasTurbo = data.hasTurbo
             this.isSupercharged = data.isSupercharged
             this.seatCapacity = data.seatCapacity
             this.horsepower = data.horsepower
