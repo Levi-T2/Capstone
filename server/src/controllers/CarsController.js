@@ -2,6 +2,7 @@ import { Auth0Provider } from "@bcwdev/auth0provider";
 import { carsService } from "../services/CarsService.js";
 import BaseController from "../utils/BaseController.js";
 import { commentService } from "../services/CommentService.js";
+import { modificationService } from "../services/ModificationService.js";
 
 export class CarsController extends BaseController {
     constructor() {
@@ -10,10 +11,11 @@ export class CarsController extends BaseController {
             .get('', this.getAllCars)
             .get('/:carId', this.getCarById)
             .get('/:carId/comments', this.getCommentsByCarId)
+            .get('/:carId/modifications', this.getModificationsByCarId)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createCar)
+            .put('/:carId', this.editCar)
             .delete('/:carId', this.destroyCar)
-
     }
 
     async getAllCars(request, response, next) {
@@ -42,6 +44,15 @@ export class CarsController extends BaseController {
             next(error)
         }
     }
+    async getModificationsByCarId(request, response, next) {
+        try {
+            const carId = request.params.carId
+            const mods = await modificationService.getModificationsByCarId(carId)
+            return response.send(mods)
+        } catch (error) {
+            next(error)
+        }
+    }
     async createCar(request, response, next) {
         try {
             const carData = request.body
@@ -59,6 +70,17 @@ export class CarsController extends BaseController {
             const userId = request.userInfo.id
             const destroyedCar = await carsService.destroyCar(carId, userId)
             return response.send(destroyedCar)
+        } catch (error) {
+            next(error)
+        }
+    }
+    async editCar(request, response, next) {
+        try {
+            const carId = request.params.carId
+            const userId = request.userInfo.id
+            const carData = request.body
+            const updatedCar = await carsService.editCar(carId, userId, carData)
+            return response.send(updatedCar)
         } catch (error) {
             next(error)
         }

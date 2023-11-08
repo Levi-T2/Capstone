@@ -9,27 +9,27 @@
 
     <div class="row justify-content-between text-center text-light">
 
-      <div class="col-3">
-        <img class="rounded-circle" src="https://ca.slack-edge.com/T1GGQN1RU-U05SMDWAK4N-76bc178a5f7b-512"
+      <div class="col-12 col-md-3">
+        <img class="rounded-circle w-100" src="https://ca.slack-edge.com/T1GGQN1RU-U05SMDWAK4N-76bc178a5f7b-512"
           alt="levi tyler">
         <p class="fs-3">Levi Tyler</p>
         <p class="fs-5">I ❤️ Jeep</p>
       </div>
 
-      <div class="col-3">
-        <img class="rounded-circle" src="https://ca.slack-edge.com/T1GGQN1RU-U05SMDY5QMU-7eae627dca79-512" alt="">
+      <div class="col-12 col-md-3">
+        <img class="rounded-circle w-100" src="https://ca.slack-edge.com/T1GGQN1RU-U05SMDY5QMU-7eae627dca79-512" alt="">
         <p class="fs-3">Jaret Hunemiller</p>
         <p class="fs-5">I ❤️ Dodge</p>
       </div>
 
-      <div class="col-3">
-        <img class="rounded-circle" src="https://ca.slack-edge.com/T1GGQN1RU-U05TH34TSSC-65aa9e0d480a-512" alt="">
+      <div class="col-12 col-md-3">
+        <img class="rounded-circle w-100" src="https://ca.slack-edge.com/T1GGQN1RU-U05TH34TSSC-65aa9e0d480a-512" alt="">
         <p class="fs-3">Cody Van DeWetering</p>
         <p class="fs-5">I ❤️ Honda</p>
       </div>
 
-      <div class="col-3">
-        <img class="rounded-circle" src="https://ca.slack-edge.com/T1GGQN1RU-U05TH35NEG0-90fd79345752-512" alt="">
+      <div class="col-12 col-md-3">
+        <img class="rounded-circle w-100" src="https://ca.slack-edge.com/T1GGQN1RU-U05TH35NEG0-90fd79345752-512" alt="">
         <p class="fs-3">Jarek Garcia</p>
         <p class="fs-5">I ❤️ Toyota</p>
       </div>
@@ -60,10 +60,10 @@ export default {
 
 <style scoped lang="scss">
 img {
-  width: 55%;
-  height: 25vh;
+  height: 70%;
   border: 5px solid black;
   object-fit: cover;
+  object-position: center;
 }
 
 .background {

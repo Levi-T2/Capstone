@@ -1,8 +1,8 @@
 <template>
-  <nav class=" sticky-top navbar navbar-expand-lg navbar-dark headcolor px-3">
+  <nav class="navbar navbar-expand-lg navbar-dark headcolor px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex flex-column align-items-center">
-        <p class="fs-1 "><em>Auto-Tunes</em></p>
+      <div class="d-flex flex-column">
+        <p class="fs-1 fw-bold m-0"><em><i class="mdi mdi-tire logo mx-1"></i>Auto-Tunes</em></p>
       </div>
     </router-link>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
@@ -13,7 +13,7 @@
       <ul class="navbar-nav me-auto">
         <li>
           <router-link :to="{ name: 'About' }" class="btn text-light selectable text-uppercase">
-            <em>About</em>
+            <em>About us</em>
           </router-link>
         </li>
       </ul>
@@ -43,13 +43,17 @@ a:hover {
 }
 
 .headcolor {
-  background-color: rgba(128, 128, 128, 0.448);
+  background-color: #021e38;
 }
 
 .navbar-nav .router-link-exact-active {
   border-bottom: 2px solid var(--bs-success);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+}
+
+.logo{
+  color: #277cf1;
 }
 
 @media screen and (min-width: 768px) {

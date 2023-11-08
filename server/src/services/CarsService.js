@@ -27,6 +27,26 @@ class CarsService {
         await destroyedCar.remove()
         return `This car has been destroyed: ${destroyedCar.id}`
     }
+    async editCar(carId, userId, carData) {
+        const carUpdating = await this.getCarById(carId)
+        if (userId != carUpdating.creatorId.toString()) {
+            throw new Forbidden(`You lack the authorization to edit this car`)
+        }
+
+        carUpdating.engine = carData.engine || carUpdating.engine
+        carUpdating.mpg = carData.mpg || carUpdating.mpg
+        carUpdating.horsepower = carData.horsepower || carUpdating.horsepower
+        carUpdating.weight = carData.weight || carUpdating.weight
+        carUpdating.displacement = carData.displacement || carUpdating.displacement
+        carUpdating.description = carData.description || carUpdating.description
+        carUpdating.fuelType = carData.fuelType || carUpdating.fuelType
+        carUpdating.drivetrain = carData.drivetrain || carUpdating.drivetrain
+        carUpdating.hasTurbo = carData.hasTurbo || carUpdating.hasTurbo
+        carUpdating.isSupercharged = carData.isSupercharged || carUpdating.isSupercharged
+
+        await carUpdating.save()
+        return carUpdating
+    }
 }
 
 export const carsService = new CarsService()
