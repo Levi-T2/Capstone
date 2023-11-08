@@ -3,7 +3,7 @@
     export class Car{
         constructor(data){
             this.id = data.id
-            this.model - data.model
+            this.model = data.model
             this.year = data.year
             this.engine = data.engine
             this.make = data.make
