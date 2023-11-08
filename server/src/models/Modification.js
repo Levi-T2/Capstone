@@ -21,3 +21,11 @@ ModificationSchema.virtual('creator',
         ref: 'Account',
         justOne: true
     })
+
+ModificationSchema.virtual('car',
+    {
+        localField: 'carId',
+        foreignField: '_id',
+        ref: 'Car',
+        justOne: true
+    })
