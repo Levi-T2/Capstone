@@ -5,12 +5,29 @@
 </template>
 
 <script>
+import { computed, onMounted } from 'vue';
+import Pop from '../utils/Pop';
+import { carService } from '../services/CarService';
+import { AppState } from '../AppState.js'
 
 export default {
 
   setup() {
+    onMounted(() => {
+      getCars();
+    })
 
-    return {}
+    async function getCars() {
+      try {
+        await carService.getCars();
+      } catch (error) {
+        Pop.error
+      }
+    }
+
+    return {
+      cars: computed(() => AppState.cars)
+    }
   }
 }
 </script>
