@@ -1,10 +1,10 @@
 <template>
     <div class=" row transparent-bg text-center rounded mt-2 text-white">
 
-        <img class="col-12 p-4 car-picture"
+        <img class="col-12 p-4 carPicture"
             src="https://th.bing.com/th/id/OIP.s6zSNqXhqNgBYlU7UKQMOgHaD2?w=336&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="">
 
-        <div class="col-12 d-flex fs-4 fw-bold justify-content-center">
+        <div class="d-md-none d-flex fs-4 fw-bold justify-content-center">
             <p class="p-1">{{ carProp.year }}</p>
             <p class="p-1">{{ carProp.make }}</p>
             <p class="p-1">{{ carProp.model }}</p>
@@ -16,13 +16,13 @@
         </div>
 
         <div class="col-12 d-flex  fw-bold justify-content-evenly">
-            <button class="btn btn-success fw-bold">Mod List</button>
-            <button class="btn btn-primary fw-bold">Like Car</button>
+            <button class="btn btn-success fw-bold">Mod List <i class="mdi mdi-arrow-down-drop-circle-outline"></i></button>
+            <button class="btn btn-primary fw-bold">Like Car <i class="mdi mdi-heart"></i></button>
         </div>
 
-        <div class="col-12 d-flex  fw-bold justify-content-center pt-2">
+        <div class="col-12 d-flex  fw-bold justify-content-center p-2">
             <p class="p-2">Created by:</p>
-            <img class="profile-pic rounded-circle" :src="carProp.creator.picture" alt="">
+            <img class="profile-pic rounded-circle" :src="carProp.creator.picture" :alt="carProp.creator.name">
         </div>
 
     </div>
@@ -62,8 +62,8 @@ export default {
 }
 
 .profile-pic {
-    width: 15%;
-    height: 5vh;
+    width: 20%;
+    height: 10vh;
     object-position: center;
 
 }
