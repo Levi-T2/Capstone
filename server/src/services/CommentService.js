@@ -26,7 +26,7 @@ class CommentService {
         return `This has been deleted ${comment.id}`
     }
     async getCommentById(commentId) {
-        const comment = await dbContext.Comments.findById({ commentId })
+        const comment = await dbContext.Comments.findById(commentId)
         if (!commentId) {
             throw new BadRequest(`This is not a valid id: ${commentId}`)
         }
