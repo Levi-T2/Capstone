@@ -40,24 +40,24 @@
       "Lancia"
     ],
     "workbench.colorCustomizations": {
-      "activityBar.activeBackground": "#a27ddd",
-      "activityBar.background": "#a27ddd",
+      "activityBar.activeBackground": "#52a7bd",
+      "activityBar.background": "#52a7bd",
       "activityBar.foreground": "#15202b",
       "activityBar.inactiveForeground": "#15202b99",
-      "activityBarBadge.background": "#ebc9b3",
-      "activityBarBadge.foreground": "#15202b",
+      "activityBarBadge.background": "#a13e8d",
+      "activityBarBadge.foreground": "#e7e7e7",
       "commandCenter.border": "#e7e7e799",
-      "sash.hoverBorder": "#a27ddd",
-      "statusBar.background": "#8554d3",
+      "sash.hoverBorder": "#52a7bd",
+      "statusBar.background": "#3d8b9f",
       "statusBar.foreground": "#e7e7e7",
-      "statusBarItem.hoverBackground": "#a27ddd",
-      "statusBarItem.remoteBackground": "#8554d3",
+      "statusBarItem.hoverBackground": "#52a7bd",
+      "statusBarItem.remoteBackground": "#3d8b9f",
       "statusBarItem.remoteForeground": "#e7e7e7",
-      "titleBar.activeBackground": "#8554d3",
+      "titleBar.activeBackground": "#3d8b9f",
       "titleBar.activeForeground": "#e7e7e7",
-      "titleBar.inactiveBackground": "#8554d399",
+      "titleBar.inactiveBackground": "#3d8b9f99",
       "titleBar.inactiveForeground": "#e7e7e799"
     },
-    "peacock.color": "#8554d3"
+    "peacock.color": "#3d8b9f"
   }
 }

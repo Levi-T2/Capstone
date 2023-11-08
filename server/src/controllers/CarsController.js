@@ -1,6 +1,7 @@
 import { Auth0Provider } from "@bcwdev/auth0provider";
 import { carsService } from "../services/CarsService.js";
 import BaseController from "../utils/BaseController.js";
+import { commentService } from "../services/CommentService.js";
 
 export class CarsController extends BaseController {
     constructor() {
@@ -8,6 +9,7 @@ export class CarsController extends BaseController {
         this.router
             .get('', this.getAllCars)
             .get('/:carId', this.getCarById)
+            .get('/:carId/comments', this.getCommentsByCarId)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createCar)
             .delete('/:carId', this.destroyCar)
@@ -27,6 +29,15 @@ export class CarsController extends BaseController {
             const carId = request.params.carId
             const car = await carsService.getCarById(carId)
             return response.send(car)
+        } catch (error) {
+            next(error)
+        }
+    }
+    async getCommentsByCarId(request, response, next) {
+        try {
+            const carId = request.params.carId
+            const comments = await commentService.getCommentsByCarId(carId)
+            return response.send(comments)
         } catch (error) {
             next(error)
         }
