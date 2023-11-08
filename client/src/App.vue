@@ -5,8 +5,8 @@
   <main>
     <router-view />
   </main>
-   <footer class="bg-dark text-light">
-    Made with 💖 by CodeWorks
+  <footer class="headcolor p-4 text-light">
+    <p class="fs-5 p-2">Auto-Tunes <i class="mdi mdi-copyright"></i></p>
   </footer>
 </template>
 
@@ -27,7 +27,7 @@ export default {
 <style lang="scss">
 @import "./assets/scss/main.scss";
 
-:root{
+:root {
   --main-height: calc(100vh - 32px - 64px);
 }
 
@@ -36,5 +36,15 @@ footer {
   display: grid;
   place-content: center;
   height: 32px;
+}
+
+.headcolor {
+  background-color: rgba(128, 128, 128, 0.448);
+}
+
+body {
+  background-image: url(https://th.bing.com/th/id/R.78befbb43324c5d5bb7606a62ca782f2?rik=B9q422fsTMhS6Q&pid=ImgRaw&r=0);
+  background-position: center;
+  background-size: cover;
 }
 </style>
