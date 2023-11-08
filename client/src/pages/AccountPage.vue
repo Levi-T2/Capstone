@@ -26,11 +26,11 @@
 
     <div class="row text-center justify-content-around">
 
-      <div class="col-10 col-md-4 bg-dark my-3">
+      <div class="col-10  bg-dark my-3">
         <h1 class="fs-3">My Cars</h1> 
       </div>
 
-      <div class="col-10 col-md-4 bg-dark my-3"
+      <div class="col-10 bg-dark my-3"
       ><h1 class="fs-3">My Favorites</h1> 
       </div>
 
