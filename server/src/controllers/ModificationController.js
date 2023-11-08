@@ -7,8 +7,10 @@ export class ModificationController extends BaseController {
         super('api/modifications')
         this.router
             .get('', this.getAllModifications)
+            .get('/:modId', this.getModificationById)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createModification)
+            .delete('/:modId', this.destroyModification)
     }
 
     async getAllModifications(request, response, next) {
@@ -19,12 +21,31 @@ export class ModificationController extends BaseController {
             next(error)
         }
     }
+    async getModificationById(request, response, next) {
+        try {
+            const modId = request.params.modId
+            const mod = await modificationService.getModificationById(modId)
+            return response.send(mod)
+        } catch (error) {
+            next(error)
+        }
+    }
     async createModification(request, response, next) {
         try {
             const modData = request.body
             const userId = request.userInfo.id
             modData.creatorId = userId
             const mod = await modificationService.createModification(modData)
+            return response.send(mod)
+        } catch (error) {
+            next(error)
+        }
+    }
+    async destroyModification(request, response, next) {
+        try {
+            const modId = request.params.modId
+            const userId = request.userInfo.id
+            const mod = await modificationService.destroyModification(modId, userId)
             return response.send(mod)
         } catch (error) {
             next(error)

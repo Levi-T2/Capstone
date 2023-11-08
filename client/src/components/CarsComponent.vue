@@ -22,7 +22,7 @@
 
         <div class="d-flex  fw-bold justify-content-center pt-2">
             <p class="p-2">Created by:</p>
-            <img class="profile-pic rounded-circle" :src="carProp.creator.picture" alt="">
+            <img class="profile-pic rounded-circle" :src="carProp.creator.picture" :alt="carProp.creator.name">
         </div>
 
     </div>
