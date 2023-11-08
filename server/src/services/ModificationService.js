@@ -32,6 +32,19 @@ class ModificationService {
         return `This modification has been destroyed: ${mod.id}`
     }
 
+    async editModification(modId, userId, modData) {
+        const modUpdating = await this.getModificationById(modId)
+        if (userId != modUpdating.creatorId.toString()) {
+            throw new Forbidden(`You lack authorization to edit this mod`)
+        }
+
+        modUpdating.name = modData.name || modUpdating.name
+        modUpdating.description = modData.description || modUpdating.description
+        modUpdating.modType = modData.modType || modUpdating.modType
+
+        await modUpdating.save()
+        return modUpdating
+    }
 }
 
 export const modificationService = new ModificationService()

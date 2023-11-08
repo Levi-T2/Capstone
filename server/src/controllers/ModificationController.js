@@ -10,6 +10,7 @@ export class ModificationController extends BaseController {
             .get('/:modId', this.getModificationById)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createModification)
+            .put('/:modId', this.editModification)
             .delete('/:modId', this.destroyModification)
     }
 
@@ -47,6 +48,17 @@ export class ModificationController extends BaseController {
             const userId = request.userInfo.id
             const mod = await modificationService.destroyModification(modId, userId)
             return response.send(mod)
+        } catch (error) {
+            next(error)
+        }
+    }
+    async editModification(request, response, next) {
+        try {
+            const modId = request.params.modId
+            const userId = request.userInfo.id
+            const modData = request.body
+            const updatedMod = await modificationService.editModification(modId, userId, modData)
+            return response.send(updatedMod)
         } catch (error) {
             next(error)
         }
