@@ -19,6 +19,7 @@
             this.drivetrain = data.drivetrain
             this.bodyType = data.bodyType
             this.fuelType = data.fuelType
+            this.creator = data.creator
 
         }
     }

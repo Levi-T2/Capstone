@@ -1,8 +1,8 @@
 <template>
   <div class="container-fluid">
     <section class="row">
-      <div v-for="car in cars" :key="car.id" class="col-4">
-        <CarsComponent :carProp="car"/>
+      <div v-for="car in cars" :key="car.id" class="col-3 p-5">
+        <CarsComponent :carProp="car" />
       </div>
     </section>
   </div>
