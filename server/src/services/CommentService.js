@@ -1,4 +1,5 @@
 import { dbContext } from "../db/DbContext.js"
+import { BadRequest, Forbidden } from "../utils/Errors.js"
 import { carsService } from "./CarsService.js"
 
 class CommentService {
@@ -14,6 +15,21 @@ class CommentService {
         const comment = await dbContext.Comments.create(commentData)
         await comment.populate('profile')
         await comment.populate('car')
+        return comment
+    }
+    async destroyComment(commentId, userId) {
+        const comment = await this.getCommentById(commentId)
+        if (userId != comment.accountId.toString()) {
+            throw new Forbidden(`You don't have permissions to delete this`)
+        }
+        await comment.remove()
+        return `This has been deleted ${comment.id}`
+    }
+    async getCommentById(commentId) {
+        const comment = await dbContext.Comments.findById({ commentId })
+        if (!commentId) {
+            throw new BadRequest(`This is not a valid id: ${commentId}`)
+        }
         return comment
     }
 
