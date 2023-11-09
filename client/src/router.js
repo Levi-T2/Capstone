@@ -29,6 +29,12 @@ const routes = [
     beforeEnter: authGuard
   },
   {
+    path: '/api/cars/:carId/modifications',
+    name: 'ModList',
+    component: loadPage('ModListPage'),
+  },
+  
+  {
     path: '/topCars',
     name: 'TopCars',
     component: loadPage('TopCarsPage'),

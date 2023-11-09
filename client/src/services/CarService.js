@@ -16,8 +16,8 @@ import { supabaseService } from "./SupabaseService";
         }
 
         async postCar(file, carData){
-            const folder = AppState.user.id
-            const url = await supabaseService.upload(file, `${folder}/${carData.make}`)
+            const folder = AppState.account.id
+            const url = await supabaseService.upload(file, `${folder}/cars/${carData.model}_${carData.make}`)
             carData.imgUrl = url
 
             const res = await api.post('api/cars', carData)
@@ -42,7 +42,10 @@ import { supabaseService } from "./SupabaseService";
             const res = await api.delete(`api/cars/${carId}`)
             logger.log('Car Deleted', res.data)
             AppState.cars.splice(carIndex, 1)
-          
+        }
+        async getModificationsByCarId(carId){
+            const res = await api.get(`api/cars/${carId}/modifications`)
+            logger.log(res.data)
         }
 
     }
