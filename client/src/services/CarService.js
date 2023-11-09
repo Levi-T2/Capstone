@@ -42,7 +42,10 @@ import { supabaseService } from "./SupabaseService";
             const res = await api.delete(`api/cars/${carId}`)
             logger.log('Car Deleted', res.data)
             AppState.cars.splice(carIndex, 1)
-          
+        }
+        async getModificationsByCarId(carId){
+            const res = await api.get(`api/cars/${carId}/modifications`)
+            logger.log(res.data)
         }
 
     }
