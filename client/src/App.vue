@@ -8,12 +8,14 @@
   <footer class="headcolor p-4 text-light">
     <p class="fs-5 p-2">Auto-Tunes <i class="mdi mdi-copyright"></i></p>
   </footer>
+  <CarModalForm></CarModalForm>
 </template>
 
 <script>
 import { computed } from 'vue'
 import { AppState } from './AppState'
 import Navbar from './components/Navbar.vue'
+import CarModalForm from './components/CarModalForm.vue'
 
 export default {
   setup() {
@@ -21,7 +23,7 @@ export default {
       appState: computed(() => AppState)
     }
   },
-  components: { Navbar }
+  components: { Navbar, CarModalForm }
 }
 </script>
 <style lang="scss">

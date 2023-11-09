@@ -7,18 +7,18 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form @submit.prevent="">
+                    <form @submit.prevent="createMod()">
                         <div class="mb-3 text-light">
                             <label for="modName" class="form-label">Modification Name</label>
-                            <input required type="text" class="form-control" id="modName">
+                            <input v-model="editable.name" required type="text" class="form-control" id="modName">
                         </div>
                         <div class="mb-3 text-light">
                             <label for="modDesc" class="form-label">Modification Description</label>
-                            <input required type="text" class="form-control" id="modDesc">
+                            <input v-model="editable.description" required type="text" class="form-control" id="modDesc">
                         </div>
                         <div class="mb-3 text-light">
                             <label for="modType" class="form-label">Mod Type</label>
-                            <select required class="form-select" name="modType">
+                            <select v-model="editable.modType" required class="form-select" name="modType">
                                 <option :value="modType" v-for="modType in modTypes" :key="modType">
                                     {{ modType }}
                                 </option>
@@ -36,12 +36,32 @@
 
 
 <script>
+import { ref } from 'vue';
+import Pop from '../utils/Pop';
+import { modificationService } from '../services/ModificationService';
+import { Modal } from 'bootstrap';
+import { useRoute } from 'vue-router';
+
 
 export default {
     setup(){
+        const route = useRoute()
+        const editable = ref({})
         const modTypes = ['Engine', 'Utility','Interior','Cosmetic','Performance','Other']
     return { 
         modTypes,
+        editable,
+        async createMod() {
+            try {
+                const carId = route.params.carId
+                editable.value.carId = carId
+                const modData = editable.value
+                await modificationService.createMod(modData)
+                Modal.getOrCreateInstance('#ModModalForm').hide()
+            } catch (error) {
+                Pop.error(error)
+            }
+        }
      }
     }
 };

@@ -1,5 +1,6 @@
 import { AppState } from "../AppState";
 import { Car } from "../models/Car";
+import { Modification } from "../models/Modification";
 import { logger } from "../utils/Logger";
 import { api } from "./AxiosService";
 import { supabaseService } from "./SupabaseService";
@@ -44,8 +45,11 @@ import { supabaseService } from "./SupabaseService";
             AppState.cars.splice(carIndex, 1)
         }
         async getModificationsByCarId(carId){
+            AppState.activeModList = null;
             const res = await api.get(`api/cars/${carId}/modifications`)
             logger.log(res.data)
+            const newMods = new Modification(res.data)
+            AppState.activeModList = newMods
         }
 
     }
