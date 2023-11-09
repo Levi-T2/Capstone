@@ -143,6 +143,8 @@ export default {
 .car-picture {
     width: 100%;
    height: 35vh;
+   object-fit: cover;
+   object-position: center;
 }
 
 </style>
