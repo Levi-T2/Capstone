@@ -17,9 +17,10 @@ class CarsService {
 
     async getAllCars(query, pageNumber = 0) {
         delete query.pageNumber
-        const skip = pageNumber * 3
-        const cars = dbContext.Cars.find(query).limit(3).skip(skip).populate('creator')
-        return cars
+        const skip = pageNumber * 6
+        const cars = await dbContext.Cars.find(query).limit(6).skip(skip).populate('creator')
+        const totalPages = cars.length
+        return { carsForPage: totalPages, cars: cars }
     }
     async destroyCar(carId, userId) {
         const destroyedCar = await this.getCarById(carId)

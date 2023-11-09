@@ -6,10 +6,11 @@ import { api } from "./AxiosService";
 
     class CarService{
 
-         async getCars(){
-            const res = await api.get('api/cars')
+         async getCars(pageNumber){
+            const res = await api.get(`api/cars?pageNumber=${pageNumber}`)
             logger.log(res.data)
-            AppState.cars = res.data.map((car) => new Car(car))
+            AppState.cars = res.data.cars.map((car) => new Car(car))
+            AppState.carsForPage = res.data.carsForPage
             logger.log (AppState.cars)
         }
 
@@ -33,7 +34,6 @@ import { api } from "./AxiosService";
             AppState.activeCar = new Car(res.data);
           
         }
-
 
     }
 

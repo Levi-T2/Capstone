@@ -21,8 +21,8 @@ export class CarsController extends BaseController {
     async getAllCars(request, response, next) {
         try {
             const query = request.query
-            const cars = await carsService.getAllCars(query, query.pageNumber)
-            return response.send(cars)
+            const results = await carsService.getAllCars(query, query.pageNumber)
+            return response.send(results)
         } catch (error) {
             next(error)
         }
