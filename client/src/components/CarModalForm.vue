@@ -144,8 +144,8 @@
 
                                 <div class="mb-3 p-2">
                                     <label class="fs-5 p-2" for="imgUrl">Image</label>
-                                    <input class="form-control" type="file" accept="image/*,video/*" name="fileInput"
-                                        required>
+                                    <input class="form-control" type="file" accept="image/*,video/*,audio/*"
+                                        name="fileInput" required>
                                 </div>
 
                                 <div class="mb-3 p-2">
