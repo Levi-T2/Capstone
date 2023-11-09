@@ -186,27 +186,7 @@ import { carService } from '../services/CarService';
 
 export default {
     setup() {
-        const editable = ref({
-
-            "_id": "654d4f48e698dbac8c3f3fd1",
-            "model": "Tacoma",
-            "year": 2023,
-            "mpg": 19,
-            "hasTurbo": false,
-            "isSupercharged": false,
-            "seatCapacity": 5,
-            "horsepower": 235,
-            "weight": 3200,
-            "trimModel": "TRD",
-            "displacement": "2.5",
-            "description": "Tacoma Numba 1",
-            "imgUrl": "https://fkzudnjhdalbsrnauueh.supabase.co/storage/v1/object/public/sandbox/undefined/undefined",
-            "engine": "V6",
-            "make": "Toyota",
-            "drivetrain": "4x4",
-            "bodyType": "Pickup",
-            "fuelType": "Gas",
-        })
+        const editable = ref({})
 
         const fuelTypes = ['Gas', 'Diesel', 'Hybrid', 'Electric']
 
