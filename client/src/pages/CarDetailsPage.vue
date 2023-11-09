@@ -5,7 +5,7 @@
                 <div class="row transparent-bg rounded p-3 box-shadow">
                     <div class="col-12 col-md-6">
                         <div>
-                            <img class="rounded img-fluid" :src="cars.imgUrl" alt="">
+                            <img class="rounded car-picture" :src="cars.imgUrl" alt="">
                         </div>
                     </div>
                     <div class="col-12 col-md-6">
@@ -138,4 +138,13 @@ export default {
 
 .toggle-start {
     font-size: 0.72rem;
-}</style>
+}
+
+.car-picture {
+    width: 100%;
+   height: 35vh;
+   object-fit: cover;
+   object-position: center;
+}
+
+</style>
