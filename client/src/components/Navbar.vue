@@ -17,6 +17,27 @@
           </router-link>
         </li>
       </ul>
+      <ul class="navbar-nav me-auto">
+        <li>
+          <router-link :to="{ name: 'TopCars' }" class="btn text-light selectable text-uppercase">
+            <em>Top Cars</em>
+          </router-link>
+        </li>
+      </ul>
+      <ul class="navbar-nav me-auto">
+        <li>
+          <router-link :to="{ name: 'TopMods' }" class="btn text-light selectable text-uppercase">
+            <em>Top Mods</em>
+          </router-link>
+        </li>
+      </ul>
+      <ul class="navbar-nav me-auto">
+        <li>
+          <router-link :to="{ name: 'Comparison' }" class="btn text-light selectable text-uppercase">
+            <em>Comparison</em>
+          </router-link>
+        </li>
+      </ul>
       <!-- LOGIN COMPONENT HERE -->
       <Login />
     </div>
