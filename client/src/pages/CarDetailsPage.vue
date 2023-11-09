@@ -9,10 +9,23 @@
                 </div>
                     </div>
                     <div class="col-12 col-md-6">
-                        <div class="fw-bold fs-5">
-                            {{ cars.year }}
-                            {{ cars.make }}
-                            {{ cars.model }}
+                        <div class="fw-bold fs-5 d-flex justify-content-between">
+                            <div>
+                                {{ cars.year }}
+                                {{ cars.make }}
+                                {{ cars.model }}
+                            </div>
+                            <div v-if="cars.creator">
+                                <div v-if="cars.creator.id == account.id" class="dropdown" title="dropdown menu">
+                                 <a class="rounded-pill toggle-start text-light" role="button" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="mdi mdi-circle"></i><i class="mdi mdi-circle"></i><i class="mdi mdi-circle"></i>
+                                </a>
+                                 <ul class="dropdown-menu text-center">
+                                    <button  class="btn btn-success my-1">Post Mod</button>
+                                    <button  class="btn btn-danger my-1">Delete Car</button>
+                                 </ul>
+                                </div>
+                            </div>
                         </div>
                         <div>
                             {{ cars.description }}
@@ -81,7 +94,8 @@ onMounted(() => {
         }
 
     return { 
-cars: computed(()=> AppState.activeCar)
+cars: computed(()=> AppState.activeCar),
+account: computed(() => AppState.account)
 
      }
     }
@@ -99,6 +113,10 @@ cars: computed(()=> AppState.activeCar)
     object-position: center;
     height: 10%;
     width: 10%;
+}
+
+.toggle-start{
+    font-size: 0.72rem;
 }
 
 </style>
