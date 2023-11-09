@@ -22,7 +22,7 @@
                                 </a>
                                  <ul class="dropdown-menu text-center">
                                     <button  class="btn btn-success my-1">Post Mod</button>
-                                    <button  class="btn btn-danger my-1">Delete Car</button>
+                                    <button @click="deleteCar(cars.id)" class="btn btn-danger my-1">Delete Car</button>
                                  </ul>
                                 </div>
                             </div>
@@ -94,8 +94,19 @@ onMounted(() => {
         }
 
     return { 
-cars: computed(()=> AppState.activeCar),
-account: computed(() => AppState.account)
+        cars: computed(()=> AppState.activeCar),
+        account: computed(() => AppState.account),
+        async deleteCar(carId){
+            try {
+                const yes = await Pop.confirm(`Are you sure you want to delete this car?`)
+                if(!yes) {
+                    return
+                }
+                await carService.destroyCar(carId)
+            } catch (error) {
+                Pop.error
+            }
+        }
 
      }
     }
