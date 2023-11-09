@@ -1,6 +1,6 @@
 <template>
     <router-link :to="{name: 'CarDetails', params: {carId: carProp.id}}">
-        <div class="transparent-bg text-center rounded mb-3 text-white">
+        <div class="transparent-bg text-center rounded mb-3 text-white glow box-shadow">
             
             <img class="p-4 carPicture"
             src="https://th.bing.com/th/id/OIP.s6zSNqXhqNgBYlU7UKQMOgHaD2?w=336&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="">
@@ -68,5 +68,13 @@ export default {
     height: 10%;
     object-position: center;
 
+}
+.glow:hover{
+  color: white;
+  box-shadow: 0 0 17px rgba(255, 255, 255, 0.592);
+  transition: ease-in-out 0.3s;
+}
+.box-shadow{
+    box-shadow: 0 5px 10px black;
 }
 </style>
