@@ -71,8 +71,7 @@ export default {
 }
 
 .glow:hover {
-    color: white;
-    box-shadow: 0 0 17px rgba(255, 255, 255, 0.592);
+    box-shadow: 0px 0px 15px #277cf1;
     transition: ease-in-out 0.3s;
 }
 
