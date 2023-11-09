@@ -19,7 +19,6 @@
       </div>
     </section>
   </div>
-  <CarModalForm />
 </template>
 
 <script>
@@ -47,7 +46,7 @@ export default {
       cars: computed(() => AppState.cars)
     };
   },
-  components: { CarModalForm, PageChanger }
+  components: { PageChanger }
 }
 </script>
 

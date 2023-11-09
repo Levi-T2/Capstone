@@ -16,4 +16,6 @@ export const AppState = reactive({
   comments:[],
 
   carsForPage: 0,
+
+  activeModList: []
 })
