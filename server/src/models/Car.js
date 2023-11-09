@@ -13,6 +13,7 @@ export const CarSchema = new Schema(
         trimModel: { type: String, minLength: 1, maxLength: 200 },
         displacement: { type: String, minLength: 1, maxLength: 50 },
         description: { type: String, required: true, minLength: 1, maxLength: 2000 },
+        imgUrl: { type: String, required: true },
         engine: {
             type: String, required: true, enum: ['Two-Stroke', 'Four-Stroke', 'I3', 'I4', 'I5', 'I6',
                 'V4', 'V6', 'V8', 'V10', 'V12', 'V16', 'F4', 'Boxer', 'Radial', 'Electric', 'Hybrid', 'Other'],

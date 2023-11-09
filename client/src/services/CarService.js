@@ -2,6 +2,7 @@ import { AppState } from "../AppState";
 import { Car } from "../models/Car";
 import { logger } from "../utils/Logger";
 import { api } from "./AxiosService";
+import { supabaseService } from "./SupabaseService";
 
 
     class CarService{
@@ -13,7 +14,11 @@ import { api } from "./AxiosService";
             logger.log (AppState.cars)
         }
 
-        async postCar(carData){
+        async postCar(file, carData){
+            const folder = AppState.user.id
+            const url = await supabaseService.upload(file, `${folder}/${carData.make}`)
+            carData.imgUrl = url
+
             const res = await api.post('api/cars', carData)
             logger.log('created car', res.data)
             const newCar = new Car(res.data)
@@ -28,9 +33,14 @@ import { api } from "./AxiosService";
           }
 
         async destroyCar(carId) {
-            const res = await api.delete(`api/cars/${carId}`);
-            logger.log("car deleted", res.data);
-            AppState.activeCar = new Car(res.data);
+            const carIndex = AppState.cars.findIndex(car => car.id == carId)
+            const car = AppState.cars[carIndex]
+            const storagePath = `${AppState.account.id}/${car.url}`
+            const storageRes = await supabaseService.remove(storagePath)
+            logger.log('DELETED SUPA', storageRes)
+            const res = await api.delete(`api/cars/${carId}`)
+            logger.log('Car Deleted', res.data)
+            AppState.cars.splice(carIndex, 1)
           
         }
 

@@ -7,7 +7,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form @submit.prevent="createCar()">
+                    <form @submit.prevent="createCar">
 
                         <div class="container-fluid">
 
@@ -72,6 +72,7 @@
 
 
                                 <div class="col-12 d-flex justify-content-around">
+
 
 
 
@@ -142,6 +143,11 @@
                                 </div>
 
                                 <div class="mb-3 p-2">
+                                    <label class="fs-5 p-2" for="imgUrl">Image</label>
+                                    <input class="form-control" type="file" accept="image/*" name="fileInput" required>
+                                </div>
+
+                                <div class="mb-3 p-2">
                                     <label for="description" class="form-label fs-5">Description</label>
                                     <textarea v-model="editable.description" maxlength="500" class="form-control"
                                         id="description" required rows="3"></textarea>
@@ -180,7 +186,22 @@ import { carService } from '../services/CarService';
 
 export default {
     setup() {
-        const editable = ref({})
+        const editable = ref({
+            "model": "tacoma",
+            "year": 1999,
+            "seatCapacity": 6,
+            "mpg": 25,
+            "horsepower": 250,
+            "weight": 3000,
+            "trimModel": "trd",
+            "displacement": "2.5",
+            "engine": "Electric",
+            "make": "Subaru",
+            "drivetrain": "4x4",
+            "bodyType": "Hearse",
+            "fuelType": "Gas",
+            "description": "tacoma?"
+        })
 
         const fuelTypes = ['Gas', 'Diesel', 'Hybrid', 'Electric']
 
@@ -200,18 +221,17 @@ export default {
             drivetrains,
             bodyTypes,
             fuelTypes,
-            async createCar() {
+            async createCar(event) {
                 try {
-                    const carData = editable.value
-                    const car = await carService.postCar(carData)
-                    logger.log('Here is the Car!', car)
-                    Pop.success('car created!')
-                    editable.value = {};
+                    logger.log(editable.value)
+                    const file = event.target.fileInput.files[0]
+                    carService.postCar(file, editable.value)
+                    editable.value = {}
+                    event.target.reset()
 
-                    Modal.getOrCreateInstance('#carModal').hide()
-                    // router.push({ name: "EventDetails", params: { carId: car.id } });
                 } catch (error) {
                     Pop.error(error)
+                    logger.log(error)
                 }
             }
         }
