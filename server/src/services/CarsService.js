@@ -19,6 +19,7 @@ class CarsService {
         delete query.pageNumber
         const skip = pageNumber * 3
         const cars = dbContext.Cars.find(query).limit(3).skip(skip)
+        await cars.populate('creator')
         return cars
     }
     async destroyCar(carId, userId) {
