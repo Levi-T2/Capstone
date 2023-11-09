@@ -1,6 +1,6 @@
 <template>
     <div class="modal fade" id="carModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content formbg formbrdr">
                 <div class="modal-header">
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -57,7 +57,7 @@
                                     </div>
 
                                     <div class="mb-3 p-2">
-                                        <label for="trimModel" class="form-label fs-5">Trim Model</label>
+                                        <label for="trimModel" class="form-label fs-5">Trim</label>
                                         <input v-model="editable.trimModel" type="text" class="form-control" id="trimModel"
                                             maxlength="25" required>
                                     </div>
@@ -129,15 +129,15 @@
 
                                 </div>
 
-                                <div class="col-12">
-                                    <div>
+                                <div class="col-12 d-flex text-center justify-content-around">
+                                    <div class="p-5">
                                         <input type="checkbox" id="isSuperCharged" name="isSuperCharged" value="">
-                                        <label for="isSuperCharged">Is it super charged?</label><br>
+                                        <label class="fs-5" for="isSuperCharged"> Is it super charged?</label><br>
                                     </div>
 
-                                    <div>
+                                    <div class="p-5">
                                         <input type="checkbox" id="hasTurbo" name="hasTurbo" value="">
-                                        <label for="hasTurbo">does it have a turbo?</label><br>
+                                        <label class="fs-5" for="hasTurbo"> Does it have a turbo?</label><br>
                                     </div>
                                 </div>
 

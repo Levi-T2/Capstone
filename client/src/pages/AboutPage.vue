@@ -38,12 +38,9 @@
 
     <div class="row text-center p-5">
       <div class="col-12">
-        <p class="fs-4 text-light">We decided to build this application for the general public that was looking for a new
-          car or
-          truck! This
-          application allows you to explore all the different car brands and models that there are in the world to really
-          understand what and find a vehicle that fits you best! Between comparison of the cars you pick and being able to
-          view hundreds of cars, it should feel like a 60's car catalog all over again.</p>
+        <p class="fs-4 text-light">Do you like fast cars? Well so do We! This application was made to appreciate the
+          people who spend their hard time working on all of these different street cars to share to the public and give
+          their insight on other peoples builds!</p>
       </div>
     </div>
 
