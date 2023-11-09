@@ -1,16 +1,29 @@
 <template>
-    <div class="component">
-
-
+    <div class="container-fluid">
+        <section class="row">
+            <div class="col-12 p-3">
+                <p class="fs-3 bg-dark fw-bold rounded mb-0 p-1">Mod List</p>
+            </div>
+        </section>
+        <section v-if="mods" class="row">
+            <div v-for="mod in mods" :key="mod.id" class="col-12 col-md-6 p-2">
+                <div class="bg-dark rounded p-2">
+                    <p>{{ mod.name }}</p>
+                    <p>{{ mod.description }}</p>
+                    <p>Mod Type: {{ mod.modType }}</p>
+                </div>
+            </div>
+        </section>
     </div>
 </template>
 
 
 <script>
-import { onMounted } from 'vue';
+import { computed, onMounted } from 'vue';
 import Pop from '../utils/Pop';
 import { carService } from '../services/CarService';
 import { useRoute } from 'vue-router';
+import { AppState } from '../AppState';
 
 
 export default {
@@ -28,7 +41,9 @@ export default {
                 Pop.error(error)
             }
         }
-    return {  }
+    return { 
+        mods: computed(() => AppState.activeModList)
+     }
     }
 };
 </script>

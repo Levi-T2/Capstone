@@ -6,5 +6,7 @@ export class Modification {
         this.modType = data.modType
         this.carId = data.carId
         this.creatorId = data.creatorId
+        this.id = data.id
+        this.creator = data.creator
     }
 }
