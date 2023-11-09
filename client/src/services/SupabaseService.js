@@ -33,7 +33,7 @@ class SupabaseService{
 
         this.list(AppState.account.id)
        } catch (error) {
-        logger.log(error)
+        logger.log(error);
        }
     }
 
