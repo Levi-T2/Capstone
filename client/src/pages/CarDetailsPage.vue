@@ -5,8 +5,8 @@
                 <div class="row transparent-bg rounded p-3 box-shadow">
                     <div class="col-12 col-md-6">
                         <div>
-<img class="rounded img-fluid" src="https://th.bing.com/th/id/OIP.s6zSNqXhqNgBYlU7UKQMOgHaD2?w=336&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="">
-                </div>
+                            <img class="rounded img-fluid" :src="cars.imgUrl" alt="">
+                        </div>
                     </div>
                     <div class="col-12 col-md-6">
                         <div class="fw-bold fs-5 d-flex justify-content-between">
@@ -17,13 +17,15 @@
                             </div>
                             <div v-if="cars.creator">
                                 <div v-if="cars.creator.id == account.id" class="dropdown" title="dropdown menu">
-                                 <a class="rounded-pill toggle-start text-light" role="button" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="mdi mdi-circle"></i><i class="mdi mdi-circle"></i><i class="mdi mdi-circle"></i>
-                                </a>
-                                 <ul class="dropdown-menu text-center">
-                                    <button  class="btn btn-success my-1">Post Mod</button>
-                                    <button @click="deleteCar(cars.id)" class="btn btn-danger my-1">Delete Car</button>
-                                 </ul>
+                                    <a class="rounded-pill toggle-start text-light" role="button" type="button"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="mdi mdi-circle"></i><i class="mdi mdi-circle"></i><i
+                                            class="mdi mdi-circle"></i>
+                                    </a>
+                                    <ul class="dropdown-menu text-center">
+                                        <button class="btn btn-success my-1">Post Mod</button>
+                                        <button @click="deleteCar(cars.id)" class="btn btn-danger my-1">Delete Car</button>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -44,27 +46,29 @@
                             <p>MPG: {{ cars.mpg }}</p>
                             <p>Drivetrain: {{ cars.drivetrain }}</p>
                         </div>
-                       <div class="col-12 col-md-4 mt-4">
-                        <div class="d-flex fw-bold">
-                            <button class="btn btn-success mx-3 fw-bold mb-3">Mod List <i class="mdi mdi-cog"></i></button>
-                            <p>Mods Done:</p>
+                        <div class="col-12 col-md-4 mt-4">
+                            <div class="d-flex fw-bold">
+                                <button class="btn btn-success mx-3 fw-bold mb-3">Mod List <i
+                                        class="mdi mdi-cog"></i></button>
+                                <p>Mods Done:</p>
+                            </div>
+                            <div class="d-flex fw-bold">
+                                <button class="btn btn-primary mx-3 fw-bold mb-3">Like Car <i
+                                        class="mdi mdi-heart"></i></button>
+                                <p>Likes:</p>
+                            </div>
+                            <div class="d-flex fw-bold mx-2">
+                                <p class="mx-1">Created By:</p>
+                                <p>{{ cars?.creator?.name }}</p>
+                                <img class="rounded-circle profile-pic mx-1" :src="cars?.creator?.picture"
+                                    :alt="cars?.creator?.name">
+                            </div>
                         </div>
-                        <div class="d-flex fw-bold">
-                            <button class="btn btn-primary mx-3 fw-bold mb-3">Like Car <i class="mdi mdi-heart"></i></button>
-                            <p>Likes:</p>
-                        </div>
-                        <div class="d-flex fw-bold mx-2">                                                        
-                                    <p class="mx-1">Created By:</p>                              
-                                    <p>{{ cars?.creator?.name }}</p>                              
-                                <img class="rounded-circle profile-pic mx-1" :src="cars?.creator?.picture" :alt="cars?.creator?.name">                                                                                         
-                        </div>
-                       </div>
                     </div>
                 </div>
             </div>
         </section>
     </div>
-    
 </template>
 
 
@@ -77,14 +81,14 @@ import { useRoute } from 'vue-router';
 export default {
 
 
-    setup(){
-const route = useRoute();
+    setup() {
+        const route = useRoute();
 
-onMounted(() => {
-    getCarById()
-})
+        onMounted(() => {
+            getCarById()
+        })
 
-        async function getCarById(){
+        async function getCarById() {
             try {
                 const carId = route.params.carId
                 await carService.getCarById(carId)
@@ -93,22 +97,22 @@ onMounted(() => {
             }
         }
 
-    return { 
-        cars: computed(()=> AppState.activeCar),
-        account: computed(() => AppState.account),
-        async deleteCar(carId){
-            try {
-                const yes = await Pop.confirm(`Are you sure you want to delete this car?`)
-                if(!yes) {
-                    return
+        return {
+            cars: computed(() => AppState.activeCar),
+            account: computed(() => AppState.account),
+            async deleteCar(carId) {
+                try {
+                    const yes = await Pop.confirm(`Are you sure you want to delete this car?`)
+                    if (!yes) {
+                        return
+                    }
+                    await carService.destroyCar(carId)
+                } catch (error) {
+                    Pop.error
                 }
-                await carService.destroyCar(carId)
-            } catch (error) {
-                Pop.error
             }
-        }
 
-     }
+        }
     }
 };
 </script>
@@ -116,7 +120,7 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .transparent-bg {
-  background-color: rgba(0, 0, 0, 0.278);
+    background-color: rgba(0, 0, 0, 0.278);
 }
 
 .profile-pic {
@@ -126,12 +130,10 @@ onMounted(() => {
     width: 10%;
 }
 
-.box-shadow{
+.box-shadow {
     box-shadow: 0 5px 10px black;
 }
 
-.toggle-start{
+.toggle-start {
     font-size: 0.72rem;
-}
-
-</style>
+}</style>
