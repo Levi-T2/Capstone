@@ -144,7 +144,8 @@
 
                                 <div class="mb-3 p-2">
                                     <label class="fs-5 p-2" for="imgUrl">Image</label>
-                                    <input class="form-control" type="file" accept="image/*" name="fileInput" required>
+                                    <input class="form-control" type="file" accept="image/*,video/*" name="fileInput"
+                                        required>
                                 </div>
 
                                 <div class="mb-3 p-2">
@@ -182,11 +183,13 @@ import Pop from '../utils/Pop.js';
 // import { useRouter } from 'vue-router';
 import { logger } from '../utils/Logger';
 import { carService } from '../services/CarService';
+import { useRouter } from 'vue-router';
 
 
 export default {
     setup() {
         const editable = ref({})
+        const router = useRouter();
 
         const fuelTypes = ['Gas', 'Diesel', 'Hybrid', 'Electric']
 
@@ -198,7 +201,6 @@ export default {
         const drivetrains = ['4x4', 'RWD', 'FWD', 'AWD']
 
         const makes = ['Ford', 'GM', 'Chevy', 'Jeep', 'Toyota', 'Honda', 'Nissan', 'Kia', 'Hyundai', 'Tesla', 'Subaru', 'Mazda', 'Porsche', 'Cadillac', 'Volvo', 'Dodge', 'Bentley', 'Mercedes-Benz', 'BMW', 'Ferrari', 'Lancia', 'Fiat', 'Lincoln', 'Buick', 'Lexus', 'Jaguar', 'Suzuki', 'Acura', 'Audi', 'VW', 'Infiniti', 'Tesla', 'Cadillac', 'Rolls-Royce', 'Lamborghini', 'Other']
-        // const router = useRouter();
         return {
             editable,
             engines,
@@ -213,6 +215,8 @@ export default {
                     carService.postCar(file, editable.value)
                     editable.value = {}
                     event.target.reset()
+
+                    Modal.getOrCreateInstance('#carModal').hide()
 
                 } catch (error) {
                     Pop.error(error)

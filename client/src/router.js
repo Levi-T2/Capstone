@@ -32,7 +32,27 @@ const routes = [
     path: '/api/cars/:carId/modifications',
     name: 'ModList',
     component: loadPage('ModListPage'),
-  }
+  },
+  
+  {
+    path: '/topCars',
+    name: 'TopCars',
+    component: loadPage('TopCarsPage'),
+    beforeEnter: authGuard
+  },
+  {
+    path: '/Comparison',
+    name: 'Comparison',
+    component: loadPage('ComparisonPage'),
+    beforeEnter: authGuard
+  },
+  {
+    path: '/TopMods',
+    name: 'TopMods',
+    component: loadPage('TopModsPage'),
+    beforeEnter: authGuard
+  },
+
 ]
 
 export const router = createRouter({
