@@ -1,30 +1,25 @@
 <template>
 <section class="row">
-    <div class="page-changer p-2 d-flex">
-        <div class="col-4 d-flex h-100" v-if="page <= 0" disabled @click="changePage(page -= 1)">
+    <div class="page-changer p-2 d-flex justify-content-between align-items-center">
+        <div>
             <button v-if="page <= 0" disabled @click="changePage(page -= 1)" class="btn btn-light rounded-pill">
                 <i class="mdi mdi-arrow-left"></i>
                 Previous</button>
-            </div>
-            <div class="col-4 d-flex h-100" v-else @click="changePage(page -= 1)">
-                <button  class="btn btn-light rounded-pill">
+                <button  v-else @click="changePage(page -= 1)" class="btn btn-light rounded-pill">
                     <i class="mdi mdi-arrow-left"></i>
                     Previous</button>
-                </div>
-                <div class="col-4">
+            </div>
+                <div>
                     <p class="d-flex justify-content-center mt-3">Current Page: {{ page }} </p>
                 </div>
-                <div class="col-4 d-flex justify-content-end h-100" v-if="totalCars < 6" disabled @click="changePage(page += 1)">
-                    <button  class="btn btn-light rounded-pill">Next
+                <div>
+                    <button v-if="totalCars < 6" disabled @click="changePage(page += 1)" class="btn btn-light rounded-pill">Next
+                        <i class="mdi mdi-arrow-right"></i>
+                    </button>
+                    <button v-else @click="changePage(page += 1)" class="btn btn-light rounded-pill">Next
                         <i class="mdi mdi-arrow-right"></i>
                     </button>
                 </div>
-                <div class="col-4 d-flex justify-content-end h-100" v-else @click="changePage(page += 1)">
-                    <button  class="btn btn-light rounded-pill">Next
-                        <i class="mdi mdi-arrow-right"></i>
-                    </button>
-                </div>
-                
             </div>
         </section>
 </template>
