@@ -144,7 +144,8 @@
 
                                 <div class="mb-3 p-2">
                                     <label class="fs-5 p-2" for="imgUrl">Image</label>
-                                    <input class="form-control" type="file" accept="image/*" name="fileInput" required>
+                                    <input class="form-control" type="file" accept="image/*,video/*" name="fileInput"
+                                        required>
                                 </div>
 
                                 <div class="mb-3 p-2">
@@ -216,7 +217,6 @@ export default {
                     event.target.reset()
 
                     Modal.getOrCreateInstance('#carModal').hide()
-                    router.push({ name: "CarDetails", params: { carId: event.id } });
 
                 } catch (error) {
                     Pop.error(error)
