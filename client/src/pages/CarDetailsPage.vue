@@ -2,7 +2,7 @@
     <div v-if="cars" class="container-fluid">
         <section class="row">
             <div class="col-12 p-5 text-white">
-                <div class="row transparent-bg rounded p-3">
+                <div class="row transparent-bg rounded p-3 box-shadow">
                     <div class="col-12 col-md-6">
                         <div>
 <img class="rounded img-fluid" src="https://th.bing.com/th/id/OIP.s6zSNqXhqNgBYlU7UKQMOgHaD2?w=336&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="">
@@ -113,6 +113,10 @@ account: computed(() => AppState.account)
     object-position: center;
     height: 10%;
     width: 10%;
+}
+
+.box-shadow{
+    box-shadow: 0 5px 10px black;
 }
 
 .toggle-start{
