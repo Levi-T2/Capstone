@@ -17,7 +17,7 @@ import { supabaseService } from "./SupabaseService";
 
         async postCar(file, carData){
             const folder = AppState.user.id
-            const url = await supabaseService.upload(file, `${folder}/${carData.make}`)
+            const url = await supabaseService.upload(file, `${folder}/${carData.imgUrl}`)
             carData.imgUrl = url
 
             const res = await api.post('api/cars', carData)

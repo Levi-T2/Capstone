@@ -186,22 +186,7 @@ import { carService } from '../services/CarService';
 
 export default {
     setup() {
-        const editable = ref({
-            "model": "tacoma",
-            "year": 1999,
-            "seatCapacity": 6,
-            "mpg": 25,
-            "horsepower": 250,
-            "weight": 3000,
-            "trimModel": "trd",
-            "displacement": "2.5",
-            "engine": "Electric",
-            "make": "Subaru",
-            "drivetrain": "4x4",
-            "bodyType": "Hearse",
-            "fuelType": "Gas",
-            "description": "tacoma?"
-        })
+        const editable = ref({})
 
         const fuelTypes = ['Gas', 'Diesel', 'Hybrid', 'Electric']
 
