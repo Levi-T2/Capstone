@@ -1,19 +1,19 @@
 <template>
-<h1></h1>
+    <div></div>
 </template>
 
 <script>
 
 export default {
-    setup(){
-    return {  }
+    setup() {
+        return {}
     }
 };
 </script>
 
 
 <style lang="scss" scoped>
-img{
+img {
     object-fit: cover;
     object-position: center;
     height: 75em;
