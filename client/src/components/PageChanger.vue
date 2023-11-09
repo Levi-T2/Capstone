@@ -1,19 +1,32 @@
 <template>
-<div class="page-changer p-2 d-flex justify-content-between">
-    <button v-if="page <= 0" disabled @click="changePage(page -= 1)" class="btn btn-light rounded-pill">
-        <i class="mdi mdi-arrow-left"></i>
-        Previous Page</button>
-        <button v-else @click="changePage(page -= 1)" class="btn btn-light rounded-pill">
-        <i class="mdi mdi-arrow-left"></i>
-        Previous Page</button>
-    <p class="mb-0">Current Page: {{ page }} </p>
-    <button v-if="totalCars < 6" disabled @click="changePage(page += 1)" class="btn btn-light rounded-pill">Next Page
-        <i class="mdi mdi-arrow-right"></i>
-    </button>
-    <button v-else @click="changePage(page += 1)" class="btn btn-light rounded-pill">Next Page
-        <i class="mdi mdi-arrow-right"></i>
-    </button>
-</div>
+<section class="row">
+    <div class="page-changer p-2 d-flex">
+        <div class="col-4 d-flex h-100" v-if="page <= 0" disabled @click="changePage(page -= 1)">
+            <button v-if="page <= 0" disabled @click="changePage(page -= 1)" class="btn btn-light rounded-pill">
+                <i class="mdi mdi-arrow-left"></i>
+                Previous</button>
+            </div>
+            <div class="col-4 d-flex h-100" v-else @click="changePage(page -= 1)">
+                <button  class="btn btn-light rounded-pill">
+                    <i class="mdi mdi-arrow-left"></i>
+                    Previous</button>
+                </div>
+                <div class="col-4">
+                    <p class="d-flex justify-content-center mt-3">Current Page: {{ page }} </p>
+                </div>
+                <div class="col-4 d-flex justify-content-end h-100" v-if="totalCars < 6" disabled @click="changePage(page += 1)">
+                    <button  class="btn btn-light rounded-pill">Next
+                        <i class="mdi mdi-arrow-right"></i>
+                    </button>
+                </div>
+                <div class="col-4 d-flex justify-content-end h-100" v-else @click="changePage(page += 1)">
+                    <button  class="btn btn-light rounded-pill">Next
+                        <i class="mdi mdi-arrow-right"></i>
+                    </button>
+                </div>
+                
+            </div>
+        </section>
 </template>
 
 
