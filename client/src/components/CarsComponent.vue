@@ -2,7 +2,7 @@
     <router-link :to="{ name: 'CarDetails', params: { carId: carProp.id } }">
         <div class="transparent-bg text-center rounded mb-3 text-white glow box-shadow">
 
-            <img class="p-4 carPicture" :src="carProp.imgUrl" alt="">
+            <img class="p-4 car-picture img-fluid" :src="carProp.imgUrl" alt="">
 
             <div class="d-flex fs-4 fw-bold justify-content-center">
                 <p class="p-1">{{ carProp.year }}</p>
@@ -49,11 +49,11 @@ export default {
 
 
 <style lang="scss" scoped>
-.carPicture {
+.car-picture {
     width: 100%;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 25%;
+   height: 25vh;
+   border-radius: 15%;
+   object-fit:fill;
 }
 
 
