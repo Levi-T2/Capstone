@@ -17,7 +17,7 @@ import { api } from "./AxiosService";
         async postCar(carData){
             const res = await api.post('api/cars', carData)
             logger.log('created car', res.data)
-            const newCar = new Car(res.data.cars)
+            const newCar = new Car(res.data)
             AppState.cars.push(newCar)
         }
 
@@ -25,7 +25,7 @@ import { api } from "./AxiosService";
             AppState.activeCar = null;
             const res = await api.get(`api/cars/${carId}`);
             logger.log("got car by ID", res.data);
-            AppState.activeCar = new Car(res.data.cars);
+            AppState.activeCar = new Car(res.data);
           }
 
         async destroyCar(carId) {
