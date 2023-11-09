@@ -1,24 +1,25 @@
 <template>
-    <div class="transparent-bg text-center rounded mb-3 text-white">
-
-        <img class="p-4 carPicture"
+    <router-link :to="{name: 'CarDetails', params: {carId: carProp.id}}">
+        <div class="transparent-bg text-center rounded mb-3 text-white">
+            
+            <img class="p-4 carPicture"
             src="https://th.bing.com/th/id/OIP.s6zSNqXhqNgBYlU7UKQMOgHaD2?w=336&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="">
-
-        <div class="d-flex fs-4 fw-bold justify-content-center">
-            <p class="p-1">{{ carProp.year }}</p>
-            <p class="p-1">{{ carProp.make }}</p>
-            <p class="p-1">{{ carProp.model }}</p>
-        </div>
-
-        <div class="d-flex  fw-bold justify-content-evenly">
-            <p>Mods Done:</p>
+            
+            <div class="d-flex fs-4 fw-bold justify-content-center">
+                <p class="p-1">{{ carProp.year }}</p>
+                <p class="p-1">{{ carProp.make }}</p>
+                <p class="p-1">{{ carProp.model }}</p>
+            </div>
+            
+            <div class="d-flex  fw-bold justify-content-evenly">
+                <p>Mods Done:</p>
             <p>Likes:</p>
         </div>
 
-        <div class="d-flex  fw-bold justify-content-evenly">
+        <!-- <div class="d-flex  fw-bold justify-content-evenly">
             <button class="btn btn-success fw-bold">Mod List<i class="mdi mdi-cog mx-1"></i></button>
             <button class="btn btn-primary fw-bold">Like Car<i class="mdi mdi-heart mx-1"></i></button>
-        </div>
+        </div> -->
 
         <div class="d-flex  fw-bold justify-content-center pt-2">
             <p class="p-2">Created by:</p>
@@ -26,6 +27,7 @@
         </div>
 
     </div>
+</router-link>
 </template>
 
 
