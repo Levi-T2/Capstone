@@ -47,11 +47,13 @@
                             <p>Drivetrain: {{ cars.drivetrain }}</p>
                         </div>
                         <div class="col-12 col-md-4 mt-4">
-                            <div class="d-flex fw-bold">
-                                <button class="btn btn-success mx-3 fw-bold mb-3">Mod List <i
-                                        class="mdi mdi-cog"></i></button>
-                                <p>Mods Done:</p>
-                            </div>
+                            <RouterLink :to="{ name: 'ModList', params: { carId: cars.id}}">
+                                <div class="d-flex fw-bold">
+                                    <button class="btn btn-success mx-3 fw-bold mb-3">Mod List <i
+                                            class="mdi mdi-cog"></i></button>
+                                    <p>Mods Done:</p>
+                                </div>
+                            </RouterLink>
                             <div class="d-flex fw-bold">
                                 <button class="btn btn-primary mx-3 fw-bold mb-3">Like Car <i
                                         class="mdi mdi-heart"></i></button>
