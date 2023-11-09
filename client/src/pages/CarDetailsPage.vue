@@ -23,7 +23,7 @@
                                             class="mdi mdi-circle"></i>
                                     </a>
                                     <ul class="dropdown-menu text-center">
-                                        <button class="btn btn-success my-1">Post Mod</button>
+                                        <button data-bs-toggle="modal" data-bs-target="#ModModalForm" class="btn btn-success my-1">Post Mod</button>
                                         <button @click="deleteCar(cars.id)" class="btn btn-danger my-1">Delete Car</button>
                                     </ul>
                                 </div>
@@ -71,6 +71,7 @@
             </div>
         </section>
     </div>
+    <ModFormModal></ModFormModal>
 </template>
 
 
@@ -80,42 +81,40 @@ import { computed, reactive, onMounted } from 'vue';
 import Pop from '../utils/Pop';
 import { carService } from '../services/CarService';
 import { useRoute } from 'vue-router';
+import ModFormModal from '../components/ModFormModal.vue';
 export default {
-
-
     setup() {
         const route = useRoute();
-
         onMounted(() => {
-            getCarById()
-        })
-
+            getCarById();
+        });
         async function getCarById() {
             try {
-                const carId = route.params.carId
-                await carService.getCarById(carId)
-            } catch (error) {
-                Pop.error(error)
+                const carId = route.params.carId;
+                await carService.getCarById(carId);
+            }
+            catch (error) {
+                Pop.error(error);
             }
         }
-
         return {
             cars: computed(() => AppState.activeCar),
             account: computed(() => AppState.account),
             async deleteCar(carId) {
                 try {
-                    const yes = await Pop.confirm(`Are you sure you want to delete this car?`)
+                    const yes = await Pop.confirm(`Are you sure you want to delete this car?`);
                     if (!yes) {
-                        return
+                        return;
                     }
-                    await carService.destroyCar(carId)
-                } catch (error) {
-                    Pop.error
+                    await carService.destroyCar(carId);
+                }
+                catch (error) {
+                    Pop.error;
                 }
             }
-
-        }
-    }
+        };
+    },
+    components: { ModFormModal }
 };
 </script>
 
