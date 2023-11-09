@@ -6,17 +6,18 @@ import { api } from "./AxiosService";
 
     class CarService{
 
-         async getCars(){
-            const res = await api.get('api/cars')
+         async getCars(pageNumber){
+            const res = await api.get(`api/cars?pageNumber=${pageNumber}`)
             logger.log(res.data)
-            AppState.cars = res.data.map((car) => new Car(car))
+            AppState.cars = res.data.cars.map((car) => new Car(car))
+            AppState.carsForPage = res.data.carsForPage
             logger.log (AppState.cars)
         }
 
         async postCar(carData){
             const res = await api.post('api/cars', carData)
             logger.log('created car', res.data)
-            const newCar = new Car(res.data)
+            const newCar = new Car(res.data.cars)
             AppState.cars.push(newCar)
         }
 
@@ -24,7 +25,7 @@ import { api } from "./AxiosService";
             AppState.activeCar = null;
             const res = await api.get(`api/cars/${carId}`);
             logger.log("got car by ID", res.data);
-            AppState.activeCar = new Car(res.data);
+            AppState.activeCar = new Car(res.data.cars);
           }
 
         async destroyCar(carId) {
@@ -33,7 +34,6 @@ import { api } from "./AxiosService";
             AppState.activeCar = new Car(res.data);
           
         }
-
 
     }
 

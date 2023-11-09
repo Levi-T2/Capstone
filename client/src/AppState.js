@@ -12,5 +12,7 @@ export const AppState = reactive({
   activeCar:[],
   
   /** @type {import('./models/Comment.js').Comment[]} */
-  comments:[]
+  comments:[],
+
+  carsForPage: 0,
 })
