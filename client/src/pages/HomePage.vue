@@ -13,6 +13,11 @@
         <CarsComponent :carProp="car" />
       </div>
     </section>
+    <section class="row mb-2">
+      <div class="col-12">
+        <PageChanger></PageChanger>
+      </div>
+    </section>
   </div>
   <CarModalForm />
 </template>
@@ -23,6 +28,7 @@ import Pop from '../utils/Pop';
 import { carService } from '../services/CarService';
 import { AppState } from '../AppState.js'
 import CarModalForm from '../components/CarModalForm.vue';
+import PageChanger from '../components/PageChanger.vue';
 
 export default {
   setup() {
@@ -41,7 +47,7 @@ export default {
       cars: computed(() => AppState.cars)
     };
   },
-  components: { CarModalForm }
+  components: { CarModalForm, PageChanger }
 }
 </script>
 
@@ -53,4 +59,6 @@ export default {
 .user-cars {
   width: 30%;
 }
+
+
 </style>
