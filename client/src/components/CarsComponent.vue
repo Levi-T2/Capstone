@@ -11,7 +11,7 @@
 
             <div class="d-flex  fw-bolds justify-content-evenly">
                 <p>Mods Done:</p>
-                <a class="fs-4 star-clr" role="button" type="button" title="Favorite Car">
+                <a @click="favoriteCar(carProp.id)" class="fs-4 star-clr" role="button" type="button" title="Favorite Car">
                     <i class="mdi mdi-star-plus-outline"></i>
                 </a>
             </div>
@@ -34,6 +34,8 @@
 import { AppState } from '../AppState';
 import { computed, reactive, onMounted } from 'vue';
 import { Car } from '../models/Car';
+import Pop from '../utils/Pop';
+import { favoritesService } from '../services/FavoritesService.js'
 export default {
     props: { carProp: { type: Car, required: true } },
 
@@ -41,7 +43,13 @@ export default {
 
 
         return {
-
+            async favoriteCar(carId) {
+                try {
+                    await favoritesService.favoriteCar(carId)
+                } catch (error) {
+                    Pop.error(error)
+                }
+            }
         }
     }
 };
