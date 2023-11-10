@@ -62,8 +62,9 @@
                             <div class="d-flex fw-bold mx-2">
                                 <p class="mx-1">Created By:</p>
                                 <p>{{ cars?.creator?.name }}</p>
-                                <img class="rounded-circle profile-pic mx-1" :src="cars?.creator?.picture"
-                                    :alt="cars?.creator?.name">
+                                    <img class="rounded-circle profile-pic mt-4" :src="cars?.creator?.picture"
+                                        :alt="cars?.creator?.name">
+                                
                             </div>
                         </div>
                     </div>
@@ -127,8 +128,8 @@ export default {
 .profile-pic {
     object-fit: cover;
     object-position: center;
-    height: 10%;
-    width: 10%;
+    height: 70%;
+    width: 70%;
 }
 
 .box-shadow {
