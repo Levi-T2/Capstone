@@ -129,8 +129,8 @@ export default {
 .profile-pic {
     object-fit: cover;
     object-position: center;
-    height: 70%;
-    width: 70%;
+    height: 30%;
+    width: 30%;
 }
 
 .box-shadow {
