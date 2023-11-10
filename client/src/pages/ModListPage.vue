@@ -7,11 +7,7 @@
         </section>
         <section v-if="mods" class="row">
             <div v-for="mod in mods" :key="mod.id" class="col-12 col-md-6 p-2">
-                <div class="bg-dark rounded p-2">
-                    <p>{{ mod.name }}</p>
-                    <p>{{ mod.description }}</p>
-                    <p>Mod Type: {{ mod.modType }}</p>
-                </div>
+               <ModsComponent :mod="mod"></ModsComponent>
             </div>
         </section>
     </div>
@@ -24,27 +20,29 @@ import Pop from '../utils/Pop';
 import { carService } from '../services/CarService';
 import { useRoute } from 'vue-router';
 import { AppState } from '../AppState';
+import ModsComponent from '../components/ModsComponent.vue';
 
 
 export default {
-    setup(){
-        const route = useRoute()
-
+    setup() {
+        const route = useRoute();
         onMounted(() => {
-            getModsByCarId()
-        })
+            getModsByCarId();
+        });
         async function getModsByCarId() {
             try {
-                const carId = route.params.carId
-                await carService.getModificationsByCarId(carId)
-            } catch (error) {
-                Pop.error(error)
+                const carId = route.params.carId;
+                await carService.getModificationsByCarId(carId);
+            }
+            catch (error) {
+                Pop.error(error);
             }
         }
-    return { 
-        mods: computed(() => AppState.activeModList)
-     }
-    }
+        return {
+            mods: computed(() => AppState.activeModList)
+        };
+    },
+    components: { ModsComponent }
 };
 </script>
 
