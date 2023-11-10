@@ -8,6 +8,8 @@ export class AccountController extends BaseController {
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getUserAccount)
+      .get('/cars', this.getMyCars)
+      .get('/favorites', this.getMyFavorites)
       .put('', this.updateAccount)
   }
   async updateAccount(req, res, next) {
@@ -25,6 +27,20 @@ export class AccountController extends BaseController {
     try {
       const account = await accountService.getAccount(req.userInfo)
       res.send(account)
+    } catch (error) {
+      next(error)
+    }
+  }
+  async getMyCars(request, response, next) {
+    try {
+
+    } catch (error) {
+      next(error)
+    }
+  }
+  async getMyFavorites(request, response, next) {
+    try {
+
     } catch (error) {
       next(error)
     }

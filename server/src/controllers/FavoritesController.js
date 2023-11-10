@@ -22,7 +22,8 @@ export class FavoritesController extends BaseController {
     }
     async getFavoriteById(request, response, next) {
         try {
-            const favorite = await favoritesService.getFavoriteById()
+            const favId = request.params.favoriteId
+            const favorite = await favoritesService.getFavoriteById(favId)
             return response.send(favorite)
         } catch (error) {
             next(error)
@@ -41,7 +42,7 @@ export class FavoritesController extends BaseController {
     }
     async destroyFavorite(request, response, next) {
         try {
-            const favId = request.params.favId
+            const favId = request.params.favoriteId
             const userId = request.userInfo.id
             const favorite = await favoritesService.destroyFavorite(favId, userId)
             return response.send(favorite)
