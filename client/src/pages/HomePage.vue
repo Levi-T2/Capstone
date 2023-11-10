@@ -5,7 +5,8 @@
         <p class="transparent-bg rounded text-center">User cars <i class="mdi mdi-car"></i></p>
       </div>
       <div class="col-4 col-md-2 fs-3 text-white text-center mt-3">
-        <button class="m-0 transparent-bg rounded text-white btn btn fs-5">Filter<i class="mdi mdi-filter"></i></button>
+        <button class="m-0 transparent-bg rounded text-white btn btn fs-5" data-bs-toggle="modal" data-bs-target="#FilterCars">Filter<i class="mdi mdi-filter"></i></button>
+
       </div>
     </section>
     <section class="row">
@@ -22,7 +23,7 @@
 </template>
 
 <script>
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import Pop from '../utils/Pop';
 import { carService } from '../services/CarService';
 import { AppState } from '../AppState.js'
@@ -31,6 +32,7 @@ import PageChanger from '../components/PageChanger.vue';
 
 export default {
   setup() {
+    
     onMounted(() => {
       getCars();
     });
