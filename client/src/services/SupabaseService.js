@@ -41,7 +41,7 @@ class SupabaseService{
         try {
            
             const res = await supabase.storage.from(bucket).upload(`${name}`, file, fileOptions)
-            logger.log('UPLOAD COMPLETED', `${supabase.storageUrl}/object/public/${bucket}/CarImages/${res.data.path}`)
+            logger.log('UPLOAD COMPLETED', `${supabase.storageUrl}/object/public/${bucket}/${res.data.path}`)
             return `${supabase.storageUrl}/object/public/${bucket}/${res.data.path}`
 
 

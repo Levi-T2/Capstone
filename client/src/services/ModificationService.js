@@ -1,9 +1,14 @@
 import { AppState } from "../AppState"
 import { Modification } from "../models/Modification"
 import { api } from "./AxiosService"
+import { supabaseService } from "./SupabaseService"
 
 class ModificationService {
-    async createMod(modData) {
+    async createMod(file, modData) {
+            const folder = AppState.account.id
+            const url = await supabaseService.upload(file, `${folder}/modifications/${modData.name}`)
+            modData.imgUrl = url
+
         const res = await api.post('api/modifications', modData)
         const newMod = new Modification(res.data)
         AppState.activeModList.push(newMod)

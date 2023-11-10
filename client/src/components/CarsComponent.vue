@@ -1,18 +1,20 @@
 <template>
-    <router-link :to="{ name: 'CarDetails', params: { carId: carProp.id } }">
-        <div class="transparent-bg text-center rounded mb-3 text-white glow box-shadow">
-
-            <img class="p-4 car-picture img-fluid" :src="carProp.imgUrl" alt="">
-
-            <div class="d-flex fs-4 fw-bold justify-content-center">
+    <div class="transparent-bg text-center rounded mb-3 text-white glow box-shadow">
+        <router-link title="To Car Details" :to="{ name: 'CarDetails', params: { carId: carProp.id } }">
+        <img class="p-4 car-picture img-fluid" :src="carProp.imgUrl" alt="">
+        <div class="d-flex fs-4 fw-bold justify-content-center text-light">
                 <p class="p-1">{{ carProp.year }}</p>
                 <p class="p-1">{{ carProp.make }}</p>
                 <p class="p-1">{{ carProp.model }}</p>
             </div>
+        </router-link>
 
-            <div class="d-flex  fw-bold justify-content-evenly">
+            <div class="d-flex  fw-bold justify-content-evenly align-items-center">
                 <p>Mods Done:</p>
-                <p>Likes:</p>
+                <a @click="favoriteCar(carProp.id)" class="fs-4 star-clr" role="button" type="button" title="Favorite Car">
+                    <i class="mdi mdi-star-plus-outline"></i>
+                </a>
+                <p class="mb-0 star-clr"> {{ carProp.favoriteCount }}</p>
             </div>
 
             <!-- <div class="d-flex  fw-bold justify-content-evenly">
@@ -26,7 +28,6 @@
             </div>
 
         </div>
-    </router-link>
 </template>
 
 
@@ -34,6 +35,8 @@
 import { AppState } from '../AppState';
 import { computed, reactive, onMounted } from 'vue';
 import { Car } from '../models/Car';
+import Pop from '../utils/Pop';
+import { favoritesService } from '../services/FavoritesService.js'
 export default {
     props: { carProp: { type: Car, required: true } },
 
@@ -41,7 +44,13 @@ export default {
 
 
         return {
-
+            async favoriteCar(carId) {
+                try {
+                    await favoritesService.favoriteCar(carId)
+                } catch (error) {
+                    Pop.error(error)
+                }
+            }
         }
     }
 };
@@ -51,10 +60,10 @@ export default {
 <style lang="scss" scoped>
 .car-picture {
     width: 100%;
-   height: 25vh;
-   border-radius: 15%;
-   object-fit:cover;
-   object-position: center;
+    height: 45vh;
+    border-radius: 8%;
+    object-fit: cover;
+    object-position: center;
 }
 
 
@@ -77,5 +86,9 @@ export default {
 
 .box-shadow {
     box-shadow: 0 5px 10px black;
+}
+
+.star-clr{
+    color: yellow;
 }
 </style>

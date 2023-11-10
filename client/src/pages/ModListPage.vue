@@ -2,12 +2,12 @@
     <div class="container-fluid">
         <section class="row">
             <div class="col-12 p-3">
-                <p class="fs-3 bg-dark fw-bold rounded mb-0 p-1">Mod List</p>
+                <p class="fs-3 bg-dark fw-bold rounded mb-0 p-2 text-center">Mod List</p>
             </div>
         </section>
         <section v-if="mods" class="row">
             <div v-for="mod in mods" :key="mod.id" class="col-12 col-md-6 p-2">
-               <ModsComponent :mod="mod"></ModsComponent>
+                <ModsComponent :mod="mod"></ModsComponent>
             </div>
         </section>
     </div>
@@ -47,6 +47,4 @@ export default {
 </script>
 
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

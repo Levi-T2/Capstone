@@ -23,7 +23,8 @@
                                             class="mdi mdi-circle"></i>
                                     </a>
                                     <ul class="dropdown-menu text-center">
-                                        <button data-bs-toggle="modal" data-bs-target="#ModModalForm" class="btn btn-success my-1">Post Mod</button>
+                                        <button data-bs-toggle="modal" data-bs-target="#ModModalForm"
+                                            class="btn btn-success my-1">Post Mod</button>
                                         <button @click="deleteCar(cars.id)" class="btn btn-danger my-1">Delete Car</button>
                                     </ul>
                                 </div>
@@ -47,7 +48,7 @@
                             <p>Drivetrain: {{ cars.drivetrain }}</p>
                         </div>
                         <div class="col-12 col-md-4 mt-4">
-                            <RouterLink :to="{ name: 'ModList', params: { carId: cars.id}}">
+                            <RouterLink :to="{ name: 'ModList', params: { carId: cars.id } }">
                                 <div class="d-flex fw-bold">
                                     <button class="btn btn-success mx-3 fw-bold mb-3">Mod List <i
                                             class="mdi mdi-cog"></i></button>
@@ -62,8 +63,9 @@
                             <div class="d-flex fw-bold mx-2">
                                 <p class="mx-1">Created By:</p>
                                 <p>{{ cars?.creator?.name }}</p>
-                                <img class="rounded-circle profile-pic mx-1" :src="cars?.creator?.picture"
+                                <img class="rounded-circle profile-pic mt-4" :src="cars?.creator?.picture"
                                     :alt="cars?.creator?.name">
+
                             </div>
                         </div>
                     </div>
@@ -127,8 +129,8 @@ export default {
 .profile-pic {
     object-fit: cover;
     object-position: center;
-    height: 10%;
-    width: 10%;
+    height: 70%;
+    width: 70%;
 }
 
 .box-shadow {
@@ -141,9 +143,8 @@ export default {
 
 .car-picture {
     width: 100%;
-   height: 35vh;
-   object-fit: cover;
-   object-position: center;
+    height: 45vh;
+    object-fit: cover;
+    object-position: center;
 }
-
 </style>

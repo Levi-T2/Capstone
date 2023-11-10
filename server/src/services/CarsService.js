@@ -2,6 +2,10 @@ import { dbContext } from "../db/DbContext.js"
 import { BadRequest, Forbidden } from "../utils/Errors.js"
 
 class CarsService {
+    async getMyCars(userId) {
+        const cars = await dbContext.Cars.find({ creatorId: userId })
+        return cars
+    }
     async getCarById(carId) {
         const car = await dbContext.Cars.findById(carId).populate('creator')
         if (!car) {
@@ -17,8 +21,9 @@ class CarsService {
 
     async getAllCars(query, pageNumber = 0) {
         delete query.pageNumber
-        const skip = pageNumber * 6
-        const cars = await dbContext.Cars.find(query).limit(6).skip(skip).populate('creator')
+        const limit = 9
+        const skip = pageNumber * limit
+        const cars = await dbContext.Cars.find(query).limit(limit).skip(skip).populate('creator favoriteCount')
         const totalPages = cars.length
         return { carsForPage: totalPages, cars: cars }
     }
