@@ -6,7 +6,7 @@
           <div class="col-12">
             <div class="mt-3 text-center">
               <h1>{{ account.name }}</h1>
-              <img class="rounded-circle my-3" :src="account.picture" alt="" />
+              <img class="rounded-circle my-3 img-fluid" :src="account.picture" alt="" />
             </div>
             <div>
               <p>{{ account.bio }}</p>
@@ -63,9 +63,9 @@ export default {
         getFavoritesByAccountId()
       })
 
-      async function getFavoritesByAccountId(){
+      async function getFavoritesByAccountId(userId){
         try {
-          await favoritesService.getFavoritesByAccountId()
+          await favoritesService.getFavoritesByAccountId(userId)
         } catch (error) {
           Pop.error(error)
         }
@@ -85,6 +85,7 @@ export default {
 
 <style scoped>
 img {
-  max-width: 100px;
+  height: 30vh;
+
 }
 </style>
