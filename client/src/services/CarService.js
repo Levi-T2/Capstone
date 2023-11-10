@@ -47,9 +47,9 @@ import { supabaseService } from "./SupabaseService";
         async getModificationsByCarId(carId){
             AppState.activeModList = null;
             const res = await api.get(`api/cars/${carId}/modifications`)
-            logger.log(res.data)
-            const newMods = new Modification(res.data)
+            const newMods = res.data.map((mod) => new Modification(mod))
             AppState.activeModList = newMods
+            logger.log(AppState.activeModList)
         }
 
     }

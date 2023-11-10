@@ -14,7 +14,7 @@
       </div>
     </section>
     <section class="row mb-2">
-      <div class="col-12">
+      <div class="col-12 p-3">
         <PageChanger></PageChanger>
       </div>
     </section>
