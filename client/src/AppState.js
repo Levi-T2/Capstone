@@ -19,5 +19,9 @@ export const AppState = reactive({
 
   activeModList: [],
 
-  favorite: {}
+  favorite: [],
+
+  compare: {},
+
+  compare2: {}
 })
