@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark headcolor px-3">
+  <nav class="navbar navbar-expand-lg navbar-dark headcolor px-3 nav-border">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column">
         <p class="fs-1 fw-bold m-0"><em><i class="mdi mdi-tire logo mx-1 mdi-spin"></i>Auto-Tunes</em></p>
@@ -79,6 +79,10 @@ a:hover {
 .mdi-spin {
   -webkit-animation: mdi-spin 2s infinite linear;
   animation: mdi-spin 2s infinite linear;
+}
+
+.nav-border{
+  border-bottom: 3px solid whitesmoke;
 }
 
 @media screen and (min-width: 768px) {

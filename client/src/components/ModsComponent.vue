@@ -6,7 +6,7 @@
             <p>{{ mod.modType }} Mod Type</p>
         </div>
         <div>
-            <img :src="mod.imgUrl" alt="">
+            <img :src="mod.imgUrl" class="img-fluid" alt="Mod Image" :title="mod.name">
         </div>
     </div>
 </template>
