@@ -46,6 +46,10 @@ export default {
                     if (AppState.compare.id == undefined) {
                         AppState.compare = car
                     } else {
+                        if (AppState.compare.id == car.id) {
+                            Pop.error(`You can't compare a car against itself!`)
+                            return
+                        }
                         AppState.compare2 = car
                     }
                     Modal.getOrCreateInstance('#FavoritesModal').hide()

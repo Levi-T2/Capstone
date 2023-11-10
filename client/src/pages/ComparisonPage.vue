@@ -1,15 +1,13 @@
 <template>
     <div class="container-fluid">
         <section class="row">
-            <div class="col-12 p-3">
+            <div class="col-12 p-3 text-center">
                 <button v-if="!compareCar2.id" type="button" class="btn btn-primary" data-bs-toggle="modal"
                     data-bs-target="#FavoritesModal">
-                    My Favorites
+                    Pick Cars from Favorites
                 </button>
-                <button v-else disabled type="button" class="btn btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#FavoritesModal">
-                    Max of two cars!
-                </button>
+                <button v-else data-bs-toggle="modal" data-bs-target="#FavoritesModal" class="btn btn-info">Change
+                    Car</button>
             </div>
             <section class="row justify-content-center">
                 <div v-if="compareCar.id" class="col-4 mb-2">
@@ -19,7 +17,7 @@
                             <img :src="compareCar.imgUrl" class="car-img">
                         </div>
                         <div class="text-light my-2">
-                            <p class="mb-0">
+                            <p class="mb-0 fs-4">
                                 {{ compareCar.year }} {{ compareCar.make }} {{ compareCar.model }}
                             </p>
                         </div>
@@ -36,45 +34,57 @@
                 </div>
                 <div v-if="compareCar2.id" class="col-3 mb-2">
                     <div class="transparent-bg p-3 text-center rounded">
-                        <h2 class="text-light">Comparison Table</h2>
+                        <h2 class="text-light style-border p-1">Comparison Table</h2>
                         <div id="compareYear">
                             <div v-if="compareCar.year > compareCar2.year">
-                                <p class="text-light">Newer year: {{ compareCar.make }} {{ compareCar.model }}</p>
+                                <p :title="compareCar.year" class="text-light">Newer year: {{ compareCar.make
+                                }} {{ compareCar.model }}</p>
                             </div>
                             <div v-else>
-                                <p class="text-light">Newer year: {{ compareCar2.make }} {{ compareCar2.model }}</p>
+                                <p :title="compareCar2.year" class="text-light">Newer year: {{ compareCar2.make }} {{
+                                    compareCar2.model }}</p>
                             </div>
                         </div>
                         <div id="compareHorsepower">
                             <div v-if="compareCar.horsepower > compareCar2.horsepower">
-                                <p class="text-light">Higher Horsepower: {{ compareCar.make }} {{ compareCar.model }}</p>
+                                <p :title="compareCar.horsepower" class="text-light">Higher Horsepower: {{ compareCar.make
+                                }}
+                                    {{ compareCar.model }}</p>
                             </div>
                             <div v-else>
-                                <p class="text-light">Higher Horsepower: {{ compareCar2.make }} {{ compareCar2.model }}</p>
+                                <p :title="compareCar2.horsepower" class="text-light">Higher Horsepower: {{ compareCar2.make
+                                }}
+                                    {{ compareCar2.model }}</p>
                             </div>
                         </div>
                         <div id="compareWeight">
                             <div v-if="compareCar.weight < compareCar2.weight">
-                                <p class="text-light">Lower Weight: {{ compareCar.make }} {{ compareCar.model }}</p>
+                                <p :title="compareCar.weight" class="text-light">Lower Weight: {{ compareCar.make }} {{
+                                    compareCar.model }}</p>
                             </div>
                             <div v-else>
-                                <p class="text-light">Lower Weight {{ compareCar2.make }} {{ compareCar2.model }}</p>
+                                <p :title="compareCar2.weight" class="text-light">Lower Weight {{ compareCar2.make }} {{
+                                    compareCar2.model }}</p>
                             </div>
                         </div>
                         <div id="compareMPG">
                             <div v-if="compareCar.mpg > compareCar2.mpg">
-                                <p class="text-light">Better Mpg: {{ compareCar.make }} {{ compareCar.model }}</p>
+                                <p :title="compareCar.mpg" class="text-light">Better Mpg: {{ compareCar.make }} {{
+                                    compareCar.model }}</p>
                             </div>
                             <div v-else>
-                                <p class="text-light">Better Mpg: {{ compareCar2.make }} {{ compareCar2.model }}</p>
+                                <p :title="compareCar2.mpg" class="text-light">Better Mpg: {{ compareCar2.make }} {{
+                                    compareCar2.model }}</p>
                             </div>
                         </div>
                         <div id="compareCapacity">
                             <div v-if="compareCar.seatCapacity > compareCar2.seatCapacity">
-                                <p class="text-light">More Seating: {{ compareCar.make }} {{ compareCar.model }}</p>
+                                <p :title="compareCar.seatCapacity" class="text-light">More Seating: {{ compareCar.make }}
+                                    {{ compareCar.model }}</p>
                             </div>
                             <div v-else>
-                                <p class="text-light">More Seating: {{ compareCar2.make }} {{ compareCar2.model }}</p>
+                                <p :title="compareCar2.seatCapacity" class="text-light">More Seating: {{ compareCar2.make }}
+                                    {{ compareCar2.model }}</p>
                             </div>
                         </div>
                     </div>
@@ -86,7 +96,7 @@
                             <img :src="compareCar2.imgUrl" class="car-img">
                         </div>
                         <div class="text-light my-2">
-                            <p class="mb-0">
+                            <p class="mb-0 fs-4">
                                 {{ compareCar2.year }} {{ compareCar2.make }} {{ compareCar2.model }}
                             </p>
                         </div>
@@ -99,6 +109,7 @@
                             <p>{{ compareCar2.weight }} Lbs.</p>
                             <p>Seating Capacity: {{ compareCar2.seatCapacity }}</p>
                         </div>
+
                     </div>
                 </div>
             </section>
@@ -149,6 +160,7 @@ export default {
 <style lang="scss" scoped>
 .car-img {
     height: 14rem;
+    max-width: 100%;
     background-position: center;
     background-size: cover;
     border-radius: 5px;
