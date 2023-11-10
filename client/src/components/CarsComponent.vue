@@ -51,10 +51,10 @@ export default {
 <style lang="scss" scoped>
 .car-picture {
     width: 100%;
-   height: 25vh;
-   border-radius: 15%;
-   object-fit:cover;
-   object-position: center;
+    height: 45vh;
+    border-radius: 15%;
+    object-fit: cover;
+    object-position: center;
 }
 
 
