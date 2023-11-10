@@ -1,8 +1,7 @@
 <template>
    <div class="mod-style text-light p-3 text-end">
-    <h3>Modification</h3>
+    <h3>{{ mod.name }}</h3>
     <div class="text-start">
-        <p>{{ mod.name }}</p>
         <p>{{ mod.description }}</p>
         <p>{{ mod.modType }} Mod Type</p>
     </div>
@@ -33,7 +32,7 @@ export default {
 .mod-style {
   background-color: rgba(0, 0, 0, 0.278);
   border-radius: 5px;
-  box-shadow: 2px 2px 4px 4px rgba(245, 245, 245, 0.688);
+  box-shadow: 1px 1px 4px 3px rgba(245, 245, 245, 0.688);
 
 }
 
