@@ -45,3 +45,10 @@ CarSchema.virtual('creator', {
     foreignField: '_id',
     justOne: true
 })
+
+CarSchema.virtual('favoriteCount', {
+    localField: '_id',
+    foreignField: 'carId',
+    ref: 'Favorite',
+    count: true
+})
