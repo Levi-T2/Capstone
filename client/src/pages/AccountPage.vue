@@ -34,7 +34,10 @@
 
       <div class="col-10 bg-dark my-3 "
       ><h1 class="fs-3">My Favorites</h1> 
-      
+      <div v-for="favorite in favorites" :key="favorite.id">
+{{ favorite.car }}
+
+      </div>
       
       </div>
 
@@ -46,14 +49,34 @@
 </template>
 
 <script>
-import { computed } from 'vue';
+import { computed, onMounted } from 'vue';
 import { AppState } from '../AppState';
+import Pop from '../utils/Pop.js';
+
+import { favoritesService } from '../services/FavoritesService.js';
+
 
 export default {
     setup() {
+      
+      onMounted(()=> {
+        getFavoritesByAccountId()
+      })
+
+      async function getFavoritesByAccountId(){
+        try {
+          await favoritesService.getFavoritesByAccountId()
+        } catch (error) {
+          Pop.error(error)
+        }
+      }
         return {
+
+
+
             account: computed(() => AppState.account),
-            cars: computed(() => AppState.cars)
+            cars: computed(() => AppState.cars),
+            favorite: computed(()=> AppState.favorite)
         };
     },
 

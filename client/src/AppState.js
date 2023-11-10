@@ -17,5 +17,7 @@ export const AppState = reactive({
 
   carsForPage: 0,
 
-  activeModList: []
+  activeModList: [],
+
+  favorite: {}
 })
