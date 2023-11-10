@@ -28,3 +28,5 @@ FavoriteSchema.virtual('account',
         ref: 'Account',
         justOne: true
     })
+
+FavoriteSchema.index({ carId: 1, accountId: 1 }, { unique: true })
