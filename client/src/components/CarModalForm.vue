@@ -200,7 +200,7 @@ export default {
 
         const drivetrains = ['4x4', 'RWD', 'FWD', 'AWD']
 
-        const makes = ['Ford', 'GM', 'Chevy', 'Jeep', 'Toyota', 'Honda', 'Nissan', 'Kia', 'Hyundai', 'Tesla', 'Subaru', 'Mazda', 'Porsche', 'Cadillac', 'Volvo', 'Dodge', 'Bentley', 'Mercedes-Benz', 'BMW', 'Ferrari', 'Lancia', 'Fiat', 'Lincoln', 'Buick', 'Lexus', 'Jaguar', 'Suzuki', 'Acura', 'Audi', 'VW', 'Infiniti', 'Tesla', 'Cadillac', 'Rolls-Royce', 'Lamborghini', 'Other']
+        const makes = ['Ford', 'GM', 'Chevy', 'Jeep', 'Toyota', 'Honda', 'Nissan', 'Kia', 'Hyundai', 'Tesla', 'Subaru', 'Mazda', 'Porsche', 'Cadillac', 'Volvo', 'Dodge', 'Bentley', 'Mercedes-Benz', 'BMW', 'Ferrari', 'Lancia', 'Fiat', 'Lincoln', 'Buick', 'Lexus', 'Jaguar', 'Suzuki', 'Acura', 'Audi', 'VW', 'Infiniti', 'Tesla', 'Cadillac', 'Rolls-Royce', 'Lamborghini', 'Chrysler', 'Other']
         return {
             editable,
             engines,
