@@ -2,6 +2,10 @@ import { dbContext } from "../db/DbContext.js"
 import { BadRequest, Forbidden } from "../utils/Errors.js"
 
 class CarsService {
+    async getMyCars(userId) {
+        const cars = await dbContext.Cars.find({ creatorId: userId })
+        return cars
+    }
     async getCarById(carId) {
         const car = await dbContext.Cars.findById(carId).populate('creator')
         if (!car) {

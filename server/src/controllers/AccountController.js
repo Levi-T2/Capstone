@@ -1,6 +1,8 @@
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { accountService } from '../services/AccountService'
 import BaseController from '../utils/BaseController'
+import { favoritesService } from '../services/FavoritesService.js'
+import { carsService } from '../services/CarsService.js'
 
 export class AccountController extends BaseController {
   constructor() {
@@ -33,14 +35,18 @@ export class AccountController extends BaseController {
   }
   async getMyCars(request, response, next) {
     try {
-
+      const userId = request.userInfo.id
+      const cars = await carsService.getMyCars(userId)
+      return response.send(cars)
     } catch (error) {
       next(error)
     }
   }
   async getMyFavorites(request, response, next) {
     try {
-
+      const userId = request.userInfo.id
+      const favorites = await favoritesService.getMyFavorites(userId)
+      return response.send(favorites)
     } catch (error) {
       next(error)
     }
