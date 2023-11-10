@@ -9,11 +9,12 @@
             </div>
         </router-link>
 
-            <div class="d-flex  fw-bolds justify-content-evenly">
+            <div class="d-flex  fw-bold justify-content-evenly align-items-center">
                 <p>Mods Done:</p>
                 <a @click="favoriteCar(carProp.id)" class="fs-4 star-clr" role="button" type="button" title="Favorite Car">
                     <i class="mdi mdi-star-plus-outline"></i>
                 </a>
+                <p class="mb-0 star-clr"> {{ carProp.favoriteCount }}</p>
             </div>
 
             <!-- <div class="d-flex  fw-bold justify-content-evenly">

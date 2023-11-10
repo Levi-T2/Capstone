@@ -20,7 +20,7 @@
             this.bodyType = data.bodyType
             this.fuelType = data.fuelType
             this.creator = data.creator
-            this.imgUrl = data.imgUrl
-
+            this.imgUrl = data.imgUrl   
+            this.favoriteCount = data.favoriteCount
         }
     }

@@ -9,6 +9,7 @@
     <p class="fs-5 p-2">Auto-Tunes <i class="mdi mdi-copyright"></i></p>
   </footer>
   <CarModalForm></CarModalForm>
+  <FilterCarsModal></FilterCarsModal>
 </template>
 
 <script>
