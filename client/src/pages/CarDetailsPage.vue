@@ -1,6 +1,6 @@
 <template>
-    <div v-if="cars" class="container-fluid">
-        <section class="row">
+    <div class="container-fluid">
+        <section v-if="cars" class="row">
             <div class="col-12 p-5 text-white">
                 <div class="row transparent-bg rounded p-3 box-shadow">
                     <div class="col-12 col-md-6">
@@ -72,24 +72,61 @@
                 </div>
             </div>
         </section>
+
+        <div class="row justify-content-center ">
+
+            <div class=" col-8 transparent-bg text-center box-shadow my-5">
+                <h1 class="col-12 text-light text-center">Reviews <i class="mdi mdi-comment fs-2"></i></h1>
+
+                <button v-if="account.id" type="button" title="Open Post Form" data-bs-toggle="modal"
+                    data-bs-target="#commentModal" class=" col-5 m-5 btn box-shadow transparent-bg  fs-4 text-light">Post
+                    Review</button>
+
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div v-for="comment in comments" :key="comment.id" class="col-8 transparent-bg box-shadow m-5">
+                <CommentComp :commentProp="comment" />
+
+            </div>
+        </div>
+
     </div>
-    <ModFormModal></ModFormModal>
+    <ModFormModal />
+    <CommentModal />
 </template>
 
 
 <script>
-import { AppState } from '../AppState';
+import { AppState } from '../AppState.js';
 import { computed, reactive, onMounted } from 'vue';
 import Pop from '../utils/Pop';
 import { carService } from '../services/CarService';
 import { useRoute } from 'vue-router';
 import ModFormModal from '../components/ModFormModal.vue';
+import CommentComp from '../components/CommentComp.vue';
+import CommentModal from '../components/CommentModal.vue';
+import { commentService } from '../services/CommentService';
+import { logger } from '../utils/Logger';
 export default {
     setup() {
         const route = useRoute();
         onMounted(() => {
             getCarById();
+            getCommentsByCarId();
         });
+
+        async function getCommentsByCarId() {
+            try {
+                const carId = route.params.carId;
+                await commentService.getCommentsByCarId(carId);
+            }
+            catch (error) {
+                logger.error("Comment Id error", error);
+                Pop.error("Comment Error", error.message);
+            }
+        }
         async function getCarById() {
             try {
                 const carId = route.params.carId;
@@ -102,6 +139,7 @@ export default {
         return {
             cars: computed(() => AppState.activeCar),
             account: computed(() => AppState.account),
+            comments: computed(() => AppState.comments),
             async deleteCar(carId) {
                 try {
                     const yes = await Pop.confirm(`Are you sure you want to delete this car?`);
@@ -116,7 +154,7 @@ export default {
             }
         };
     },
-    components: { ModFormModal }
+    components: { ModFormModal, CommentComp, CommentModal }
 };
 </script>
 
