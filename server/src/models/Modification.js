@@ -7,6 +7,7 @@ export const ModificationSchema = new Schema(
         description: { type: String, required: true, minLength: 1, maxLength: 2500 },
         modType: { type: String, required: true, enum: ['Engine', 'Utility', 'Interior', 'Cosmetic', 'Performance', 'Other'], default: 'Other' },
         name: { type: String, required: true, minLength: 1, maxLength: 200 },
+        imgUrl: { type: String, required: true },
     },
     {
         timestamps: true,
