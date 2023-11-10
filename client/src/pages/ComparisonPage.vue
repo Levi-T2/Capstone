@@ -1,5 +1,14 @@
 <template>
-    <h1>This is the Comparison Page</h1>
+    <div class="container-fluid">
+        <section class="row">
+            <div class="col-12 p-3">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#FavoritesModal">
+                    My Favorites
+                </button>
+            </div>
+        </section>
+    </div>
+    <FavoritesModal :favorite="favorite"></FavoritesModal>
 </template>
 
 
@@ -20,7 +29,9 @@ export default {
                 Pop.error(error)
             }
         }
-    return {  }
+    return { 
+        favorite: computed(() => AppState.favorite)
+     }
     }
 };
 </script>
