@@ -8,5 +8,6 @@ export class Modification {
         this.creatorId = data.creatorId
         this.id = data.id
         this.creator = data.creator
+        this.imgUrl = data.imgUrl
     }
 }

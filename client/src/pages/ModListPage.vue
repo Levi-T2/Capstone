@@ -8,6 +8,7 @@
         <section v-if="mods" class="row">
             <div v-for="mod in mods" :key="mod.id" class="col-12 col-md-6 p-2">
                 <div class="bg-dark rounded p-2">
+                    <img :src="mod.imgUrl" alt="">
                     <p>{{ mod.name }}</p>
                     <p>{{ mod.description }}</p>
                     <p>Mod Type: {{ mod.modType }}</p>
@@ -27,7 +28,7 @@ import { AppState } from '../AppState';
 
 
 export default {
-    setup(){
+    setup() {
         const route = useRoute()
 
         onMounted(() => {
@@ -41,14 +42,12 @@ export default {
                 Pop.error(error)
             }
         }
-    return { 
-        mods: computed(() => AppState.activeModList)
-     }
+        return {
+            mods: computed(() => AppState.activeModList)
+        }
     }
 };
 </script>
 
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
