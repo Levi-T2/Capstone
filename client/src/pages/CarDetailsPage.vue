@@ -86,7 +86,7 @@
         </div>
 
         <div class="row justify-content-center">
-            <div v-for="comment in comments" :key="comment.id" class="col-8 transparent-bg box-shadow m-5">
+            <div v-for="comment in comments" :key="comment.id" class="col-8 transparent-bg box-shadow m-3">
                 <CommentComp :commentProp="comment" />
 
             </div>
