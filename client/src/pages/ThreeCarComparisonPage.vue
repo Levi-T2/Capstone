@@ -15,16 +15,19 @@
                         Comparison</button>
                 </RouterLink>
             </div>
-            <div class="col-12 col-md-3 d-flex align-items-center justify-content-center p-2 comparison-changer">
+            <div class="col-12 col-md-4 d-flex align-items-center justify-content-center p-2 comparison-changer">
                 <button v-if="!compareCar2.id" type="button" class="btn btn-primary" data-bs-toggle="modal"
                     data-bs-target="#FavoritesModal">
                     Pick Cars from Favorites
                 </button>
                 <button v-else data-bs-toggle="modal" data-bs-target="#FavoritesModal" class="btn btn-info">Change
                     Car</button>
+                <button data-bs-toggle="modal" data-bs-target="#ComparisonModal" class="btn btn-info mx-2">
+                    See Comparison
+                </button>
             </div>
         </section>
-        <section class="row mb-3">
+        <section class="row my-3">
             <div v-if="compareCar.id" class="col-4">
                 <CompareCarOne :compareCar="compareCar"></CompareCarOne>
             </div>
