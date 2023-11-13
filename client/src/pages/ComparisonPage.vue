@@ -1,14 +1,19 @@
 <template>
     <div class="container-fluid">
         <section class="row">
-            <div class="col-12 p-1">
+            <div class="col-12 col-md-5 d-flex align-items-center justify-content-between p-2 comparison-changer">
+                <RouterLink :to="{ name: 'Comparison' }">
+                    <button v-if="route.name == 'Comparison'" disabled class="btn btn-warning mx-1">2 Car
+                        Comparison</button>
+                </RouterLink>
                 <RouterLink :to="{ name: 'ComparisonThree' }">
-                    <button class="btn btn-warning">3 Car Comparison</button>
+                    <button class="btn btn-warning mx-1">3 Car Comparison</button>
+                </RouterLink>
+                <RouterLink :to="{ name: 'ComparisonFour' }">
+                    <button class="btn btn-warning mx-1">4 Car Comparison</button>
                 </RouterLink>
             </div>
-        </section>
-        <section class="row">
-            <div class="col-12 p-3 text-center">
+            <div class="col-12 col-md-3 d-flex align-items-center justify-content-center p-2 comparison-changer">
                 <button v-if="!compareCar2.id" type="button" class="btn btn-primary" data-bs-toggle="modal"
                     data-bs-target="#FavoritesModal">
                     Pick Cars from Favorites
@@ -16,17 +21,17 @@
                 <button v-else data-bs-toggle="modal" data-bs-target="#FavoritesModal" class="btn btn-info">Change
                     Car</button>
             </div>
-            <section class="row justify-content-center">
-                <div v-if="compareCar.id" class="col-4 mb-2">
-                    <CompareCarOne :compareCar="compareCar"></CompareCarOne>
-                </div>
-                <div v-if="compareCar2.id" class="col-3 mb-2">
-                    <ComparisonTable :compareCar="compareCar" :compareCar2="compareCar2"></ComparisonTable>
-                </div>
-                <div v-if="compareCar2.id" class="col-4 mb-2">
-                    <CompareCarTwo :compareCar2="compareCar2"></CompareCarTwo>
-                </div>
-            </section>
+        </section>
+        <section class="row justify-content-center mt-2">
+            <div v-if="compareCar.id" class="col-4 mb-2">
+                <CompareCarOne :compareCar="compareCar"></CompareCarOne>
+            </div>
+            <div v-if="compareCar2.id" class="col-3 mb-2">
+                <ComparisonTable :compareCar="compareCar" :compareCar2="compareCar2"></ComparisonTable>
+            </div>
+            <div v-if="compareCar2.id" class="col-4 mb-2">
+                <CompareCarTwo :compareCar2="compareCar2"></CompareCarTwo>
+            </div>
         </section>
     </div>
     <FavoritesModal :favorite="favorite"></FavoritesModal>
@@ -42,8 +47,10 @@ import { logger } from '../utils/Logger';
 import CompareCarOne from '../components/CompareCarOne.vue';
 import CompareCarTwo from '../components/CompareCarTwo.vue';
 import ComparisonTable from '../components/ComparisonTable.vue';
+import { useRoute } from 'vue-router';
 export default {
     setup() {
+        const route = useRoute()
         onMounted(() => {
             clearAppStateFavorites();
             getMyFavorites();
@@ -72,6 +79,7 @@ export default {
             favorite: computed(() => AppState.favorite),
             compareCar: computed(() => AppState.compare),
             compareCar2: computed(() => AppState.compare2),
+            route,
         };
     },
     components: { CompareCarOne, CompareCarTwo, ComparisonTable }
@@ -94,5 +102,11 @@ export default {
 
 .style-border {
     border-bottom: 3px solid whitesmoke;
+}
+
+.comparison-changer {
+    border-bottom: 3px solid whitesmoke;
+    border-right: 3px solid whitesmoke;
+    background-color: #021e38;
 }
 </style>
