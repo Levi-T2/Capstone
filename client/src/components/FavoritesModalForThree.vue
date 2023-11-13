@@ -47,9 +47,19 @@ export default {
                         AppState.compare = car
                     } else {
                         if (AppState.compare2.id == undefined) {
-                            AppState.compare2 = car
+                            if (AppState.compare.id == car.id) {
+                                Pop.error(`You can't compare a car against itself!`)
+                                return
+                            } else {
+                                AppState.compare2 = car
+                            }
                         } else {
-                            AppState.compare3 = car
+                            if (AppState.compare2.id == car.id) {
+                                Pop.error(`You can't compare a car against itself!`)
+                                return
+                            } else {
+                                AppState.compare3 = car
+                            }
                         }
                     }
                     Modal.getOrCreateInstance('#FavoritesModal').hide()

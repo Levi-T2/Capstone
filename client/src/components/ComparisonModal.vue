@@ -9,37 +9,73 @@
                 <div class="modal-body">
                     <div id="compareYear">
                         <div v-if="compareCar.year > compareCar2.year && compareCar.year > compareCar3.year"
-                            :title="compareCar.make + compareCar.model">
-                            <p>Newest Year: {{ compareCar.year }}</p>
+                            :title="compareCar.year">
+                            <p>Newest Year: {{ compareCar.make }} {{ compareCar.model }}</p>
                         </div>
                         <div v-else-if="compareCar2.year > compareCar.year && compareCar2.year > compareCar3.year"
-                            :title="compareCar2.make + compareCar2.model">
-                            <p>Newest Year: {{ compareCar2.year }}</p>
+                            :title="compareCar2.year">
+                            <p>Newest Year: {{ compareCar2.make }} {{ compareCar2.model }}</p>
                         </div>
                         <div v-else-if="compareCar3.year > compareCar.year && compareCar3.year > compareCar2.year"
-                            :title="compareCar3.make + compareCar3.model">
-                            <p>Newest Year: {{ compareCar3.year }}</p>
+                            :title="compareCar3.year">
+                            <p>Newest Year: {{ compareCar3.make }} {{ compareCar3.model }}</p>
                         </div>
                     </div>
                     <div id="compareHorsepower">
                         <div v-if="compareCar.horsepower > compareCar2.horsepower &&
-                            compareCar.horsepower > compareCar3.horsepower"
-                            :title="compareCar.make + compareCar.model">
-                            <p>Highest Horsepower: {{ compareCar.horsepower }}</p>
+                            compareCar.horsepower > compareCar3.horsepower" :title="compareCar.horsepower">
+                            <p>Highest Horsepower: {{ compareCar.make }} {{ compareCar.model }}</p>
                         </div>
                         <div v-if="compareCar2.horsepower > compareCar.horsepower &&
-                            compareCar2.horsepower > compareCar3.horsepower"
-                            :title="compareCar2.make + compareCar2.model">
-                            <p>Highest Horsepower: {{ compareCar2.horsepower }}</p>
+                            compareCar2.horsepower > compareCar3.horsepower" :title="compareCar2.horsepower">
+                            <p>Highest Horsepower: {{ compareCar2.make }} {{ compareCar2.model }}</p>
                         </div>
                         <div v-if="compareCar3.horsepower > compareCar.horsepower &&
-                            compareCar3.horsepower > compareCar2.horsepower"
-                            :title="compareCar3.make + compareCar3.model">
-                            <p>Highest Horsepower: {{ compareCar3.horsepower }}</p>
+                            compareCar3.horsepower > compareCar2.horsepower" :title="compareCar3.horsepower">
+                            <p>Highest Horsepower: {{ compareCar3.make }} {{ compareCar3.model }}</p>
                         </div>
                     </div>
                     <div id="compareWeight">
-
+                        <div v-if="compareCar.weight < compareCar2.weight && compareCar.weight < compareCar3.weight"
+                            :title="compareCar.weight">
+                            <p>Lowest Weight: {{ compareCar.make }} {{ compareCar.model }}</p>
+                        </div>
+                        <div v-if="compareCar2.weight < compareCar.weight && compareCar2.weight < compareCar3.weight"
+                            :title="compareCar2.weight">
+                            <p>Lowest Weight: {{ compareCar2.make }} {{ compareCar2.model }}</p>
+                        </div>
+                        <div v-if="compareCar3.weight < compareCar.weight && compareCar3.weight < compareCar2.weight"
+                            :title="compareCar3.weight">
+                            <p>Lowest Weight: {{ compareCar3.make }} {{ compareCar3.model }}</p>
+                        </div>
+                    </div>
+                    <div id="compareMPG">
+                        <div v-if="compareCar.mpg > compareCar2.mpg && compareCar.mpg > compareCar3.mpg"
+                            :title="compareCar.mpg">
+                            <p>Highest MPG: {{ compareCar.make }} {{ compareCar.model }}</p>
+                        </div>
+                        <div v-if="compareCar2.mpg > compareCar.mpg && compareCar2.mpg > compareCar3.mpg"
+                            :title="compareCar2.mpg">
+                            <p>Highest MPG: {{ compareCar2.make }} {{ compareCar2.model }}</p>
+                        </div>
+                        <div v-if="compareCar3.mpg > compareCar.mpg && compareCar3.mpg > compareCar2.mpg"
+                            :title="compareCar3.mpg">
+                            <p>Highest MPG: {{ compareCar3.make }} {{ compareCar3.model }}</p>
+                        </div>
+                    </div>
+                    <div id="compareCapacity">
+                        <div v-if="compareCar.seatCapacity > compareCar2.seatCapacity &&
+                            compareCar.seatCapacity > compareCar3.seatCapacity" :title="compareCar.seatCapacity">
+                            <p>More Seating: {{ compareCar.make }} {{ compareCar.model }}</p>
+                        </div>
+                        <div v-if="compareCar2.seatCapacity > compareCar.seatCapacity &&
+                            compareCar2.seatCapacity > compareCar3.seatCapacity" :title="compareCar2.seatCapacity">
+                            <p>More Seating: {{ compareCar2.make }} {{ compareCar2.model }}</p>
+                        </div>
+                        <div v-if="compareCar3.seatCapacity > compareCar.seatCapacity &&
+                            compareCar3.seatCapacity > compareCar2.seatCapacity" :title="compareCar3.seatCapacity">
+                            <p>More Seating: {{ compareCar3.make }} {{ compareCar3.model }}</p>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">

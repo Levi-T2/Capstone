@@ -62,6 +62,7 @@ export default {
                 AppState.favorite = [];
                 AppState.compare = {};
                 AppState.compare2 = {};
+                AppState.compare3 = {};
             }
             catch (error) {
                 Pop.error(error);

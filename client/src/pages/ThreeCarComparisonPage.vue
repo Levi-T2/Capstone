@@ -16,7 +16,7 @@
                     class="btn btn-info m-1">See Comparison Table</button>
             </div>
         </section>
-        <section class="row">
+        <section class="row mb-3">
             <div v-if="compareCar.id" class="col-4">
                 <CompareCarOne :compareCar="compareCar"></CompareCarOne>
             </div>
@@ -64,6 +64,7 @@ export default {
                 AppState.favorite = [];
                 AppState.compare = {};
                 AppState.compare2 = {};
+                AppState.compare3 = {};
             }
             catch (error) {
                 Pop.error(error);
