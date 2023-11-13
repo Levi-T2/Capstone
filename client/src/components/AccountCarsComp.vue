@@ -1,13 +1,13 @@
 <template>
     <div class="transparent-bg text-center rounded mb-3 text-white glow box-shadow">
-        <router-link title="To Car Details" :to="{ name: 'CarDetails', params: { carId: accountProp.id } }">
-            <img class="p-4 car-picture img-fluid" :src="accountProp.imgUrl" alt="">
-            <div class="d-flex fs-4 fw-bold justify-content-center text-light">
-                <p class="p-1">{{ accountProp.year }}</p>
-                <p class="p-1">{{ accountProp.make }}</p>
-                <p class="p-1">{{ accountProp.model }}</p>
-            </div>
-        </router-link>
+
+        <img class="p-4 car-picture img-fluid" :src="accountProp.imgUrl" alt="">
+        <div class="d-flex fs-4 fw-bold justify-content-center text-light">
+            <p class="p-1">{{ accountProp.year }}</p>
+            <p class="p-1">{{ accountProp.make }}</p>
+            <p class="p-1">{{ accountProp.model }}</p>
+        </div>
+
 
         <div class="d-flex  fw-bold justify-content-evenly align-items-center">
 
