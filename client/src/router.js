@@ -56,6 +56,12 @@ const routes = [
     component: loadPage('ThreeCarComparisonPage'),
     beforeEnter: authGuard
   },
+  {
+    path: '/FourCarComparison',
+    name: 'ComparisonFour',
+    component: loadPage('FourCarComparisonPage'),
+    beforeEnter: authGuard
+  },
 
 ]
 

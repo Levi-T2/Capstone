@@ -5,7 +5,7 @@
         <p class="transparent-bg rounded text-center">User cars <i class="mdi mdi-car"></i></p>
       </div>
       <div class="col-4 col-md-2 fs-3 text-white text-center mt-3">
-        <button class="m-0 transparent-bg rounded text-white btn btn fs-5" data-bs-toggle="modal"
+        <button class="mb-2 transparent-bg rounded text-white btn btn fs-5" data-bs-toggle="modal"
           data-bs-target="#FilterCars">Filter<i class="mdi mdi-filter"></i></button>
 
       </div>
@@ -40,8 +40,7 @@
           </select>
         </div>
         <div class="modal-footer">
-          <button class="btn my-2  text-dark">Filter Cars</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
     </div>

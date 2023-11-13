@@ -1,22 +1,33 @@
 <template>
     <div class="container-fluid">
         <section class="row">
-            <div class="col-12 p-1">
+            <div class="col-12 col-md-5 d-flex align-items-center justify-content-between p-2 comparison-changer">
                 <RouterLink :to="{ name: 'Comparison' }">
-                    <button class="btn btn-warning">2 Car Comparison</button>
+                    <button class="btn btn-warning mx-1">2 Car
+                        Comparison</button>
+                </RouterLink>
+                <RouterLink :to="{ name: 'ComparisonThree' }">
+                    <button v-if="route.name == 'ComparisonThree'" disabled class="btn btn-warning mx-1">3 Car
+                        Comparison</button>
+                </RouterLink>
+                <RouterLink :to="{ name: 'ComparisonFour' }">
+                    <button class="btn btn-warning mx-1">4 Car
+                        Comparison</button>
                 </RouterLink>
             </div>
-        </section>
-        <section class="row">
-            <div class="col-12 p-3 text-center">
-                <button type="button" class="btn btn-primary m-1" data-bs-toggle="modal" data-bs-target="#FavoritesModal">
+            <div class="col-12 col-md-4 d-flex align-items-center justify-content-center p-2 comparison-changer">
+                <button v-if="!compareCar2.id" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#FavoritesModal">
                     Pick Cars from Favorites
                 </button>
-                <button v-if="compareCar3.id" type="button" data-bs-toggle="modal" data-bs-target="#ComparisonModal"
-                    class="btn btn-info m-1">See Comparison Table</button>
+                <button v-else data-bs-toggle="modal" data-bs-target="#FavoritesModal" class="btn btn-info">Change
+                    Car</button>
+                <button data-bs-toggle="modal" data-bs-target="#ComparisonModal" class="btn btn-info mx-2">
+                    See Comparison
+                </button>
             </div>
         </section>
-        <section class="row mb-3">
+        <section class="row my-3">
             <div v-if="compareCar.id" class="col-4">
                 <CompareCarOne :compareCar="compareCar"></CompareCarOne>
             </div>
@@ -43,10 +54,12 @@ import CompareCarOne from '../components/CompareCarOne.vue';
 import CompareCarTwo from '../components/CompareCarTwo.vue';
 import CompareCarThree from '../components/CompareCarThree.vue';
 import ComparisonModal from '../components/ComparisonModal.vue'
+import { useRoute } from 'vue-router';
 
 
 export default {
     setup() {
+        const route = useRoute()
         onMounted(() => {
             clearAppStateFavorites();
             getMyFavorites();
@@ -75,6 +88,7 @@ export default {
             compareCar: computed(() => AppState.compare),
             compareCar2: computed(() => AppState.compare2),
             compareCar3: computed(() => AppState.compare3),
+            route,
         };
     },
     components: { FavoritesModalForThree, CompareCarOne, CompareCarTwo, CompareCarThree, ComparisonModal }
@@ -82,4 +96,10 @@ export default {
 </script>
 
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.comparison-changer {
+    border-bottom: 3px solid whitesmoke;
+    border-right: 3px solid whitesmoke;
+    background-color: #021e38;
+}
+</style>

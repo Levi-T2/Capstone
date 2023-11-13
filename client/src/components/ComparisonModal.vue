@@ -1,12 +1,12 @@
 <template>
     <div class="modal fade" id="ComparisonModal" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content form-bg form-border">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Comparison Table</h1>
+                    <h1 class="modal-title fs-5 text-light fw-bold" id="exampleModalLabel">Comparison Table</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body text-light">
                     <div id="compareYear">
                         <div v-if="compareCar.year > compareCar2.year && compareCar.year > compareCar3.year"
                             :title="compareCar.year">
@@ -103,4 +103,12 @@ export default {
 </script>
 
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.form-bg {
+    background-color: rgba(0, 0, 128, 0.705);
+}
+
+.form-border {
+    border: 5px solid blue;
+}
+</style>
