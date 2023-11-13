@@ -38,7 +38,6 @@ const routes = [
     path: '/topCars',
     name: 'TopCars',
     component: loadPage('TopCarsPage'),
-    beforeEnter: authGuard
   },
   {
     path: '/Comparison',
@@ -50,6 +49,11 @@ const routes = [
     path: '/TopMods',
     name: 'TopMods',
     component: loadPage('TopModsPage'),
+  },
+  {
+    path: '/ThreeCarComparison',
+    name: 'ComparisonThree',
+    component: loadPage('ThreeCarComparisonPage'),
     beforeEnter: authGuard
   },
 
