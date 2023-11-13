@@ -9,13 +9,13 @@
           </button>
         </div>
         <div class="modal-body">
-          <select class="form-control">
+          <select v-model="selectedFilter.model" class="form-control">
             <option>All makes</option>
-            <option v-for="make in makes" :key="make">{{ make }}</option>
+            <option v-for="make in sortedMakes" :key="make">{{ make }}</option>
           </select>
         </div>
         <div class="modal-footer">
-          <button @click="changeType(make)" class="btn my-2  text-dark">Filter Cars</button>
+          <button class="btn my-2  text-dark">Filter Cars</button>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
@@ -36,16 +36,14 @@ export default {
       'Mercedes-Benz', 'Porsche', 'Ferrari', 'Lexus', 'Jaguar', 'Audi', 'Lancia', 'Lincoln', 'Nissan',
       'Honda', 'Fiat', 'Acura', 'VW', 'Infiniti', 'Tesla', 'Cadillac', 'Rolls-Royce', 'Lamborghini', 'Other']
 
-    const selectedFilter = ref("")
+      const sortedMakes = makes.sort()
 
+    const selectedFilter = ref({}) 
     return {
-      cars: computed(() => {
-        if (selectedFilter.value) {
-          return AppState.cars.filter((car) => car.makes == selectedFilter.value)
-        } else { return AppState.cars }
-      }),
+      sortedMakes,
       makes,
-      selectedFilter,
+      selectedFilter, 
+
 
       changeType(makes) {
         logger.log(makes)
