@@ -5,7 +5,8 @@
         <p class="transparent-bg rounded text-center">User cars <i class="mdi mdi-car"></i></p>
       </div>
       <div class="col-4 col-md-2 fs-3 text-white text-center mt-3">
-        <button class="m-0 transparent-bg rounded text-white btn btn fs-5" data-bs-toggle="modal" data-bs-target="#FilterCars">Filter<i class="mdi mdi-filter"></i></button>
+        <button class="m-0 transparent-bg rounded text-white btn btn fs-5" data-bs-toggle="modal"
+          data-bs-target="#FilterCars">Filter<i class="mdi mdi-filter"></i></button>
 
       </div>
     </section>
@@ -59,13 +60,13 @@ import { logger } from '../utils/Logger.js';
 export default {
   setup() {
     const selectedFilter = ref('')
-        const makes = ['GMC', 'Ford', 'Chevy', 'Jeep', 'Dodge', 'Chrysler',
+    const makes = ['GMC', 'Ford', 'Chevy', 'Jeep', 'Dodge', 'Chrysler',
       'Suzuki', 'Toyota', 'Kia', 'Buick', 'BMW', 'Mazda', 'Subaru', 'Hyundai', 'Bentley', 'Volvo',
       'Mercedes-Benz', 'Porsche', 'Ferrari', 'Lexus', 'Jaguar', 'Audi', 'Lancia', 'Lincoln', 'Nissan',
       'Honda', 'Fiat', 'Acura', 'VW', 'Infiniti', 'Tesla', 'Cadillac', 'Rolls-Royce', 'Lamborghini', 'Other']
 
-      const sortedMakes = makes.sort()
-    
+    const sortedMakes = makes.sort()
+
     onMounted(() => {
       getCars();
     });
@@ -100,6 +101,4 @@ export default {
 .user-cars {
   width: 30%;
 }
-
-
 </style>

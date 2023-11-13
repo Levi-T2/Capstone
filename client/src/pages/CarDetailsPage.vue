@@ -10,7 +10,7 @@
                     </div>
                     <div class="col-12 col-md-6">
                         <div class="fw-bold fs-5 d-flex justify-content-between">
-                            <div>
+                            <div class="display-5 underline">
                                 {{ cars.year }}
                                 {{ cars.make }}
                                 {{ cars.model }}
@@ -30,39 +30,46 @@
                                 </div>
                             </div>
                         </div>
-                        <div>
+                        <div class="display-5 p-4 fs-5">
                             {{ cars.description }}
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12 col-md-4 d-flex flex-column fw-bold mt-5">
+                    <div class="row align-items-center">
+
+                        <div class="col-12 fs-4 display-5 col-md-4 d-flex flex-column text-center mt-5">
+                            <p class="underline fs-2 py-2">Mechanical</p>
                             <p>Engine Type: {{ cars.engine }}</p>
                             <p>Horsepower: {{ cars.horsepower }}</p>
                             <p>Fuel Type: {{ cars.fuelType }}</p>
-                            <p>Weight Capacity: {{ cars.weight }}</p>
+                            <p>Drivetrain: {{ cars.drivetrain }}</p>
                         </div>
-                        <div class="col-12 col-md-4 d-flex flex-column fw-bold mt-5">
+                        <div class="col-12 fs-3 display-5 col-md-4 d-flex flex-column  text-center mt-5">
+                            <p class="underline py-2 fs-2">Body</p>
+                            <p>Weight Capacity: {{ cars.weight }}</p>
                             <p>Seat Capacity: {{ cars.seatCapacity }}</p>
                             <p>Body-type: {{ cars.bodyType }}</p>
                             <p>MPG: {{ cars.mpg }}</p>
-                            <p>Drivetrain: {{ cars.drivetrain }}</p>
                         </div>
                         <div class="col-12 col-md-4 mt-4">
-                            <RouterLink :to="{ name: 'ModList', params: { carId: cars.id } }">
-                                <div class="d-flex fw-bold">
-                                    <button class="btn btn-success mx-3 fw-bold mb-3">Mod List <i
-                                            class="mdi mdi-cog"></i></button>
-                                    <p>Mods Done:</p>
+
+                            <div class="d-flex text-center justify-content-end">
+
+                                <RouterLink :to="{ name: 'ModList', params: { carId: cars.id } }">
+                                    <div class=" fw-bold">
+                                        <button class="btn btn-success mx-3 fw-bold mb-3">Mod List <i
+                                                class="mdi mdi-cog"></i></button>
+                                        <p class="text-light underline">Mods Done:</p>
+                                    </div>
+                                </RouterLink>
+                                <div class=" fw-bold">
+                                    <button class="btn btn-primary mx-3 fw-bold mb-3">Like Car <i
+                                            class="mdi mdi-heart"></i></button>
+                                    <p class="underline">Likes:</p>
                                 </div>
-                            </RouterLink>
-                            <div class="d-flex fw-bold">
-                                <button class="btn btn-primary mx-3 fw-bold mb-3">Like Car <i
-                                        class="mdi mdi-heart"></i></button>
-                                <p>Likes:</p>
+
                             </div>
-                            <div class="d-flex fw-bold mx-2">
-                                <p class="mx-1">Created By:</p>
-                                <p>{{ cars?.creator?.name }}</p>
+                            <div class="d-flex justify-content-end align-items-center fw-bold mx-2">
+                                <p class="p-2 text-center underline">Created By: {{ cars?.creator?.name }}</p>
                                 <img class="rounded-circle profile-pic mt-4" :src="cars?.creator?.picture"
                                     :alt="cars?.creator?.name">
 
@@ -177,6 +184,10 @@ export default {
 
 .toggle-start {
     font-size: 0.72rem;
+}
+
+.underline {
+    text-decoration: underline 1px white;
 }
 
 .car-picture {

@@ -2,15 +2,15 @@
     <div class="transparent-bg text-center rounded mb-3 text-white glow box-shadow">
         <router-link title="To Car Details" :to="{ name: 'CarDetails', params: { carId: carProp.id } }">
             <img class="p-4 car-picture img-fluid" :src="carProp.imgUrl" alt="">
-            <div class="d-flex fs-4 fw-bold justify-content-center text-light">
+            <div class="d-flex fs-2 display-4 justify-content-center  text-light">
                 <p class="p-1">{{ carProp.year }}</p>
                 <p class="p-1">{{ carProp.make }}</p>
                 <p class="p-1">{{ carProp.model }}</p>
             </div>
         </router-link>
 
-        <div class="d-flex  fw-bold justify-content-evenly align-items-center">
-            <p>Mods Done:</p>
+        <div class="d-flex  display-5 justify-content-evenly align-items-center">
+            <p class="fs-4">Mods Done:</p>
             <a @click="favoriteCar(carProp.id)" class="fs-4 star-clr" role="button" type="button" title="Favorite Car">
                 <i class="mdi mdi-star-plus-outline"></i>
                 <p class="mb-0 star-clr"> {{ carProp.favoriteCount }}</p>
@@ -22,9 +22,9 @@
             <button class="btn btn-primary fw-bold">Like Car<i class="mdi mdi-heart mx-1"></i></button>
         </div> -->
 
-        <div class="d-flex  fw-bold justify-content-center pt-2">
-            <p class="p-2">Created by:</p>
-            <img class="profile-pic rounded-circle" :src="carProp.creator.picture" :alt="carProp.creator.name">
+        <div class="d-flex  display-5 justify-content-center pt-2">
+            <p class="p-2 fs-4">Created by:</p>
+            <img class="profile-pic rounded-circle" :src="carProp?.creator?.picture">
         </div>
 
     </div>
