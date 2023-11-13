@@ -9,9 +9,11 @@
         </section>
         <section class="row">
             <div class="col-12 p-3 text-center">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#FavoritesModal">
+                <button type="button" class="btn btn-primary m-1" data-bs-toggle="modal" data-bs-target="#FavoritesModal">
                     Pick Cars from Favorites
                 </button>
+                <button v-if="compareCar3.id" type="button" data-bs-toggle="modal" data-bs-target="#ComparisonModal"
+                    class="btn btn-info m-1">See Comparison Table</button>
             </div>
         </section>
         <section class="row">
@@ -27,6 +29,7 @@
         </section>
     </div>
     <FavoritesModalForThree :favorite="favorite"></FavoritesModalForThree>
+    <ComparisonModal :compareCar="compareCar" :compareCar2="compareCar2" :compareCar3="compareCar3"></ComparisonModal>
 </template>
 
 
@@ -39,6 +42,7 @@ import FavoritesModalForThree from '../components/FavoritesModalForThree.vue';
 import CompareCarOne from '../components/CompareCarOne.vue';
 import CompareCarTwo from '../components/CompareCarTwo.vue';
 import CompareCarThree from '../components/CompareCarThree.vue';
+import ComparisonModal from '../components/ComparisonModal.vue'
 
 
 export default {
@@ -72,7 +76,7 @@ export default {
             compareCar3: computed(() => AppState.compare3),
         };
     },
-    components: { FavoritesModalForThree, CompareCarOne, CompareCarTwo, CompareCarThree }
+    components: { FavoritesModalForThree, CompareCarOne, CompareCarTwo, CompareCarThree, ComparisonModal }
 };
 </script>
 
