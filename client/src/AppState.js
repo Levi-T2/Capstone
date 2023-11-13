@@ -23,5 +23,7 @@ export const AppState = reactive({
 
   compare: {},
 
-  compare2: {}
+  compare2: {},
+
+  compare3: {},
 })

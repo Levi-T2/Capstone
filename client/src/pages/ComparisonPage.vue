@@ -1,6 +1,13 @@
 <template>
     <div class="container-fluid">
         <section class="row">
+            <div class="col-12 p-1">
+                <RouterLink :to="{ name: 'ComparisonThree' }">
+                    <button class="btn btn-warning">3 Car Comparison</button>
+                </RouterLink>
+            </div>
+        </section>
+        <section class="row">
             <div class="col-12 p-3 text-center">
                 <button v-if="!compareCar2.id" type="button" class="btn btn-primary" data-bs-toggle="modal"
                     data-bs-target="#FavoritesModal">
@@ -28,7 +35,7 @@
 
 <script>
 import { AppState } from '../AppState';
-import { computed, reactive, onMounted } from 'vue';
+import { computed, reactive, onMounted, watchEffect } from 'vue';
 import { favoritesService } from '../services/FavoritesService.js'
 import Pop from '../utils/Pop';
 import { logger } from '../utils/Logger';
@@ -41,6 +48,7 @@ export default {
             clearAppStateFavorites();
             getMyFavorites();
         });
+
         async function getMyFavorites() {
             try {
                 await favoritesService.getFavoritesByAccountId();
@@ -62,7 +70,7 @@ export default {
         return {
             favorite: computed(() => AppState.favorite),
             compareCar: computed(() => AppState.compare),
-            compareCar2: computed(() => AppState.compare2)
+            compareCar2: computed(() => AppState.compare2),
         };
     },
     components: { CompareCarOne, CompareCarTwo, ComparisonTable }
