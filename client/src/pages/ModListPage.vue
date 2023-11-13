@@ -5,8 +5,8 @@
                 <p class="fs-3 bg-dark fw-bold rounded mb-0 p-2 text-center">Mod List</p>
             </div>
         </section>
-        <section v-if="mods" class="row">
-            <div v-for="mod in mods" :key="mod.id" class="col-12 col-md-6 p-2">
+        <section v-if="mods" class="row justify-content-center">
+            <div v-for="mod in mods" :key="mod.id" class="col-12 col-md-8 text-center p-4">
                 <ModsComponent :mod="mod"></ModsComponent>
             </div>
         </section>
