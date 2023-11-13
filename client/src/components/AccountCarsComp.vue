@@ -1,31 +1,23 @@
 <template>
     <div class="transparent-bg text-center rounded mb-3 text-white glow box-shadow">
-        <router-link title="To Car Details" :to="{ name: 'CarDetails', params: { carId: carProp.id } }">
-            <img class="p-4 car-picture img-fluid" :src="carProp.imgUrl" alt="">
+        <router-link title="To Car Details" :to="{ name: 'CarDetails', params: { carId: accountProp.id } }">
+            <img class="p-4 car-picture img-fluid" :src="accountProp.imgUrl" alt="">
             <div class="d-flex fs-4 fw-bold justify-content-center text-light">
-                <p class="p-1">{{ carProp.year }}</p>
-                <p class="p-1">{{ carProp.make }}</p>
-                <p class="p-1">{{ carProp.model }}</p>
+                <p class="p-1">{{ accountProp.year }}</p>
+                <p class="p-1">{{ accountProp.make }}</p>
+                <p class="p-1">{{ accountProp.model }}</p>
             </div>
         </router-link>
 
         <div class="d-flex  fw-bold justify-content-evenly align-items-center">
-            <p>Mods Done:</p>
-            <a @click="favoriteCar(carProp.id)" class="fs-4 star-clr" role="button" type="button" title="Favorite Car">
-                <i class="mdi mdi-star-plus-outline"></i>
-                <p class="mb-0 star-clr"> {{ carProp.favoriteCount }}</p>
+
+            <a @click="favoriteCar(accountProp.id)" class="fs-4 star-clr" role="button" type="button" title="Favorite Car">
+                <i class="mdi mdi-star-plus-outline fs-2"></i>
+                <p class="mb-2 star-clr"> {{ accountProp.favoriteCount }}</p>
             </a>
         </div>
 
-        <!-- <div class="d-flex  fw-bold justify-content-evenly">
-            <button class="btn btn-success fw-bold">Mod List<i class="mdi mdi-cog mx-1"></i></button>
-            <button class="btn btn-primary fw-bold">Like Car<i class="mdi mdi-heart mx-1"></i></button>
-        </div> -->
 
-        <div class="d-flex  fw-bold justify-content-center pt-2">
-            <p class="p-2">Created by:</p>
-            <img class="profile-pic rounded-circle" :src="carProp.creator.picture" :alt="carProp.creator.name">
-        </div>
 
     </div>
 </template>
@@ -38,7 +30,7 @@ import { Car } from '../models/Car';
 import Pop from '../utils/Pop';
 import { favoritesService } from '../services/FavoritesService.js'
 export default {
-    props: { carProp: { type: Car, required: true } },
+    props: { accountProp: { type: Car, required: true } },
 
     setup() {
 
@@ -69,7 +61,7 @@ export default {
 
 
 .transparent-bg {
-    background-color: rgba(0, 0, 0, 0.278);
+    background-color: rgba(0, 0, 128, 0.477)
 }
 
 .profile-pic {
