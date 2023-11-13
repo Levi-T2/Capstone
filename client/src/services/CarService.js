@@ -15,6 +15,13 @@ import { supabaseService } from "./SupabaseService";
             AppState.carsForPage = res.data.carsForPage
             logger.log (AppState.cars)
         }
+        async getCarsByMake(query){
+            const res = await api.get(`api/cars?make=${query}`)
+            logger.log(res.data)
+            AppState.cars = res.data.cars.map((car) => new Car(car))
+            AppState.carsForPage = res.data.carsForPage
+            logger.log (AppState.cars)
+        }
 
         async postCar(file, carData){
             const folder = AppState.account.id
