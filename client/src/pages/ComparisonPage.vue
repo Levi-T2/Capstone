@@ -22,14 +22,14 @@
                     Car</button>
             </div>
         </section>
-        <section class="row justify-content-center mt-2">
-            <div v-if="compareCar.id" class="col-4 mb-2">
+        <section class="row justify-content-center">
+            <div v-if="compareCar.id" class="col-12 col-md-4 my-2 order-2 order-md-1">
                 <CompareCarOne :compareCar="compareCar"></CompareCarOne>
             </div>
-            <div v-if="compareCar2.id" class="col-3 mb-2">
+            <div v-if="compareCar2.id" class="col-12 col-md-3 my-2 order-1 order-md-2">
                 <ComparisonTable :compareCar="compareCar" :compareCar2="compareCar2"></ComparisonTable>
             </div>
-            <div v-if="compareCar2.id" class="col-4 mb-2">
+            <div v-if="compareCar2.id" class="col-12 col-md-4 my-2 order-3 order-md-3">
                 <CompareCarTwo :compareCar2="compareCar2"></CompareCarTwo>
             </div>
         </section>
@@ -108,5 +108,13 @@ export default {
     border-bottom: 3px solid whitesmoke;
     border-right: 3px solid whitesmoke;
     background-color: #021e38;
+}
+
+@media (max-width: 768px) {
+    .comparison-changer {
+        border-bottom: 3px solid whitesmoke;
+        border-right: 0px solid whitesmoke;
+        background-color: #021e38;
+    }
 }
 </style>

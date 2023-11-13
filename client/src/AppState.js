@@ -19,6 +19,8 @@ export const AppState = reactive({
 
   activeModList: [],
 
+// NOTE All this is for the comparison page to func. DON'T REMOVE!!
+
   favorite: [],
 
   compare: {},
@@ -26,4 +28,6 @@ export const AppState = reactive({
   compare2: {},
 
   compare3: {},
+
+  compare4: {},
 })

@@ -54,11 +54,18 @@ export default {
                                 AppState.compare2 = car
                             }
                         } else {
-                            if (AppState.compare2.id == car.id) {
-                                Pop.error(`You can't compare a car against itself!`)
-                                return
-                            } else {
-                                AppState.compare3 = car
+                            if (AppState.compare3.id == undefined) {
+                                if (AppState.compare2.id == car.id) {
+                                    Pop.error(`You can't compare a car against itself!`)
+                                    return
+                                } else {
+                                    if (AppState.compare.id == car.id) {
+                                        Pop.error(`You can't compare a car against itself!`)
+                                        return
+                                    } else {
+                                        AppState.compare3 = car
+                                    }
+                                }
                             }
                         }
                     }
