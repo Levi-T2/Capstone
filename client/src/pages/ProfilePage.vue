@@ -5,15 +5,15 @@
             <div class=" text-center transparent-bg box-shadow col-12 col-md-4">
                 <img class="rounded-circle profile-pic box p-2 m-3 box-shadow" :src="profile.picture" alt="">
                 <p class="fs-2 display-5 text-light underline">{{ profile.name }}</p>
-                <p v-if="profile.bio != ''" class="fs-4 display-5 text-light"> Bio: {{ profile.bio }}</p>
+                <p v-if="profile.bio != ''" class="fs-3 display-5 text-light"> Bio: {{ profile.bio }}</p>
             </div>
 
             <div class="col-12 col-md-7 p-5">
 
                 <div class="row justify-content-center">
-                    <p class="text-center fs-3 display-5 text-light underline">Users Cars</p>
-                    <div v-for="car in cars" :key="car.id" class="col-10">
-                        <AccountCarsComp :accountProp="car" />
+                    <p class="text-center fs-1 display-5 text-light underline">Users Cars</p>
+                    <div v-for="car in cars" :key="car.id" class="col-12 col-md-8">
+                        <ProfileCarsComp :carProp="car" />
                     </div>
 
                 </div>
@@ -36,7 +36,8 @@ import { logger } from '../utils/Logger.js';
 import { profileService } from '../services/ProfileService.js';
 import { useRoute } from "vue-router"
 import Pop from '../utils/Pop';
-import AccountCarsComp from '../components/AccountCarsComp.vue';
+
+import ProfileCarsComp from '../components/ProfileCarsComp.vue';
 
 
 
@@ -67,7 +68,7 @@ export default {
             cars: computed(() => AppState.cars)
         };
     },
-    components: { AccountCarsComp }
+    components: { ProfileCarsComp }
 };
 </script>
 

@@ -68,12 +68,17 @@
                                 </div>
 
                             </div>
-                            <div class="d-flex justify-content-end align-items-center fw-bold mx-2">
-                                <p class="p-2 text-center underline">Created By: {{ cars?.creator?.name }}</p>
-                                <img class="rounded-circle profile-pic mt-4" :src="cars?.creator?.picture"
-                                    :alt="cars?.creator?.name">
+                            <router-link v-if="cars.creator"
+                                :to="{ name: 'Profile', params: { profileId: cars?.creator?.id } }">
 
-                            </div>
+                                <div class="d-flex justify-content-end align-items-center fw-bold mx-2">
+                                    <p class="p-2 text-center underline text-light">Created By: {{ cars?.creator?.name }}
+                                    </p>
+                                    <img class="rounded-circle profile-pic mt-4" :src="cars?.creator?.picture"
+                                        :alt="cars?.creator?.name">
+                                </div>
+
+                            </router-link>
                         </div>
                     </div>
                 </div>

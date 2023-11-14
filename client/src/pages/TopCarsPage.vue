@@ -1,17 +1,26 @@
 <template>
-    <h1>Welcome to Top Cars!</h1>
+<div v-for="car in cars" :key="car">
+    {{ cars.imgUrl }}
+</div>
+
+
+
+<CarsComponent />
 </template>
 
 
 <script>
 import { AppState } from '../AppState';
-import { computed, reactive, onMounted } from 'vue';
+import { computed,  } from 'vue';
+import CarsComponent from '../components/CarsComponent.vue';
 export default {
+    
     setup() {
         return {
             cars: computed(() => AppState.cars)
-        }
-    }
+        };
+    },
+    components: { CarsComponent }
 };
 </script>
 
