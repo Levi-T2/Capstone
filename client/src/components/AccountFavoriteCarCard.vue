@@ -1,7 +1,7 @@
 <template>
     <div class="text-center rounded d-flex flex-row align-items-center justify-content-between">
         <RouterLink title="To Car Details" :to="{ name: 'CarDetails', params: { carId: favoriteCar.car.id } }">
-            <div class="d-flex flex-row justify-content-between align-items-center">
+            <div class="car-display">
                 <img class="p-1 car-picture rounded" :src="favoriteCar.car.imgUrl" alt="Car Image">
                 <div class="fs-6 fw-bold text-light d-flex flex-row px-4">
                     <p class="p-1 mb-0">{{ favoriteCar.car.year }}</p>
@@ -63,5 +63,18 @@ export default {
 
 .car-picture {
     max-width: 25dvh;
+}
+
+.car-display {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+@media (max-width: 768px) {
+    .car-display {
+        display: block;
+    }
 }
 </style>

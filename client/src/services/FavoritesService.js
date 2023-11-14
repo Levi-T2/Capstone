@@ -11,7 +11,7 @@ class FavoritesService {
         favData.carId = carId
         const favorite = await api.post('api/favorites', favData)
         Pop.toast(`You have favorited this car!`)
-        AppState.favorite.push(favorite)
+        
     }
 
     async getFavoritesByAccountId(){

@@ -36,16 +36,17 @@ import { computed, reactive, onMounted } from 'vue';
 import { Car } from '../models/Car';
 import Pop from '../utils/Pop';
 import { favoritesService } from '../services/FavoritesService.js'
+import { carService } from '../services/CarService';
 export default {
     props: { carProp: { type: Car, required: true } },
 
     setup() {
 
-
         return {
             async favoriteCar(carId) {
                 try {
                     await favoritesService.favoriteCar(carId)
+                    await carService.getCars()
                 } catch (error) {
                     Pop.error(error)
                 }
