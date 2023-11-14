@@ -16,25 +16,23 @@
                 </RouterLink>
             </div>
             <div class="col-12 col-md-4 d-flex align-items-center justify-content-center p-2 comparison-changer">
-                <button v-if="!compareCar2.id" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                <button v-if="!compareCar3.id" type="button" class="btn btn-primary" data-bs-toggle="modal"
                     data-bs-target="#FavoritesModal">
                     Pick Cars from Favorites
                 </button>
-                <button v-else data-bs-toggle="modal" data-bs-target="#FavoritesModal" class="btn btn-info">Change
-                    Car</button>
                 <button data-bs-toggle="modal" data-bs-target="#ComparisonModal" class="btn btn-info mx-2">
                     See Comparison
                 </button>
             </div>
         </section>
-        <section class="row my-3">
-            <div v-if="compareCar.id" class="col-4">
+        <section class="row">
+            <div v-if="compareCar.id" class="col-12 col-md-4 my-2">
                 <CompareCarOne :compareCar="compareCar"></CompareCarOne>
             </div>
-            <div v-if="compareCar2.id" class="col-4">
+            <div v-if="compareCar2.id" class="col-12 col-md-4 my-2">
                 <CompareCarTwo :compareCar2="compareCar2"></CompareCarTwo>
             </div>
-            <div v-if="compareCar3.id" class="col-4">
+            <div v-if="compareCar3.id" class="col-12 col-md-4 my-2">
                 <CompareCarThree :compareCar3="compareCar3"></CompareCarThree>
             </div>
         </section>
@@ -101,5 +99,13 @@ export default {
     border-bottom: 3px solid whitesmoke;
     border-right: 3px solid whitesmoke;
     background-color: #021e38;
+}
+
+@media (max-width: 768px) {
+    .comparison-changer {
+        border-bottom: 3px solid whitesmoke;
+        border-right: 0px solid whitesmoke;
+        background-color: #021e38;
+    }
 }
 </style>
