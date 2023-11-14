@@ -17,10 +17,7 @@
             </a>
         </div>
 
-        <!-- <div class="d-flex  fw-bold justify-content-evenly">
-            <button class="btn btn-success fw-bold">Mod List<i class="mdi mdi-cog mx-1"></i></button>
-            <button class="btn btn-primary fw-bold">Like Car<i class="mdi mdi-heart mx-1"></i></button>
-        </div> -->
+        <!-- //NOTE - Don't change font or styling -->
 
         <div v-if="carProp.creator" class="d-flex  display-5 justify-content-center pt-2">
             <router-link :to="{ name: 'Profile', params: { profileId: carProp.creator?.id } }">
