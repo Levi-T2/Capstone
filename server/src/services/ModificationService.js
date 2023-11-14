@@ -3,7 +3,7 @@ import { BadRequest, Forbidden } from "../utils/Errors.js"
 
 class ModificationService {
     async getAllModifications() {
-        const mods = await dbContext.Modifications.find()
+        const mods = await dbContext.Modifications.find().populate('creator car')
         return mods
     }
     async getModificationById(modId) {
