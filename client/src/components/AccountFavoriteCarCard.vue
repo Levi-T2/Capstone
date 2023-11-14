@@ -1,16 +1,21 @@
 <template>
-    <div class="text-center rounded d-flex align-items-center mb-1 text-white">
-        <img class="p-1 car-picture rounded" :src="favoriteCar.car.imgUrl" alt="Car Image">
-        <div class="fs-6 fw-bold text-light d-flex">
-            <p class="p-1 mb-0">{{ favoriteCar.car.year }}</p>
-            <p class="p-1 mb-0">{{ favoriteCar.car.make }}</p>
-            <p class="p-1 mb-0">{{ favoriteCar.car.model }}</p>
-        </div>
-        <div>
+    <div class="text-center rounded d-flex flex-row align-items-center justify-content-between">
+        <RouterLink title="To Car Details" :to="{ name: 'CarDetails', params: { carId: favoriteCar.car.id } }">
+            <div class="d-flex flex-row justify-content-between align-items-center">
+                <img class="p-1 car-picture rounded" :src="favoriteCar.car.imgUrl" alt="Car Image">
+                <div class="fs-6 fw-bold text-light d-flex flex-row px-4">
+                    <p class="p-1 mb-0">{{ favoriteCar.car.year }}</p>
+                    <p class="p-1 mb-0">{{ favoriteCar.car.make }}</p>
+                    <p class="p-1 mb-0">{{ favoriteCar.car.model }}</p>
+                </div>
+            </div>
+        </RouterLink>
+        <div class="d-flex">
             <a @click="removeFavorite(favoriteCar.id)" class="fs-4 p-2 star-clr" role="button" title="Remove Favorite">
                 <i class="mdi mdi-star-off-outline"></i>
             </a>
         </div>
+
     </div>
 </template>
 
@@ -22,6 +27,7 @@ import { Favorite } from '../models/Favorite';
 import Pop from '../utils/Pop';
 import { logger } from '../utils/Logger';
 import { favoritesService } from '../services/FavoritesService';
+import { RouterLink } from 'vue-router';
 export default {
     props: {
         favoriteCar: { type: Favorite, required: true }
@@ -30,19 +36,22 @@ export default {
         return {
             async removeFavorite(favoriteId) {
                 try {
-                    const yes = await Pop.confirm(`Are you sure you want to unfavorite this?`)
+                    const yes = await Pop.confirm(`Are you sure you want to unfavorite this?`);
                     if (!yes) {
-                        return
-                    } else {
-                        await favoritesService.removeFavorite(favoriteId)
-                        Pop.toast(`Removed Car from Favorites`)
+                        return;
                     }
-                } catch (error) {
-                    Pop.error(error)
+                    else {
+                        await favoritesService.removeFavorite(favoriteId);
+                        Pop.toast(`Removed Car from Favorites`);
+                    }
+                }
+                catch (error) {
+                    Pop.error(error);
                 }
             }
-        }
-    }
+        };
+    },
+    components: { RouterLink }
 };
 </script>
 
