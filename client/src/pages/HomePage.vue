@@ -10,7 +10,7 @@
 
       </div>
     </section>
-    <section class="row">
+    <section v-if="cars" class="row">
       <div v-for="car in cars" :key="car.id" class="col-12 col-md-4">
         <CarsComponent :carProp="car" />
       </div>

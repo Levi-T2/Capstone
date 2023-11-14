@@ -22,10 +22,10 @@
             <button class="btn btn-primary fw-bold">Like Car<i class="mdi mdi-heart mx-1"></i></button>
         </div> -->
 
-        <div class="d-flex  display-5 justify-content-center pt-2">
-            <router-link :to="{ name: 'Profile', params: { profileId: carProp?.creator?.id } }">
+        <div v-if="carProp.creator" class="d-flex  display-5 justify-content-center pt-2">
+            <router-link :to="{ name: 'Profile', params: { profileId: carProp.creator?.id } }">
                 <p class="p-2 fs-4 text-light">Created by:</p>
-                <img class="profile-pic rounded-circle p-2" :src="carProp?.creator?.picture">
+                <img class="profile-pic rounded-circle p-2" :src="carProp.creator?.picture">
             </router-link>
         </div>
 
