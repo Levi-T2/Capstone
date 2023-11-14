@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <section class="row">
             <div class="col-12 text-white mt-3">
-                <h1>Top Mods:</h1>
+                <h1 class="transparent-bg rounded text-center p-2">Top Mods <i class="mdi mdi-cog"></i></h1>
             </div>
         </section>
         <section class="row p-5">
