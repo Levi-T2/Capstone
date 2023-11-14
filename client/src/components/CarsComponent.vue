@@ -2,7 +2,7 @@
     <div class="transparent-bg text-center rounded mb-3 text-white glow box-shadow">
         <router-link title="To Car Details" :to="{ name: 'CarDetails', params: { carId: carProp.id } }">
             <img class="p-4 car-picture img-fluid" :src="carProp.imgUrl" alt="">
-            <div class="d-flex fs-2 display-4 justify-content-center  text-light">
+            <div class="d-flex fs-2 display-4 justify-content-center  text-light fw-bold">
                 <p class="p-1">{{ carProp.year }}</p>
                 <p class="p-1">{{ carProp.make }}</p>
                 <p class="p-1">{{ carProp.model }}</p>
@@ -10,7 +10,7 @@
         </router-link>
 
         <div class="d-flex  display-5 justify-content-evenly align-items-center">
-            <p class="fs-4">Mods Done:</p>
+            <p class="fs-4">Mods Done: <span class="fw-bold">{{ carProp.modCount }}</span></p>
             <a @click="favoriteCar(carProp.id)" class="fs-4 star-clr" role="button" type="button" title="Favorite Car">
                 <i class="mdi mdi-star-plus-outline"></i>
                 <p class="mb-0 star-clr"> {{ carProp.favoriteCount }}</p>

@@ -53,7 +53,7 @@ CarSchema.virtual('favoriteCount', {
     count: true
 })
 
-CarSchema.virtual('Mods', {
+CarSchema.virtual('modCount', {
     localField: '_id',
     ref: 'Modification',
     foreignField: 'carId',
