@@ -1,55 +1,44 @@
 <template>
   <div class="container-fluid">
     <div class="about text-center">
-      <div class="row justify-content-start">
-        <div class="col-12 col-md-5 bg-dark borderA text-center m-2">
+      <div class="row justify-content-between">
+        <div class="col-12 col-md-5 bg-auto borderA text-center my-2">
           <div class="col-12">
             <div class="mt-3 fs-3 text-center">
-              <h1 class=" fs-1 underline text display-3">{{ account.name }}</h1>
+              <h1 class=" fs-1 text-light display-3">{{ account.name }}</h1>
               <img class="rounded-circle my-3 borderA img-fluid" :src="account.picture" alt="" />
             </div>
             <div>
-              <p class="fs-4 text display-5 ">{{ account.bio }}</p>
+              <p class="fs-4 text display-5 text-light">{{ account.bio }}</p>
             </div>
-          </div>
-        </div>
-        <div class="col-12 col-md-1 bg-dark borderB m-2">
-          <section id="myDropdowns" class="d-flex flex-column align-items-center my-1">
-            <!-- SECTION Dropdown menu for My Favorites -->
-            <div class="btn-group dropend">
-              <a class="btn btn-fav dropdown-toggle p-1 my-2" href="#Favorites" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                <i title="My Favorites" class="mdi mdi-star"></i>
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <div v-for="favorite in favorites" :key="favorite.id" href="#Favorites"
-                    class="col-3 p-1 my-3 car-card dropdown-item">
-                    <AccountFavoriteCarCard :favoriteCar="favorite"></AccountFavoriteCarCard>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <!-- !SECTION -->
-            <!-- SECTION Dropdown menu for My Cars -->
-            <div class="btn-group dropend">
-              <a class="btn btn-car dropdown-toggle p-1 my-2 dropdown-toggle" href="#Cars" role="button"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                <i title="My Cars" class="mdi mdi-car"></i>
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <div v-for="car in cars" :key="car.id" href="#Cars" class="col-3 p-1 my-3 dropdown-item car-card">
-                    <AccountCarsComp :accountProp="car" />
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <!-- !SECTION -->
-            <div>
+            <div class="mb-3">
               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AccountModalForm">
                 <i title="Edit Account" class="mdi mdi-book-edit"></i>
               </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-7 bg-auto borderB my-2">
+          <section id="changerView" class="my-1">
+            <div class="d-flex justify-content-between flex-row">
+              <button v-if="hidden == false" @click="hidden = !hidden" class="btn btn-switcher w-100 p-1 m-1">
+                <p class="mb-0">See Favorites</p>
+              </button>
+              <button v-else @click="hidden = !hidden" class="btn btn-switcher w-100 p-1 m-1">
+                <p class="mb-0">See Cars</p>
+              </button>
+            </div>
+            <div v-if="hidden == true">
+              <h1 class="underline text-light">My Favorites</h1>
+              <div v-for="favorite in favorites" :key="favorite.id" class="col-12 p-1 my-3 car-card ">
+                <AccountFavoriteCarCard :favoriteCar="favorite"></AccountFavoriteCarCard>
+              </div>
+            </div>
+            <div v-if="hidden == false">
+              <h1 class="underline text-light">My Cars</h1>
+              <div v-for="car in cars" :key="car.id" class="col-12 p-1 my-3 car-card">
+                <AccountCarsComp :accountProp="car" />
+              </div>
             </div>
           </section>
         </div>
@@ -59,10 +48,11 @@
     </div>
   </div>
   <AccountModalForm />
+  <ModFormModal></ModFormModal>
 </template>
 
 <script>
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { AppState } from '../AppState';
 import Pop from '../utils/Pop.js';
 
@@ -71,10 +61,13 @@ import { accountService } from '../services/AccountService.js'
 import AccountCarsComp from '../components/AccountCarsComp.vue'
 import { useRoute } from 'vue-router';
 import AccountFavoriteCarCard from '../components/AccountFavoriteCarCard.vue';
+import ModFormModal from '../components/ModFormModal.vue';
 
 
 export default {
   setup() {
+    const hidden = ref(false)
+
     onMounted(() => {
       getFavoritesByAccountId();
       getCarsByAccount();
@@ -102,10 +95,11 @@ export default {
     return {
       account: computed(() => AppState.account),
       cars: computed(() => AppState.cars),
-      favorites: computed(() => AppState.favorite)
+      favorites: computed(() => AppState.favorite),
+      hidden,
     };
   },
-  components: { AccountCarsComp, AccountFavoriteCarCard }
+  components: { AccountCarsComp, AccountFavoriteCarCard, ModFormModal }
 }
 </script>
 
@@ -115,8 +109,8 @@ img {
 
 }
 
-.text {
-  text-shadow: 5px 5px 15px blue;
+.bg-auto {
+  background-color: #021e38;
 }
 
 .underline {
@@ -124,13 +118,11 @@ img {
 }
 
 .borderA {
-  border: 3.5px solid navy;
-  border-radius: 3px;
+  border: 3px solid whitesmoke
 }
 
 .borderB {
-  border: 3.5px solid navy;
-  border-radius: 20px;
+  border: 3px solid whitesmoke
 }
 
 .car-card {
@@ -158,11 +150,8 @@ img {
   overflow-y: scroll;
 }
 
-.btn-car {
-  background-color: red;
-}
-
-.btn-fav {
-  background-color: yellow;
+.btn-switcher {
+  background-color: #02396d;
+  color: white;
 }
 </style>
