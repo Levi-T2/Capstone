@@ -4,12 +4,14 @@ import { logger } from "../utils/Logger.js"
 import Pop from "../utils/Pop"
 import { api } from "./AxiosService"
 
-class FavoritesService {
+class FavoritesService {    
+    // NOTE Make reactive with a .push
     async favoriteCar(carId) {
         const favData = {}
         favData.carId = carId
         const favorite = await api.post('api/favorites', favData)
         Pop.toast(`You have favorited this car!`)
+        AppState.favorite.push(favorite)
     }
 
     async getFavoritesByAccountId(){
@@ -18,6 +20,9 @@ class FavoritesService {
         const newFavs = res.data.map((favs) => new Favorite(favs))
         AppState.favorite = newFavs
         logger.log(AppState.favorite)
+    }
+    async removeFavorite(favoriteId) {
+        const res = await api.delete(`api/favorites/${favoriteId}`)
     }
 }
 

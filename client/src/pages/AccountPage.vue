@@ -1,8 +1,8 @@
 <template>
   <div class="container-fluid">
     <div class="about text-center">
-      <div class="row mt-3 justify-content-center">
-        <div class="col-12 col-md-8 bg-dark borderA text-center">
+      <div class="row justify-content-start">
+        <div class="col-12 col-md-5 bg-dark borderA text-center m-2">
           <div class="col-12">
             <div class="mt-3 fs-3 text-center">
               <h1 class=" fs-1 underline text display-3">{{ account.name }}</h1>
@@ -12,52 +12,50 @@
               <p class="fs-4 text display-5 ">{{ account.bio }}</p>
             </div>
           </div>
-
-          <div class="text-center p-4">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AccountModalForm">
-              Edit Account
-            </button>
-          </div>
-
+        </div>
+        <div class="col-12 col-md-1 bg-dark borderB m-2">
+          <section id="myDropdowns" class="d-flex flex-column align-items-center my-1">
+            <!-- SECTION Dropdown menu for My Favorites -->
+            <div class="btn-group dropend">
+              <a class="btn btn-fav dropdown-toggle p-1 my-2" href="#Favorites" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <i title="My Favorites" class="mdi mdi-star"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <div v-for="favorite in favorites" :key="favorite.id" href="#Favorites"
+                    class="col-3 p-1 my-3 car-card dropdown-item">
+                    <AccountFavoriteCarCard :favoriteCar="favorite"></AccountFavoriteCarCard>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <!-- !SECTION -->
+            <!-- SECTION Dropdown menu for My Cars -->
+            <div class="btn-group dropend">
+              <a class="btn btn-car dropdown-toggle p-1 my-2 dropdown-toggle" href="#Cars" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <i title="My Cars" class="mdi mdi-car"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <div v-for="car in cars" :key="car.id" href="#Cars" class="col-3 p-1 my-3 dropdown-item car-card">
+                    <AccountCarsComp :accountProp="car" />
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <!-- !SECTION -->
+            <div>
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AccountModalForm">
+                <i title="Edit Account" class="mdi mdi-book-edit"></i>
+              </button>
+            </div>
+          </section>
         </div>
       </div>
-
       <div>
       </div>
-    </div>
-
-    <div class="row text-center justify-content-around">
-
-      <div class="col-10 borderA bg-dark my-3">
-        <h1 class=" my-1 underline fs-2 text display-5">My Cars</h1>
-
-        <div class="row justify-content-center">
-
-          <div v-for="car in cars" :key="car.id" class="col-12 col-md-7 p-3">
-
-            <AccountCarsComp :accountProp="car" />
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="col-10 borderA bg-dark my-3 ">
-        <h1 class="fs-2 text underline display-5 ">My Favorites</h1>
-
-        <div class="row justify-content-center">
-
-          <div v-for="favorite in favorites" :key="favorite.id" class=" col-12 col-md-7 p-3">
-            <AccountCarsComp :accountProp="favorite.car" />
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-
     </div>
   </div>
   <AccountModalForm />
@@ -72,6 +70,7 @@ import { favoritesService } from '../services/FavoritesService.js';
 import { accountService } from '../services/AccountService.js'
 import AccountCarsComp from '../components/AccountCarsComp.vue'
 import { useRoute } from 'vue-router';
+import AccountFavoriteCarCard from '../components/AccountFavoriteCarCard.vue';
 
 
 export default {
@@ -106,7 +105,7 @@ export default {
       favorites: computed(() => AppState.favorite)
     };
   },
-  components: { AccountCarsComp }
+  components: { AccountCarsComp, AccountFavoriteCarCard }
 }
 </script>
 
@@ -125,6 +124,45 @@ img {
 }
 
 .borderA {
-  border: 5px solid navy;
+  border: 3.5px solid navy;
+  border-radius: 3px;
+}
+
+.borderB {
+  border: 3.5px solid navy;
+  border-radius: 20px;
+}
+
+.car-card {
+  background-color: #021e38;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px 3px rgb(0, 0, 0);
+  transition: ease-in-out .285s;
+}
+
+.car-card:hover {
+  box-shadow: 0px 0px 5px 5px rgb(214, 219, 91);
+}
+
+.dropdown-item {
+  width: 100%;
+  max-height: 40dvh;
+}
+
+.dropdown-menu {
+  background-color: #021e38a1;
+  border: 2px solid whitesmoke;
+  --bs-dropdown-min-width: 30rem;
+  --bs-dropdown-padding-x: 0.75rem;
+  max-height: 80dvh;
+  overflow-y: scroll;
+}
+
+.btn-car {
+  background-color: red;
+}
+
+.btn-fav {
+  background-color: yellow;
 }
 </style>

@@ -5,9 +5,6 @@
   <main>
     <router-view />
   </main>
-  <footer class="headcolor p-4 text-light">
-    <p class="fs-5 p-2">Auto-Tunes <i class="mdi mdi-copyright"></i></p>
-  </footer>
   <CarModalForm></CarModalForm>
   <FilterCarsModal></FilterCarsModal>
 </template>
@@ -21,10 +18,10 @@ import CarModalForm from './components/CarModalForm.vue'
 export default {
   setup() {
     return {
-      appState: computed(() => AppState)
+      appState: computed(() => AppState),
     }
   },
-  components: { Navbar, CarModalForm }
+  components: { Navbar, CarModalForm, }
 }
 </script>
 <style lang="scss">

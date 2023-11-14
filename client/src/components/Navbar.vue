@@ -73,15 +73,16 @@ a:hover {
   border-bottom-right-radius: 0;
 }
 
-.logo{
+.logo {
   color: #277cf1;
 }
+
 .mdi-spin {
   -webkit-animation: mdi-spin 2s infinite linear;
   animation: mdi-spin 2s infinite linear;
 }
 
-.nav-border{
+.nav-border {
   border-bottom: 3px solid whitesmoke;
 }
 
