@@ -23,7 +23,7 @@ class CarsService {
         delete query.pageNumber
         const limit = 9
         const skip = pageNumber * limit
-        const cars = await dbContext.Cars.find(query).limit(limit).skip(skip).populate('creator favoriteCount')
+        const cars = await dbContext.Cars.find(query).limit(limit).skip(skip).populate('creator favoriteCount modCount')
         const totalPages = cars.length
         return { carsForPage: totalPages, cars: cars }
     }
@@ -34,6 +34,11 @@ class CarsService {
         }
         await destroyedCar.remove()
         return `This car has been destroyed: ${destroyedCar.id}`
+    }
+
+    async getCarsByProfileId(profileId) {
+        const cars = await dbContext.Cars.find({ creatorId: profileId }).populate('creator')
+        return cars
     }
     async editCar(carId, userId, carData) {
         const carUpdating = await this.getCarById(carId)

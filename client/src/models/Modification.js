@@ -9,5 +9,6 @@ export class Modification {
         this.id = data.id
         this.creator = data.creator
         this.imgUrl = data.imgUrl
+        this.favoriteCount = data.favoriteCount
     }
 }
