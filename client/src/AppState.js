@@ -26,6 +26,8 @@ export const AppState = reactive({
 
   favorite: [],
 
+  favoriteMods: [],
+
   compare: {},
 
   compare2: {},

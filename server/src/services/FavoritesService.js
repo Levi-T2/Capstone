@@ -10,6 +10,10 @@ class FavoritesService {
         const favorites = await dbContext.Favorites.find().populate('car')
         return favorites
     }
+    async getAllFavoriteMods() {
+        const favoriteMods = await dbContext.FavoriteMods.find().populate('modification')
+        return favoriteMods
+    }
     async getFavoriteById(favId) {
         const favorite = await dbContext.Favorites.findById(favId)
         if (!favorite) {
@@ -20,6 +24,11 @@ class FavoritesService {
     async postFavorite(favData) {
         const favorite = await dbContext.Favorites.create(favData)
         return favorite
+    }
+    async postFavoriteMod(favData) {
+        const favoriteMod = await dbContext.FavoriteMods.create(favData)
+        return favoriteMod
+
     }
     async destroyFavorite(favId, userId) {
         const favorite = await this.getFavoriteById(favId)

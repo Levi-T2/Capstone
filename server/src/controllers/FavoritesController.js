@@ -8,14 +8,25 @@ export class FavoritesController extends BaseController {
         this.router
             .get('', this.getAllFavorites)
             .get('/:favoriteId', this.getFavoriteById)
+            .get('/mods', this.getAllFavoriteMods)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.postFavorite)
+            .post('/mods', this.postFavoriteMod)
             .delete('/:favoriteId', this.destroyFavorite)
     }
     async getAllFavorites(request, response, next) {
         try {
             const favorites = await favoritesService.getAllFavorites()
             return response.send(favorites)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async getAllFavoriteMods(request, response, next) {
+        try {
+            const favoriteMods = await favoritesService.getAllFavoriteMods()
+            return response.send(favoriteMods)
         } catch (error) {
             next(error)
         }
@@ -36,6 +47,18 @@ export class FavoritesController extends BaseController {
             favData.accountId = userId
             const favorite = await favoritesService.postFavorite(favData)
             return response.send(favorite)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async postFavoriteMod(request, response, next) {
+        try {
+            const favData = request.body
+            const userId = request.userInfo.id
+            favData.accountId = userId
+            const favoriteMod = await favoritesService.postFavoriteMod(favData)
+            return response.send(favoriteMod)
         } catch (error) {
             next(error)
         }

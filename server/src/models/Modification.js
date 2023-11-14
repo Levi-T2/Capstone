@@ -31,3 +31,10 @@ ModificationSchema.virtual('car',
         justOne: true
     })
 
+ModificationSchema.virtual('favoriteCount', {
+    localField: '_id',
+    foreignField: 'modId',
+    ref: 'FavoriteMod',
+    count: true
+})
+

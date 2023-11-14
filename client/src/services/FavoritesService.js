@@ -12,6 +12,16 @@ class FavoritesService {
         const favorite = await api.post('api/favorites', favData)
         Pop.toast(`You have favorited this car!`)
         AppState.favorite.push(favorite)
+        logger.log(AppState.favorite)
+    }
+    async favoriteMod(modId){
+     const favData = {}
+     favData.modId = modId
+     const favoriteMod = await api.post('api/favorites/mods', favData)
+     Pop.toast('You have favorited this mod!')
+     AppState.favoriteMods.push(favoriteMod)
+     logger.log(AppState.favoriteMods)
+ 
     }
 
     async getFavoritesByAccountId(){
@@ -24,6 +34,7 @@ class FavoritesService {
     async removeFavorite(favoriteId) {
         const res = await api.delete(`api/favorites/${favoriteId}`)
     }
+
 }
 
 export const favoritesService = new FavoritesService()

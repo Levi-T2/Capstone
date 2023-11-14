@@ -21,6 +21,7 @@ class ModificationService {
         AppState.topMods = res.data.map((pojoMod) => new Modification(pojoMod))
         logger.log('this is the mods in appstate',AppState.topMods)
     }
+
 }
 
 export const modificationService = new ModificationService()
