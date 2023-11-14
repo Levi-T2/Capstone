@@ -35,6 +35,11 @@ class CarsService {
         await destroyedCar.remove()
         return `This car has been destroyed: ${destroyedCar.id}`
     }
+
+    async getCarsByProfileId(profileId) {
+        const cars = await dbContext.Cars.find({ creatorId: profileId }).populate('creator')
+        return cars
+    }
     async editCar(carId, userId, carData) {
         const carUpdating = await this.getCarById(carId)
         if (userId != carUpdating.creatorId.toString()) {

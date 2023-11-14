@@ -62,6 +62,13 @@ const routes = [
     component: loadPage('FourCarComparisonPage'),
     beforeEnter: authGuard
   },
+  {
+    path: '/profile/:profileId',
+    name: 'Profile',
+    component: loadPage('ProfilePage'),
+    beforeEnter: authGuard
+  },
+  
 
 ]
 

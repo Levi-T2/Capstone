@@ -23,8 +23,10 @@
         </div> -->
 
         <div class="d-flex  display-5 justify-content-center pt-2">
-            <p class="p-2 fs-4">Created by:</p>
-            <img class="profile-pic rounded-circle" :src="carProp?.creator?.picture">
+            <router-link :to="{ name: 'Profile', params: { profileId: carProp?.creator?.id } }">
+                <p class="p-2 fs-4 text-light">Created by:</p>
+                <img class="profile-pic rounded-circle p-2" :src="carProp?.creator?.picture">
+            </router-link>
         </div>
 
     </div>
@@ -73,8 +75,8 @@ export default {
 }
 
 .profile-pic {
-    width: 10%;
-    height: 10%;
+    width: 95%;
+    height: 15vh;
     object-position: center;
 
 }

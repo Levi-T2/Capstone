@@ -1,5 +1,5 @@
 <template>
-    <h1>welcome to the top cars page</h1>
+    <h1>Welcome to Top Cars!</h1>
 </template>
 
 
@@ -7,15 +7,13 @@
 import { AppState } from '../AppState';
 import { computed, reactive, onMounted } from 'vue';
 export default {
-    setup(){
-    return {
-        cars: computed(()=> AppState.cars)
-      }
+    setup() {
+        return {
+            cars: computed(() => AppState.cars)
+        }
     }
 };
 </script>
 
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
