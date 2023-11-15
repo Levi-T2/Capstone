@@ -25,16 +25,16 @@
         </section>
         <section class="row">
             <div v-if="compareCar.id" class="col-12 col-md-3 my-2">
-                <CompareCarOne :compareCar="compareCar"></CompareCarOne>
+                <compareCar :compareCar="compareCar"></compareCar>
             </div>
             <div v-if="compareCar2.id" class="col-12 col-md-3 my-2">
-                <CompareCarTwo :compareCar2="compareCar2"></CompareCarTwo>
+                <CompareCar :compareCar="compareCar2"></CompareCar>
             </div>
             <div v-if="compareCar3.id" class="col-12 col-md-3 my-2">
-                <CompareCarThree :compareCar3="compareCar3"></CompareCarThree>
+                <CompareCar :compareCar="compareCar3"></CompareCar>
             </div>
             <div v-if="compareCar4.id" class="col-12 col-md-3 my-2">
-                <CompareCarFour :compareCar4="compareCar4"></CompareCarFour>
+                <CompareCar :compareCar="compareCar4"></CompareCar>
             </div>
         </section>
     </div>

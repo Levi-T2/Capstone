@@ -27,13 +27,13 @@
         </section>
         <section class="row">
             <div v-if="compareCar.id" class="col-12 col-md-4 my-2">
-                <CompareCarOne :compareCar="compareCar"></CompareCarOne>
+                <CompareCar :compareCar="compareCar"></CompareCar>
             </div>
             <div v-if="compareCar2.id" class="col-12 col-md-4 my-2">
-                <CompareCarTwo :compareCar2="compareCar2"></CompareCarTwo>
+                <CompareCar :compareCar="compareCar2"></CompareCar>
             </div>
             <div v-if="compareCar3.id" class="col-12 col-md-4 my-2">
-                <CompareCarThree :compareCar3="compareCar3"></CompareCarThree>
+                <CompareCar :compareCar="compareCar3"></CompareCar>
             </div>
         </section>
     </div>
@@ -48,9 +48,7 @@ import { favoritesService } from '../services/FavoritesService';
 import Pop from '../utils/Pop';
 import { AppState } from '../AppState';
 import FavoritesModalForThree from '../components/FavoritesModalForThree.vue';
-import CompareCarOne from '../components/CompareCarOne.vue';
-import CompareCarTwo from '../components/CompareCarTwo.vue';
-import CompareCarThree from '../components/CompareCarThree.vue';
+import CompareCar from '../components/CompareCar.vue';
 import ComparisonModal from '../components/ComparisonModal.vue'
 import { useRoute } from 'vue-router';
 
@@ -89,7 +87,7 @@ export default {
             route,
         };
     },
-    components: { FavoritesModalForThree, CompareCarOne, CompareCarTwo, CompareCarThree, ComparisonModal }
+    components: { FavoritesModalForThree, CompareCar, ComparisonModal }
 };
 </script>
 

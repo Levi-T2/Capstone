@@ -24,13 +24,13 @@
         </section>
         <section class="row justify-content-center">
             <div v-if="compareCar.id" class="col-12 col-md-4 my-2 order-2 order-md-1">
-                <CompareCarOne :compareCar="compareCar"></CompareCarOne>
+                <CompareCar :compareCar="compareCar"></CompareCar>
             </div>
             <div v-if="compareCar2.id" class="col-12 col-md-3 my-2 order-1 order-md-2">
                 <ComparisonTable :compareCar="compareCar" :compareCar2="compareCar2"></ComparisonTable>
             </div>
             <div v-if="compareCar2.id" class="col-12 col-md-4 my-2 order-3 order-md-3">
-                <CompareCarTwo :compareCar2="compareCar2"></CompareCarTwo>
+                <CompareCar :compareCar="compareCar2"></CompareCar>
             </div>
         </section>
     </div>
@@ -44,8 +44,7 @@ import { computed, reactive, onMounted, watchEffect } from 'vue';
 import { favoritesService } from '../services/FavoritesService.js'
 import Pop from '../utils/Pop';
 import { logger } from '../utils/Logger';
-import CompareCarOne from '../components/CompareCarOne.vue';
-import CompareCarTwo from '../components/CompareCarTwo.vue';
+import CompareCar from '../components/CompareCar.vue';
 import ComparisonTable from '../components/ComparisonTable.vue';
 import { useRoute } from 'vue-router';
 export default {
@@ -82,7 +81,7 @@ export default {
             route,
         };
     },
-    components: { CompareCarOne, CompareCarTwo, ComparisonTable }
+    components: { CompareCar, ComparisonTable }
 };
 </script>
 

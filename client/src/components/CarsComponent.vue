@@ -8,7 +8,6 @@
                 <p class="p-1">{{ carProp.model }}</p>
             </div>
         </router-link>
-
         <div class="d-flex  display-5 justify-content-evenly align-items-center">
             <p class="fs-4">Mods Done: <span class="fw-bold">{{ carProp.modCount }}</span></p>
             <a @click="favoriteCar(carProp.id)" class="fs-4 star-clr" role="button" type="button" title="Favorite Car">
@@ -16,12 +15,10 @@
                 <p class="mb-0 star-clr"> {{ carProp.favoriteCount }}</p>
             </a>
         </div>
-
         <!-- //NOTE - Don't change font or styling -->
-
-        <div v-if="carProp.creator" class="d-flex display-5 pt-2">
+        <div v-if="carProp.creator" class="d-flex justify-content-center display-5 pt-2">
             <router-link :to="{ name: 'Profile', params: { profileId: carProp.creator?.id } }">
-                <div class="d-flex flex-row align-items-center justify-content-center">
+                <div class="d-flex flex-row align-items-center ">
                     <p class="p-1 px-3 fs-5 text-light">Created by:</p>
                     <img class="profile-pic rounded-circle py-2" :src="carProp.creator?.picture">
                 </div>
@@ -84,9 +81,10 @@ export default {
 }
 
 .glow:hover {
-    box-shadow: 0px 0px 15px #277cf1;
+    box-shadow: 0px 0px 5px 4px var(--bs-success);
     transition: ease-in-out 0.3s;
 }
+
 
 .box-shadow {
     box-shadow: 0 5px 10px black;
