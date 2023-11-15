@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid background">
+  <div class="container-fluid">
     <div class="row">
 
       <div class="col-12 text-center p-5">
@@ -9,30 +9,36 @@
 
     <div class="row justify-content-between text-center text-light">
 
+
+
       <div class="col-12 col-md-3">
         <img class="rounded-circle w-100" src="https://ca.slack-edge.com/T1GGQN1RU-U05SMDWAK4N-76bc178a5f7b-512"
           alt="levi tyler">
         <p class="fs-3">Levi Tyler</p>
-        <p class="fs-5">I ❤️ Jeep</p>
+        <p class="fs-5">"I love caffeine more than anything, even my friends and family"</p>
       </div>
 
       <div class="col-12 col-md-3">
         <img class="rounded-circle w-100" src="https://ca.slack-edge.com/T1GGQN1RU-U05SMDY5QMU-7eae627dca79-512" alt="">
         <p class="fs-3">Jaret Hunemiller</p>
-        <p class="fs-5">I ❤️ Dodge</p>
+        <p class="fs-5">Pickles are my favorite</p>
       </div>
 
       <div class="col-12 col-md-3">
         <img class="rounded-circle w-100" src="https://ca.slack-edge.com/T1GGQN1RU-U05TH34TSSC-65aa9e0d480a-512" alt="">
         <p class="fs-3">Cody Van DeWetering</p>
-        <p class="fs-5">I ❤️ Honda</p>
+        <p class="fs-5">I really really love ranch, ranch goes good with anything. if your eating salad(not happening) or
+          your eating a slice of pizza, its always good. i also love mayo 😻</p>
       </div>
 
       <div class="col-12 col-md-3">
         <img class="rounded-circle w-100" src="https://ca.slack-edge.com/T1GGQN1RU-U05TH35NEG0-90fd79345752-512" alt="">
         <p class="fs-3">Jarek Garcia</p>
-        <p class="fs-5">I ❤️ Toyota</p>
+        <p class="fs-5">I love working at best buy, they give me really good hours and its never boring</p>
       </div>
+
+
+
 
     </div>
 
@@ -57,17 +63,15 @@ export default {
 
 <style scoped lang="scss">
 img {
-  height: 70%;
+  height: 50vh;
+  width: 100%;
   border: 5px solid black;
   object-fit: cover;
   object-position: center;
 }
 
-.background {
-  background-image: url(https://th.bing.com/th/id/OIP.zS-LbwWTdBfHFUKwTa4qGwHaEK?w=301&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+.transparent-bg {
+  background-color: rgba(0, 0, 0, 0.278);
 }
 
 .underline {
