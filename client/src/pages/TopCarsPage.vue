@@ -1,11 +1,9 @@
 <template>
-<div v-for="car in cars" :key="car">
-    {{ cars.imgUrl }}
-</div>
+
+<h1></h1>
 
 
 
-<CarsComponent />
 </template>
 
 
@@ -20,7 +18,7 @@ export default {
             cars: computed(() => AppState.cars)
         };
     },
-    components: { CarsComponent }
+    
 };
 </script>
 
