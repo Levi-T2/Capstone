@@ -1,28 +1,32 @@
 <template>
-    <div class="dropdown-center">
-        <a class="text-center rounded d-flex flex-row justify-content-between align-items-center dropdown-toggle mb-1 text-white px-2"
-            role="button" type="button" data-bs-toggle="dropdown" aria-expanded="false" title="See More Options"
-            @click="testing()" id="pulse">
-            <div class="car-display">
-                <img class="p-1 car-picture rounded" :src="accountProp.imgUrl" alt="Car Image">
-                <div class=" fs-6 fw-bold d-flex flex-row text-light px-4">
-                    <p class="p-1 mb-0">{{ accountProp.year }}</p>
-                    <p class="p-1 mb-0">{{ accountProp.make }}</p>
-                    <p class="p-1 mb-0">{{ accountProp.model }}</p>
+    <!-- NOTE this html is very sensitive! So don't touch please. -->
+    <div class="accordion" id="carAccordion"></div>
+    <div class="accordion-item">
+        <div class="accordion-header">
+            <a class="text-center rounded display-card accordion-button mb-1 text-white px-2" role="button" type="button"
+                data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-controls="collapseOne" aria-expanded="true"
+                title="See More Options" @click="pulseEffect()" id="pulse">
+                <div class="car-display">
+                    <img class="p-1 car-picture rounded" :src="accountProp.imgUrl" alt="Car Image">
+                    <div class=" fs-6 fw-bold d-flex flex-row text-light px-4">
+                        <p class="p-1 mb-0">{{ accountProp.year }}</p>
+                        <p class="p-1 mb-0">{{ accountProp.make }}</p>
+                        <p class="p-1 mb-0">{{ accountProp.model }}</p>
+                    </div>
                 </div>
+            </a>
+        </div>
+        <div id="collapseOne" class="accordion-collapse collapse text-center" data-bs-parent="#carAccordion">
+            <div class="accordion-body">
+                <button data-bs-toggle="modal" data-bs-target="#ModModalForm" class="btn btn-success m-1 rounded-pill">Post
+                    Mod</button>
+                <RouterLink title="To Car Details" :to="{ name: 'CarDetails', params: { carId: accountProp.id } }">
+                    <button class="btn btn-primary m-1 rounded-pill">See Car</button>
+                </RouterLink>
+                <button class="btn btn-info m-1 rounded-pill">Edit Car</button>
+                <button @click="deleteCar(accountProp.id)" class="btn btn-danger m-1 rounded-pill">Delete Car</button>
             </div>
-        </a>
-        <ul class="dropdown-menu text-center">
-            <button data-bs-toggle="modal" data-bs-target="#ModModalForm" class="btn btn-success m-1 rounded-pill">Post
-                Mod</button>
-            <RouterLink title="To Car Details" :to="{ name: 'CarDetails', params: { carId: accountProp.id } }">
-                <button class="btn btn-primary m-1 rounded-pill">See Car</button>
-            </RouterLink>
-            <button class="btn btn-info m-1 rounded-pill">Edit Car</button>
-            <button @click="deleteCar(accountProp.id)" class="btn btn-danger m-1 rounded-pill">Delete Car</button>
-        </ul>
-
-
+        </div>
     </div>
 </template>
 
@@ -67,7 +71,7 @@ export default {
                     Pop.error;
                 }
             },
-            testing() {
+            pulseEffect() {
                 // NOTE Works only if the user is very good
                 let target = document.getElementById('pulse')
 
@@ -117,8 +121,8 @@ export default {
 
 .pulse,
 .pulse:focus {
-    animation: pulse 0.75s;
-    box-shadow: 0 0 0 1em transparent;
+    animation: pulse 0.35s;
+    box-shadow: 0 0 0 4em transparent;
 }
 
 @keyframes pulse {
@@ -127,9 +131,21 @@ export default {
     }
 }
 
+.display-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
 @media (max-width: 768px) {
     .car-display {
         display: block;
+    }
+
+    .display-card {
+        flex-direction: column;
+        justify-content: center;
     }
 }
 </style>
