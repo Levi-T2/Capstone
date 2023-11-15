@@ -141,9 +141,10 @@ img {
   transition: ease-in-out .285s;
 }
 
-.car-card:hover {
+/* .car-card:hover {
   box-shadow: 0px 0px 4px 4px var(--bs-success);
-}
+} */
+
 
 .dropdown-item {
   width: 100%;

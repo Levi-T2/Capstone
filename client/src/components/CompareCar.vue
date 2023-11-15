@@ -1,6 +1,6 @@
 <template>
     <div class="transparent-bg p-3 text-center rounded">
-        <h3 class="text-light p-1 style-border">Car 1</h3>
+        <h3 class="text-light p-1 style-border"></h3>
         <div>
             <img :src="compareCar.imgUrl" class="car-img">
         </div>
