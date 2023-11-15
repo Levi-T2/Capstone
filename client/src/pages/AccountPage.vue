@@ -21,11 +21,20 @@
         <div class="col-12 col-md-7 bg-auto borderB my-2">
           <section id="changerView" class="my-1">
             <div class="d-flex justify-content-between flex-row">
-              <button v-if="hidden == false" @click="hidden = !hidden" class="btn btn-switcher w-100 p-1 m-1">
-                <p class="mb-0">See Favorites</p>
+              <button v-if="hidden == false" @click="hidden = !hidden" title="See Your Favorites"
+                class="btn-switcher-fav w-100 my-1">
+                <p class="mb-0">
+                  <span>
+                    See Your Favorites
+                  </span>
+                </p>
               </button>
-              <button v-else @click="hidden = !hidden" class="btn btn-switcher w-100 p-1 m-1">
-                <p class="mb-0">See Cars</p>
+              <button v-else @click="hidden = !hidden" title="See Your Cars" class="btn-switcher-car w-100 my-1">
+                <p class="mb-0">
+                  <span>
+                    See Your Cars
+                  </span>
+                </p>
               </button>
             </div>
             <div v-if="hidden == true">
@@ -150,8 +159,37 @@ img {
   overflow-y: scroll;
 }
 
-.btn-switcher {
+.btn-switcher-fav {
   background-color: #02396d;
+  border: 1px solid aliceblue;
+  border-radius: 50px;
   color: white;
+  padding: 0.25rem;
+  transition: ease-in-out 0.4s;
+}
+
+.btn-switcher-fav:hover,
+.btn-switcher-fav:focus {
+  color: black;
+  box-shadow:
+    inset -22em 0 0 0 yellow,
+    inset 22em 0 0 0 yellow;
+}
+
+.btn-switcher-car {
+  background-color: #02396d;
+  border: 1px solid aliceblue;
+  border-radius: 50px;
+  color: white;
+  padding: 0.25rem;
+  transition: ease-in-out 0.4s;
+}
+
+.btn-switcher-car:hover,
+.btn-switcher-car:focus {
+  color: black;
+  box-shadow:
+    inset -22em 0 0 0 rgb(241, 124, 124),
+    inset 22em 0 0 0 rgb(241, 124, 124);
 }
 </style>
