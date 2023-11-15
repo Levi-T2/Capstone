@@ -13,6 +13,15 @@ class FavoritesService {
         Pop.toast(`You have favorited this car!`)
     }
 
+    async favoriteMod(modId){
+        const favData = {}
+        favData.modId = modId
+        const favoriteMod = await api.post('api/favorites/mods', favData)
+        Pop.toast('You have favorited this mod!')
+        AppState.favoriteMods.push(favoriteMod)
+        logger.log(AppState.favoriteMods)
+    }
+
     async getFavoritesByAccountId(){
         const res = await api.get(`account/favorites`)
         logger.log( 'My favorites',res.data)
