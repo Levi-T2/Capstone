@@ -1,12 +1,12 @@
 <template>
-    <div class="text-center rounded d-flex flex-row align-items-center justify-content-between">
+    <div v-if="favoriteCar.car" class="text-center rounded d-flex flex-row align-items-center justify-content-between">
         <RouterLink title="To Car Details" :to="{ name: 'CarDetails', params: { carId: favoriteCar.car.id } }">
             <div class="car-display">
-                <img class="p-1 car-picture rounded" :src="favoriteCar.car?.imgUrl" alt="Car Image">
+                <img class="p-1 car-picture rounded" :src="favoriteCar.car.imgUrl" alt="Car Image">
                 <div class="fs-6 fw-bold text-light d-flex flex-row px-4">
-                    <p class="p-1 mb-0">{{ favoriteCar.car?.year }}</p>
-                    <p class="p-1 mb-0">{{ favoriteCar.car?.make }}</p>
-                    <p class="p-1 mb-0">{{ favoriteCar.car?.model }}</p>
+                    <p class="p-1 mb-0">{{ favoriteCar.car.year }}</p>
+                    <p class="p-1 mb-0">{{ favoriteCar.car.make }}</p>
+                    <p class="p-1 mb-0">{{ favoriteCar.car.model }}</p>
                 </div>
             </div>
         </RouterLink>
