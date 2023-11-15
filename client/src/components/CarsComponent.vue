@@ -19,10 +19,12 @@
 
         <!-- //NOTE - Don't change font or styling -->
 
-        <div v-if="carProp.creator" class="d-flex  display-5 justify-content-center pt-2">
+        <div v-if="carProp.creator" class="d-flex display-5 pt-2">
             <router-link :to="{ name: 'Profile', params: { profileId: carProp.creator?.id } }">
-                <p class="p-2 fs-4 text-light">Created by:</p>
-                <img class="profile-pic rounded-circle p-2" :src="carProp.creator?.picture">
+                <div class="d-flex flex-row align-items-center justify-content-center">
+                    <p class="p-1 px-3 fs-5 text-light">Created by:</p>
+                    <img class="profile-pic rounded-circle py-2" :src="carProp.creator?.picture">
+                </div>
             </router-link>
         </div>
 
@@ -73,8 +75,10 @@ export default {
 }
 
 .profile-pic {
-    width: 95%;
-    height: 15vh;
+    max-height: 5rem;
+    max-width: 5rem;
+    width: 100%;
+    object-fit: cover;
     object-position: center;
 
 }
