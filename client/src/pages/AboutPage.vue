@@ -26,9 +26,8 @@
 
       <div class="col-12 col-md-3">
         <img class="rounded-circle w-100" src="https://ca.slack-edge.com/T1GGQN1RU-U05TH34TSSC-65aa9e0d480a-512" alt="">
-        <p class="fs-3">Cody Van DeWetering</p>
-        <p class="fs-5">I really really love ranch, ranch goes good with anything. if your eating salad(not happening) or
-          your eating a slice of pizza, its always good. i also love mayo 😻</p>
+        <p class="fs-3 fw-bold">Cody Van de Wetering</p>
+        <p class="fs-5 fw-bold">I love Honda's 😻</p>
       </div>
 
       <div class="col-12 col-md-3">

@@ -1,5 +1,6 @@
 <template>
-    <div class="modal fade" id="FavoritesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div v-if="favorite.car" class="modal fade" id="FavoritesModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div v-if="favorite" class="modal-content form-bg form-border">
                 <div class="modal-header">
