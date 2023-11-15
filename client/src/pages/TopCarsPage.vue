@@ -47,7 +47,7 @@ export default {
             })
         };
     },
-    components: { CarsComponent }
+
 };
 </script>
 
