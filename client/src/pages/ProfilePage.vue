@@ -1,30 +1,20 @@
 <template>
     <div class="container-fluid background">
-        <div v-if="profile" class="row">
-
+        <section v-if="profile" class="row justify-content-between">
             <div class=" text-center transparent-bg box-shadow col-12 col-md-4">
                 <img class="rounded-circle profile-pic box p-2 m-3 box-shadow" :src="profile.picture" alt="">
                 <p class="fs-2 display-5 text-light underline">{{ profile.name }}</p>
                 <p v-if="profile.bio != ''" class="fs-3 display-5 text-light"> Bio: {{ profile.bio }}</p>
             </div>
-
-            <div class="col-12 col-md-7 p-5">
-
+            <div class="col-12 col-md-8">
                 <div class="row justify-content-center">
-                    <p class="text-center fs-1 display-5 text-light underline">Users Cars</p>
-                    <div v-for="car in cars" :key="car.id" class="col-12 col-md-8">
+                    <p class="text-center fs-1 mt-2 display-5 text-light underline">Users Cars</p>
+                    <div v-for="car in cars" :key="car.id" class="col-11 p-1 my-2 car-card">
                         <ProfileCarsComp :carProp="car" />
                     </div>
-
                 </div>
-
             </div>
-
-
-
-
-        </div>
-
+        </section>
     </div>
 </template>
 
@@ -82,6 +72,16 @@ export default {
     object-position: center;
 }
 
+.car-card {
+    background-color: #021e38;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px 3px rgb(0, 0, 0);
+    transition: ease-in-out .285s;
+}
+
+.car-card:hover {
+    box-shadow: 0px 0px 4px 4px var(--bs-success);
+}
 
 
 .transparent-bg {

@@ -1,23 +1,23 @@
 
 <!-- //NOTE - DO NOT CHANGE THE HTML -->
 <template>
-    <div class="transparent-bg text-center rounded mb-3 text-white glow box-shadow">
+    <div class="text-center rounded d-flex flex-row justify-content-between align-items-center text-white">
         <router-link v-if="carProp" title="To Car Details" :to="{ name: 'CarDetails', params: { carId: carProp.id } }">
-
-            <img class="p-4 car-picture img-fluid" :src="carProp.imgUrl" alt="">
-            <div class="d-flex fs-4 justify-content-center text-light">
-                <p class="p-1">{{ carProp.year }}</p>
-                <p class="p-1">{{ carProp.make }}</p>
-                <p class="p-1">{{ carProp.model }}</p>
+            <div class="car-display">
+                <img class="p-1 car-picture img-fluid" :src="carProp.imgUrl" alt="">
+                <div class="d-flex flex-row fs-4 text-light">
+                    <p class="p-1">{{ carProp.year }}</p>
+                    <p class="p-1">{{ carProp.make }}</p>
+                    <p class="p-1">{{ carProp.model }}</p>
+                </div>
             </div>
-            <div class="d-flex justify-content-evenly align-items-center">
-                <a @click="favoriteCar(carProp.id)" class="fs-4 star-clr" role="button" type="button" title="Favorite Car">
-                    <i class="mdi mdi-star-plus-outline fs-2"></i>
-                    <p class="mb-2 star-clr"> {{ carProp.favoriteCount }}</p>
-                </a>
-            </div>
-
         </router-link>
+        <div class="d-flex justify-content-end">
+            <a @click="favoriteCar(carProp.id)" class="fs-4 star-clr px-2" role="button" type="button" title="Favorite Car">
+                <i class="mdi mdi-star-plus-outline"></i>
+            </a>
+        </div>
+
     </div>
 </template>
 <!-- //NOTE - DO NOT CHANGE THE HTML -->
@@ -53,9 +53,8 @@ export default {
 
 <style lang="scss" scoped>
 .car-picture {
-    height: 45vh;
-    width: 100%;
-    border-radius: 8%;
+    max-width: 35dvh;
+    border-radius: 6px;
     object-fit: cover;
     object-position: center;
 }
@@ -68,6 +67,20 @@ export default {
     width: 10%;
     height: 10%;
     object-position: center;
+}
 
+.star-clr {
+    color: yellow
+}
+
+.car-display {
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .car-display {
+        display: block;
+    }
 }
 </style>

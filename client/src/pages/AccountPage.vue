@@ -137,12 +137,12 @@ img {
 .car-card {
   background-color: #021e38;
   border-radius: 5px;
-  box-shadow: 0px 0px 5px 3px rgb(0, 0, 0);
+  box-shadow: 0px 0px 4px 3px rgb(0, 0, 0);
   transition: ease-in-out .285s;
 }
 
 .car-card:hover {
-  box-shadow: 0px 0px 5px 5px rgb(214, 219, 91);
+  box-shadow: 0px 0px 4px 4px var(--bs-success);
 }
 
 .dropdown-item {

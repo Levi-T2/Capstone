@@ -86,6 +86,17 @@ a:hover {
   border-bottom: 3px solid whitesmoke;
 }
 
+.btn {
+  transition: ease-in-out 0.2s;
+}
+
+.btn:hover,
+.btn:focus {
+
+  box-shadow: 0 0.5em 0.5em -0.4em var(--bs-success);
+  transform: translateY(-0.25em);
+}
+
 @media screen and (min-width: 768px) {
   nav {
     height: 64px;
