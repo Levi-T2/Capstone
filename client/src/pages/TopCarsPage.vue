@@ -172,7 +172,7 @@ export default {
         /*     color: #fccaff;
     text-shadow: 0 0 5px #f562ff, 0 0 15px #f562ff, 0 0 25px #f562ff,
       0 0 20px #f562ff, 0 0 30px #890092, 0 0 80px #890092, 0 0 80px #890092; */
-        text-shadow: 0 0 5px rgb(165, 93, 42), 0 0 15px rgb(165, 93, 42), 0 0 20px rgb(165, 93, 42), 0 0 40px rgb(165, 93, 42), 0 0 60px #ff0000, 0 0 10px rgb(165, 93, 42), 0 0 98px #ff0000;
+        text-shadow: 0 0 10px black, 0 0 15px gold, 0 0 20px goldenrod, 0 0 40px goldenrod, 0 0 60px goldenrod, 0 0 10px goldenrod, 0 0 98px brown;
         color: gold;
     }
 }
