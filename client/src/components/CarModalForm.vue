@@ -132,12 +132,14 @@
 
                                 <div class="col-12 d-flex text-center justify-content-around">
                                     <div class="p-5">
-                                        <input type="checkbox" id="isSuperCharged" name="isSuperCharged" value="">
-                                        <label class="fs-5" for="isSuperCharged"> Is it super charged?</label><br>
+                                        <input type="checkbox" id="isSupercharged" v-model="editable.isSupercharged"
+                                            name="isSupercharged" value="">
+                                        <label class="fs-5" for="isSupercharged"> Is it super charged?</label><br>
                                     </div>
 
                                     <div class="p-5">
-                                        <input type="checkbox" id="hasTurbo" name="hasTurbo" value="">
+                                        <input type="checkbox" id="hasTurbo" name="hasTurbo" v-model="editable.hasTurbo"
+                                            value="">
                                         <label class="fs-5" for="hasTurbo"> Does it have a turbo?</label><br>
                                     </div>
                                 </div>

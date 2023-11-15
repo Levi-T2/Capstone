@@ -14,6 +14,12 @@
                                 {{ cars.year }}
                                 {{ cars.make }}
                                 {{ cars.model }}
+                                <div class="d-flex">
+                                    <h1 v-if="cars.isSupercharged == true" class="mdi mdi-lightning-bolt fs-2">
+                                    </h1>
+                                    <h1 v-if="cars.hasTurbo == true" class="mdi mdi-car-turbocharger fs-2">
+                                    </h1>
+                                </div>
                             </div>
                             <div v-if="cars.creator">
                                 <div v-if="cars.creator.id == account.id" class="dropdown" title="dropdown menu">

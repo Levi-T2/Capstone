@@ -6,7 +6,7 @@
             </div>
         </section>
         <section class="row p-5">
-            <div v-for="mod in topMods" :key="mod" class="col-12 transparent-bg mb-3 mt-1 rounded glow">
+            <div v-for="mod in sortedMods" :key="mod" class="col-12 transparent-bg mb-3 mt-1 rounded glow">
                 <div class="row">
                     <div class="col-12 col-md-4">
                         <img class="img-fluid p-3 rounded" :src="mod.imgUrl" :alt="mod.name" :title="mod.name">
@@ -54,7 +54,12 @@ try {
 }
         }
     return { 
-topMods: computed(() => AppState.topMods),
+// topMods: computed(() => AppState.topMods),
+
+sortedMods: computed(() => {
+const sortedArray = AppState.topMods.sort((a,b) => b.favoriteCount - a.favoriteCount);
+return sortedArray.splice(0, 3);
+}),
 
 async favoriteMod(modId){
 try {
