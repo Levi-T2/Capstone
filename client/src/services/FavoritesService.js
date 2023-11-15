@@ -24,6 +24,7 @@ class FavoritesService {
     async removeFavorite(favoriteId) {
         const res = await api.delete(`api/favorites/${favoriteId}`)
     }
+
 }
 
 export const favoritesService = new FavoritesService()
