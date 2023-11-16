@@ -1,39 +1,46 @@
 <template>
     <div class="container-fluid">
         <section v-if="sortedCars" class="row justify-content-around">
-            <div class="col-12 d-flex justify-content-around text-light my-1">
-                <p class="color-1 mb-0">
-                    <i class="mdi mdi-trophy textFont"></i>
-
-                </p>
+            <!-- <div class="col-12 d-flex justify-content-around text-light my-1">
                 <p class="color-2 mb-0">
                     <i class="mdi mdi-trophy textFont"></i>
-
                 </p>
                 <p class="color-3 mb-0">
                     <i class="mdi mdi-trophy textFont"></i>
-
                 </p>
-            </div>
-            <div v-for="car in sortedCars" :key="car.id" class="col-12 col-md-4">
+            </div> -->
+            <div v-for="car in sortedCars" :key="car.id" class="col-12 col-md-4 my-1" :class="sortedCars[0].id == car.id ? 'order-md-2' : '' ||
+                sortedCars[1].id == car.id ? 'order-md-1' : '' || sortedCars[2].id == car.id ? 'order-md-3' : ''">
+                <div v-if="sortedCars[0].id == car.id">
+                    <p class="background-1 text-center fs-4 fw-bold my-2 rounded-pill">
+                        <i class="mdi mdi-trophy"></i>
+                        1st Place
+                        <i class="mdi mdi-trophy"></i>
+                    </p>
+                </div>
+                <div v-else-if="sortedCars[1].id == car.id">
+                    <p class="background-2 text-center fs-4 fw-bold my-2 rounded-pill">
+                        2nd Place
+                    </p>
+                </div>
+                <div v-else-if="sortedCars[2].id == car.id">
+                    <p class="background-3 text-center fs-4 fw-bold my-2 rounded-pill">
+                        3rd Place
+                    </p>
+                </div>
                 <CarsComponent :carProp="car">
                 </CarsComponent>
             </div>
-            <div class="col-12 text-center justify-content-around text-light my-1">
+            <!-- <div class="col-12 text-center justify-content-around text-light my-1">
                 <section class="row justify-content-around text-dark">
-
-                    <p class=" col-3 fs-3 background-1 mb-4">
-                        1st Place
-                    </p>
                     <p class="col-3 fs-3 background-2 mb-4">
                         2nd Place
                     </p>
                     <p class="col-3 fs-3 background-3 mb-4">
                         3rd Place
                     </p>
-
                 </section>
-            </div>
+            </div> -->
         </section>
     </div>
 </template>
@@ -61,8 +68,10 @@ export default {
             // NOTE This function sorts the array and returns only three back, don't touch.
             sortedCars: computed(() => {
                 const sortedArray = AppState.cars.sort((a, b) => b.favoriteCount - a.favoriteCount);
-                return sortedArray.splice(0, 3);
-            })
+                const topCars = sortedArray.splice(0, 3);
+                logger.log(topCars)
+                return topCars;
+            }),
         };
     },
 
@@ -72,7 +81,6 @@ export default {
 
 <style lang="scss" scoped>
 .color-1 {
-
     color: gold;
     font-size: 2.5rem;
     padding: 0.85rem;
@@ -108,16 +116,20 @@ export default {
 }
 
 
+// .txt-outline {
+//     -webkit-text-stroke-width: 0.55px;
+//     -webkit-text-stroke-color: rgb(255, 255, 255);
+// }
 
 .textFont {
-    font-size: calc(10px + 9vh);
-    line-height: calc(20px + 20vh);
+    // font-size: calc(10px + 9vh);
+    // line-height: calc(20px + 20vh);
     /*   text-shadow: 0 0 5px #f562ff, 0 0 15px #f562ff, 0 0 25px #f562ff,
     0 0 20px #f562ff, 0 0 30px #890092, 0 0 80px #890092, 0 0 80px #890092;
   color: #fccaff; */
     text-shadow: 0 0 5px gold, 0 0 15px gold, 0 0 20px gold, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
     color: gold;
-    font-family: "Sacramento", cursive;
+    // font-family: "Sacramento", cursive;
     text-align: center;
     animation: blink 12s infinite;
     -webkit-animation: blink 12s infinite;
