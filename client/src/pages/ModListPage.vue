@@ -21,6 +21,7 @@ import { carService } from '../services/CarService';
 import { useRoute } from 'vue-router';
 import { AppState } from '../AppState';
 import ModsComponent from '../components/ModsComponent.vue';
+import { modificationService } from '../services/ModificationService';
 
 
 export default {
@@ -28,6 +29,7 @@ export default {
         const route = useRoute();
         onMounted(() => {
             getModsByCarId();
+            getAllMods()
         });
         async function getModsByCarId() {
             try {
@@ -36,6 +38,15 @@ export default {
             }
             catch (error) {
                 Pop.error(error);
+            }
+        }
+
+
+        async function getAllMods() {
+            try {
+                await modificationService.getAllMods()
+            } catch (error) {
+                Pop.error(error)
             }
         }
         return {
