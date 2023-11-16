@@ -8,7 +8,8 @@
         </div>
 
         <div class="d-flex  display-5 justify-content-evenly align-items-center">
-            <button @click="deleteMod(mod.id)" class="btn btn-danger mx-3">Delete Mod</button>
+            <button v-if="account.id == mod.creator?.id" @click="deleteMod(mod.id)" class="btn btn-danger mx-3">Delete
+                Mod</button>
             <a @click="favoriteMod(mod.id)" class="fs-4 star-clr" role="button" type="button" title="Favorite Car">
                 <i class="mdi mdi-star-plus-outline"></i>
                 <p class="mb-0 star-clr"> {{ mod.favoriteCount }}</p>
