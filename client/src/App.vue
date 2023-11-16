@@ -4,6 +4,7 @@
   </header>
   <main>
     <router-view />
+
   </main>
   <CarModalForm></CarModalForm>
   <FilterCarsModal></FilterCarsModal>

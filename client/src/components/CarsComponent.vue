@@ -1,7 +1,7 @@
 <template>
-    <div class="transparent-bg text-center rounded mb-3 text-white glow box-shadow">
+    <div class="transparent-bg text-center rounded mb-3 text-white glow box-shadow card">
         <router-link title="To Car Details" :to="{ name: 'CarDetails', params: { carId: carProp.id } }">
-            <img class="p-4 car-picture img-fluid" :src="carProp.imgUrl" alt="">
+            <img class="p-2 car-picture" :src="carProp.imgUrl" alt="Car Cover Img">
             <div class="d-flex fs-2 display-4 justify-content-center  text-light fw-bold">
                 <p class="p-1">{{ carProp.year }}</p>
                 <p class="p-1">{{ carProp.make }}</p>
@@ -17,7 +17,8 @@
         </div>
         <!-- //NOTE - Don't change font or styling -->
         <div v-if="carProp.creator" class="d-flex justify-content-center display-5 pt-2">
-            <router-link :to="{ name: 'Profile', params: { profileId: carProp.creator?.id } }">
+            <router-link title="To Profile Page" :to="{ name: 'Profile', params: { profileId: carProp.creator?.id } }"
+                class="profile-el">
                 <div class="d-flex flex-row align-items-center ">
                     <p class="p-1 px-3 fs-5 text-light">Created by:</p>
                     <img class="profile-pic rounded-circle py-2" :src="carProp.creator?.picture">
@@ -59,8 +60,8 @@ export default {
 <style lang="scss" scoped>
 .car-picture {
     width: 100%;
-    height: 45vh;
-    border-radius: 8%;
+    max-height: 45vh;
+    border-radius: 5px;
     object-fit: cover;
     object-position: center;
 }
@@ -68,7 +69,7 @@ export default {
 
 
 .transparent-bg {
-    background-color: rgba(0, 0, 0, 0.278);
+    background-color: rgba(0, 0, 0, 0.387);
 }
 
 .profile-pic {
@@ -88,6 +89,16 @@ export default {
 
 .box-shadow {
     box-shadow: 0 5px 10px black;
+}
+
+.profile-el {
+    border: 1px solid rgba(245, 245, 245, 0);
+    margin-bottom: 5px;
+}
+
+.profile-el:hover {
+    border: 1px solid whitesmoke;
+    border-radius: 6px;
 }
 
 .star-clr {

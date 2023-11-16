@@ -1,6 +1,6 @@
 <template>
     <section class="row">
-        <div class="page-changer p-2 d-flex justify-content-between align-items-center">
+        <div class="page-changer d-flex justify-content-between align-items-center">
             <div>
                 <button v-if="page <= 0" disabled @click="changePage(page -= 1)" class="btn btn-light rounded-pill">
                     <i class="mdi mdi-arrow-left"></i>
@@ -13,7 +13,7 @@
                 <p class="d-flex justify-content-center mt-3">Current Page: {{ page + 1 }} </p>
             </div>
             <div>
-                <button v-if="totalCars < 6" disabled @click="changePage(page += 1)" class="btn btn-light rounded-pill">Next
+                <button v-if="totalCars < 1" disabled @click="changePage(page += 1)" class="btn btn-light rounded-pill">Next
                     <i class="mdi mdi-arrow-right"></i>
                 </button>
                 <button v-else @click="changePage(page += 1)" class="btn btn-light rounded-pill">Next

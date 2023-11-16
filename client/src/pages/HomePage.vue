@@ -1,23 +1,17 @@
 <template>
   <div class="container-fluid">
-    <section class="row justify-content-between">
-      <div class="col-6 col-md-2 fs-3 text-white mt-3">
-        <p class="transparent-bg rounded text-center">User cars <i class="mdi mdi-car"></i></p>
+    <section class="row justify-content-between align-items-center">
+      <div class="col-12 col-md-5 p-3">
+        <PageChanger></PageChanger>
       </div>
       <div class="col-4 col-md-2 fs-3 text-white text-center mt-3">
-        <button class="mb-2 transparent-bg rounded text-white btn btn fs-5" data-bs-toggle="modal"
-          data-bs-target="#FilterCars">Filter<i class="mdi mdi-filter"></i></button>
-
+        <button class="mb-2 transparent-bg rounded-pill text-white btn btn fs-5" title="Filter Options"
+          data-bs-toggle="modal" data-bs-target="#FilterCars">Filter<i class="mdi mdi-filter"></i></button>
       </div>
     </section>
-    <section v-if="cars" class="row">
+    <section v-if="cars" class="row" data-masonry>
       <div v-for="car in cars" :key="car.id" class="col-12 col-md-4">
         <CarsComponent :carProp="car" />
-      </div>
-    </section>
-    <section class="row mb-2">
-      <div class="col-12 p-3">
-        <PageChanger></PageChanger>
       </div>
     </section>
   </div>
@@ -55,6 +49,7 @@ import { AppState } from '../AppState.js'
 import CarModalForm from '../components/CarModalForm.vue';
 import PageChanger from '../components/PageChanger.vue';
 import { logger } from '../utils/Logger.js';
+import Masonry from "masonry-layout"
 
 export default {
   setup() {
@@ -72,6 +67,8 @@ export default {
     async function getCars() {
       try {
         await carService.getCars();
+        let row = document.querySelector("[data-masonry]")
+        new Masonry(row, { percentPosition: true })
       }
       catch (error) {
         Pop.error;
@@ -99,5 +96,9 @@ export default {
 
 .user-cars {
   width: 30%;
+}
+
+.masonry {
+  columns: 350px;
 }
 </style>
