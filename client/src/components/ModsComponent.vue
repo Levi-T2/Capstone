@@ -30,10 +30,12 @@
 
 
 <script>
+import { computed } from 'vue';
 import { Modification } from '../models/Modification';
 import { favoritesService } from '../services/FavoritesService.js';
 import { modificationService } from '../services/ModificationService';
 import Pop from '../utils/Pop.js';
+import { AppState } from '../AppState';
 
 
 export default {
@@ -42,6 +44,7 @@ export default {
     },
     setup() {
         return {
+            account: computed(() => AppState.account),
             async favoriteMod(modId) {
                 try {
                     await favoritesService.favoriteMod(modId)
