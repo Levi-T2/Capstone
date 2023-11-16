@@ -7,14 +7,14 @@
         </div>
       </section>
       <div class="row justify-content-between px-3">
-        <div class="col-12 col-md-4 bg-auto borderA text-center my-2 rounded profile-box glow">
+        <div class="col-12 col-md-4 bg-auto borderA text-center my-2 rounded glow">
           <div>
             <div class="mt-3 fs-3 text-center">
               <h1 class=" fs-1 text-light display-3">{{ account.name }}</h1>
               <img class="rounded-circle my-3 img-fluid" :src="account.picture" alt="" />
             </div>
             <div>
-              <p class="fs-4 text display-5 text-light">{{ account.bio }}</p>
+              <p class="fs-4 text display-5 text-light wrap-text">{{ account.bio }}</p>
             </div>
             <div class="mb-3 m-0">
               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AccountModalForm">
@@ -206,5 +206,9 @@ img {
 .glow:hover {
   box-shadow: 0px 0px 5px 4px #277cf1;
   transition: ease-in-out 0.3s;
+}
+
+.wrap-text {
+  word-wrap: break-word;
 }
 </style>

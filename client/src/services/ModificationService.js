@@ -19,7 +19,13 @@ class ModificationService {
         const res = await api.get('api/modifications')
         logger.log(res.data)
         AppState.topMods = res.data.map((pojoMod) => new Modification(pojoMod))
-        logger.log('this is the mods in appstate',AppState.topMods)
+        logger.log('this is the top mods in appstate',AppState.topMods)
+    }
+
+    async getAllMods(){
+        const res = await api.get('api/modifications')
+        AppState.mods = res.data.map((pojoMod) => new Modification(pojoMod))
+        logger.log('this is all the mods in appstate',AppState.mods)
     }
 
 }

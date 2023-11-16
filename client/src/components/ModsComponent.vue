@@ -1,13 +1,14 @@
 <template>
     <div class="transparent-bg text-center rounded mb-3 text-white glow box-shadow">
-            <img class="p-4 modImg img-fluid" :src="mod.imgUrl" alt="">
-            <div class="fs-2 display-4 justify-content-center  text-light fw-bold">
-                <p class="p-1">{{ mod.name }}</p>
-                <p class="p-1">{{ mod.type }}</p>
-                <p class="p-1">{{ mod.description }}</p>
-            </div>
-        
+        <img class="p-4 modImg img-fluid" :src="mod.imgUrl" alt="">
+        <div class="fs-2 display-4 justify-content-center  text-light fw-bold">
+            <p class="p-1">{{ mod.name }}</p>
+            <p class="p-1">{{ mod.type }}</p>
+            <p class="p-1">{{ mod.description }}</p>
+        </div>
+
         <div class="d-flex  display-5 justify-content-evenly align-items-center">
+            <button @click="deleteMod(mod.id)" class="btn btn-danger mx-3">Delete Mod</button>
             <a @click="favoriteMod(mod.id)" class="fs-4 star-clr" role="button" type="button" title="Favorite Car">
                 <i class="mdi mdi-star-plus-outline"></i>
                 <p class="mb-0 star-clr"> {{ mod.favoriteCount }}</p>
@@ -30,6 +31,7 @@
 <script>
 import { Modification } from '../models/Modification';
 import { favoritesService } from '../services/FavoritesService.js';
+import { modificationService } from '../services/ModificationService';
 import Pop from '../utils/Pop.js';
 
 
@@ -42,6 +44,14 @@ export default {
             async favoriteMod(modId) {
                 try {
                     await favoritesService.favoriteMod(modId)
+                } catch (error) {
+                    Pop.error(error)
+                }
+            },
+
+            async deleteMod(modId) {
+                try {
+                    await modificationService.deleteMod(modId)
                 } catch (error) {
                     Pop.error(error)
                 }
