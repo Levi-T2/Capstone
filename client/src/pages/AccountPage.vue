@@ -1,12 +1,12 @@
 <template>
   <div class="container-fluid">
     <div class="about text-center">
-      <section class="row">
+      <section class="row about text-center">
         <div class="col-12 col-md-4 mt-3">
           <p class="m-0 text-white fs-5 fw-bold">Profile</p>
         </div>
       </section>
-      <div class="row justify-content-between px-3">
+      <div class="row justify-content-between px-3 align-items-baseline">
         <div class="col-12 col-md-4 bg-auto borderA text-center my-2 rounded glow">
           <div>
             <div class="mt-3 fs-3 text-center">
