@@ -83,7 +83,7 @@ a:hover {
 }
 
 .nav-border {
-  border-bottom: 3px solid whitesmoke;
+  border-bottom: 2px solid #277cf1;
 }
 
 .btn {
