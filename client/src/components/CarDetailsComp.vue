@@ -69,15 +69,24 @@
             </router-link>
         </div>
     </div>
-    <div v-for="favorite in favorites" :key="favorite.id" class="col-12 p-3">
-        <p class="mb-0">{{ favorite.account.name }}</p>
-        <!-- <img class="rounded-circle img-fluid" :src="favorite.account.picture"> -->
+    <div class="col-12 text-end">
+        <button class="btn-favorite " title="See Users Who've Favorited" @click="hidden = !hidden">
+            <p class="mb-0">
+                <i class="mdi mdi-arrow-down"></i>
+            </p>
+        </button>
+    </div>
+    <div v-if="hidden == true" class="col-12 d-favorite">
+        <div v-for="favorite in favorites" :key="favorite.id" class="col-3 p-2 text-center">
+            <p class="mb-0">{{ favorite.account.name }}</p>
+            <img class="rounded-circle account-pic" :src="favorite.account.picture">
+        </div>
     </div>
 </template>
 
 
 <script>
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 import { Car } from '../models/Car';
 import { Account } from '../models/Account';
 import Pop from '../utils/Pop';
@@ -91,6 +100,7 @@ export default {
         favorites: { type: Favorite, required: true },
     },
     setup() {
+        const hidden = ref(false)
         const route = useRoute()
         onMounted(() => {
             getFavoritesForCarById()
@@ -113,6 +123,7 @@ export default {
                 }
             },
             route,
+            hidden,
         }
     }
 };
@@ -131,7 +142,23 @@ export default {
     width: 30%;
 }
 
-// .account-pic{}
+.account-pic {
+    width: 7rem;
+    height: 7rem;
+    object-fit: cover;
+    object-position: center;
+}
+
+.account-style {
+    background-color: rgba(8, 8, 55, 0.849);
+}
+
+.btn-favorite {
+    background-color: rgb(5, 9, 48);
+    color: whitesmoke;
+    border-radius: 50px;
+    border: 1px solid whitesmoke
+}
 
 .fill:hover,
 .fill:focus {
@@ -142,6 +169,10 @@ export default {
 
 .box-shadow {
     box-shadow: 0 5px 10px black;
+}
+
+.d-favorite {
+    display: flex;
 }
 
 .toggle-start {
@@ -161,5 +192,11 @@ export default {
 
 .star-clr {
     color: yellow;
+}
+
+@media (max-width: 768px) {
+    .d-favorite {
+        display: block;
+    }
 }
 </style>
