@@ -1,12 +1,12 @@
 <template>
   <div class="container-fluid">
     <section class="row justify-content-between align-items-center">
-      <div class="col-12 col-md-5 p-3">
+      <div class="col-12 col-md-3 px-3 py-2 my-1">
         <PageChanger></PageChanger>
       </div>
-      <div class="col-4 col-md-2 fs-3 text-white text-center mt-3">
-        <button class="mb-2 transparent-bg rounded-pill text-white btn btn fs-5" title="Filter Options"
-          data-bs-toggle="modal" data-bs-target="#FilterCars">Filter<i class="mdi mdi-filter"></i></button>
+      <div class="col-12 col-md-1 text-white text-center py-2 my-1 ">
+        <button class="transparent-bg rounded-pill text-white btn fs-5 w-100" title="Filter Options"
+          data-bs-toggle="modal" data-bs-target="#FilterCars"><i class="mdi mdi-filter"></i></button>
       </div>
     </section>
     <section v-if="cars" class="row" data-masonry>

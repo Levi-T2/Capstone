@@ -1,13 +1,9 @@
 <template>
   <div class="container-fluid">
     <div class="about text-center">
-      <section class="row about text-center">
-        <div class="col-12 col-md-4 mt-3">
-          <p class="m-0 text-white fs-5 fw-bold">Profile</p>
-        </div>
-      </section>
-      <div class="row justify-content-between px-3 align-items-baseline">
-        <div class="col-12 col-md-4 transparent-bg text-center my-2 rounded glow box-shadow">
+
+      <div class="row justify-content-between px-3 align-items-start">
+        <div class="col-12 col-md-4 transparent-bg text-center my-2 rounded box-shadow">
           <div>
             <div class="mt-3 fs-3 text-center">
               <h1 class=" fs-1 text-light display-3">{{ account.name }}</h1>
@@ -23,7 +19,7 @@
             </div>
           </div>
         </div>
-        <div class="col-12 col-md-7 transparent-bg  my-2 rounded glow box-shadow">
+        <div class="col-12 col-md-7 transparent-bg  my-2 rounded box-shadow">
           <section id="changerView" class="my-1">
             <div class="d-flex justify-content-between flex-row">
               <button v-if="hidden == false" @click="hidden = !hidden" title="See Your Favorites"
@@ -211,10 +207,6 @@ img {
   max-height: 48vh;
 }
 
-.glow:hover {
-  box-shadow: 0px 0px 5px 4px #277cf1;
-  transition: ease-in-out 0.3s;
-}
 
 .wrap-text {
   word-wrap: break-word;

@@ -2,21 +2,24 @@
     <section class="row">
         <div class="page-changer d-flex justify-content-between align-items-center">
             <div>
-                <button v-if="page <= 0" disabled @click="changePage(page -= 1)" class="btn btn-light rounded-pill">
+                <button v-if="page <= 0" disabled @click="changePage(page -= 1)" class="btn btn-light rounded-circle m-1"
+                    title="To Previous Page">
                     <i class="mdi mdi-arrow-left"></i>
-                    Previous</button>
-                <button v-else @click="changePage(page -= 1)" class="btn btn-light rounded-pill">
+                </button>
+                <button v-else @click="changePage(page -= 1)" class="btn btn-light rounded-circle m-1"
+                    title="To Previous Page">
                     <i class="mdi mdi-arrow-left"></i>
-                    Previous</button>
+                </button>
+            </div>
+            <div class="">
+                <p class="d-flex justify-content-center my-2">Current Page: {{ page + 1 }} </p>
             </div>
             <div>
-                <p class="d-flex justify-content-center mt-3">Current Page: {{ page + 1 }} </p>
-            </div>
-            <div>
-                <button v-if="totalCars < 1" disabled @click="changePage(page += 1)" class="btn btn-light rounded-pill">Next
+                <button v-if="totalCars < 1" disabled @click="changePage(page += 1)"
+                    class="btn btn-light rounded-circle m-1" title="To Next Page">
                     <i class="mdi mdi-arrow-right"></i>
                 </button>
-                <button v-else @click="changePage(page += 1)" class="btn btn-light rounded-pill">Next
+                <button v-else @click="changePage(page += 1)" class="btn btn-light rounded-circle m-1" title="To Next Page">
                     <i class="mdi mdi-arrow-right"></i>
                 </button>
             </div>
@@ -55,6 +58,6 @@ export default {
 .page-changer {
     background-color: rgba(0, 0, 0, 0.278);
     color: white;
-    border-radius: 25px;
+    border-radius: 70px;
 }
 </style>

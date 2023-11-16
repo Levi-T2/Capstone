@@ -82,8 +82,8 @@ export default {
 }
 
 .glow:hover {
-    box-shadow: 0px 0px 5px 4px var(--bs-success);
-    transition: ease-in-out 0.3s;
+    transition: ease-in-out 0.295s;
+    box-shadow: 0px 0px 4px 4px rgb(186, 186, 186);
 }
 
 
@@ -92,6 +92,7 @@ export default {
 }
 
 .profile-el {
+    transition: ease-in-out 0.25s;
     border: 1px solid rgba(245, 245, 245, 0);
     margin-bottom: 5px;
 }
