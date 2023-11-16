@@ -23,5 +23,6 @@
             this.imgUrl = data.imgUrl   
             this.favoriteCount = data.favoriteCount
             this.modCount = data.modCount
+            this.imgUrls = data.imgUrls
         }
     }
