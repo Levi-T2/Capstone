@@ -9,6 +9,7 @@
             this.accountId = data.accountId
             this.carId = data.carId
             this.body = data.body 
+            this.createdAt = new Date(data.createdAt)
 
         }
     }
