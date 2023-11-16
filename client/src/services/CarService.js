@@ -35,7 +35,6 @@ import { supabaseService } from "./SupabaseService";
         }
 
         async addImage(file){
-            debugger
             const folder = AppState.account.id
             const car = AppState.activeCar
             const url = await supabaseService.upload(file, `${folder}/cars/${car.model}_${car.make}/${file.name}`)
