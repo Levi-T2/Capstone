@@ -9,13 +9,21 @@
                 <div class="modal-body">
                     <form @submit.prevent="addImage">
 
-                        <div class="mb-3 p-2">
-                            <label class="fs-5 p-2" for="imgUrl">Image</label>
-                            <input class="form-control" type="file" accept="image/*,video/*,audio/*" name="fileInput"
-                                required>
-                        </div>
+                        <div class="container-fluid">
 
-                        <button class="btn btn-info" type="submit">Submit</button>
+                            <section class="row justify-content-center">
+
+                                <div class="mb-3 p-2">
+                                    <label class="fs-5 p-2 text-center" for="imgUrl">Add Your Image</label>
+                                    <input class="form-control" type="file" accept="image/*,video/*,audio/*"
+                                        name="fileInput" required>
+                                </div>
+
+                                <button class=" col-2 btn btn-info" type="submit">Submit</button>
+
+                            </section>
+
+                        </div>
                     </form>
                 </div>
 
