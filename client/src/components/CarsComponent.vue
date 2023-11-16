@@ -72,7 +72,7 @@ export default {
 }
 
 .profile-pic {
-    max-height: 5rem;
+    max-height: 6rem;
     max-width: 5rem;
     width: 100%;
     object-fit: cover;
