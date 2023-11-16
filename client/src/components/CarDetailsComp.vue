@@ -1,7 +1,40 @@
 <template>
     <div class="col-12 col-md-6">
+        <!-- //STUB - Don't touch!!!!!!!!! -->
         <div>
-            <img class="rounded car-picture" :src="cars.imgUrl" alt="">
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                    <button v-for="(carImg, index) in cars.imgUrls" :key="carImg + 'button'" type="button"
+                        data-bs-target="#carouselExampleIndicators" :data-bs-slide-to="index + 1"
+                        aria-label="Slide 2"></button>
+
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img :src="cars.imgUrl" class="car-picture" alt="...">
+                    </div>
+                    <div v-for="carImg in cars.imgUrls" :key="carImg + 'img'" class="carousel-item">
+                        <img :src="carImg" class="car-picture" alt="...">
+                    </div>
+
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev">
+                    <span class="mdi fs-2 bg-light rounded-circle mdi-arrow-left text-dark" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next">
+                    <span class="mdi fs-2 mdi-arrow-right text-dark bg-light rounded-circle" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+
+
+
         </div>
     </div>
     <div class="col-12 col-md-6">
@@ -27,6 +60,9 @@
                         <button data-bs-toggle="modal" data-bs-target="#ModModalForm" class="btn btn-success my-1">Post
                             Mod</button>
                         <button @click="deleteCar(cars.id)" class="btn btn-danger my-1">Delete Car</button>
+                        <button data-bs-toggle="modal" data-bs-target="#addPicture"
+                            class="text-center text-light btn btn-primary">Add
+                            Picture</button>
                     </ul>
                 </div>
             </div>
@@ -82,6 +118,7 @@
             <img class="rounded-circle account-pic" :src="favorite.account.picture">
         </div>
     </div>
+    <AddPictureModal />
 </template>
 
 
@@ -93,6 +130,8 @@ import Pop from '../utils/Pop';
 import { favoritesService } from '../services/FavoritesService';
 import { useRoute } from 'vue-router';
 import { Favorite } from '../models/Favorite';
+import { carService } from '../services/CarService';
+import AddPictureModal from './AddPictureModal.vue';
 export default {
     props: {
         cars: { type: Car, required: true },
@@ -100,32 +139,46 @@ export default {
         favorites: { type: Favorite, required: true },
     },
     setup() {
-        const hidden = ref(false)
-        const route = useRoute()
+        const hidden = ref(false);
+        const route = useRoute();
         onMounted(() => {
-            getFavoritesForCarById()
-        })
-
+            getFavoritesForCarById();
+        });
         async function getFavoritesForCarById() {
             try {
-                const carId = route.params.carId
-                await favoritesService.getFavoritesForCarById(carId)
-            } catch (error) {
-                Pop.error
+                const carId = route.params.carId;
+                await favoritesService.getFavoritesForCarById(carId);
+            }
+            catch (error) {
+                Pop.error;
             }
         }
         return {
             async favoriteCar(carId) {
                 try {
-                    await favoritesService.favoriteCar(carId)
-                } catch (error) {
-                    Pop.error(error)
+                    await favoritesService.favoriteCar(carId);
+                }
+                catch (error) {
+                    Pop.error(error);
+                }
+            },
+            async deleteCar(carId) {
+                try {
+                    const yes = await Pop.confirm(`Are you sure you want to delete this car?`);
+                    if (!yes) {
+                        return;
+                    }
+                    await carService.destroyCar(carId);
+                }
+                catch (error) {
+                    Pop.error;
                 }
             },
             route,
             hidden,
-        }
-    }
+        };
+    },
+    components: { AddPictureModal }
 };
 </script>
 
@@ -185,7 +238,7 @@ export default {
 
 .car-picture {
     width: 100%;
-    height: 45vh;
+    height: 60vh;
     object-fit: cover;
     object-position: center;
 }

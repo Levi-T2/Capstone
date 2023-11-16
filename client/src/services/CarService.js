@@ -34,6 +34,23 @@ import { supabaseService } from "./SupabaseService";
             AppState.cars.push(newCar)
         }
 
+        async addImage(file){
+            debugger
+            const folder = AppState.account.id
+            const car = AppState.activeCar
+            const url = await supabaseService.upload(file, `${folder}/cars/${car.model}_${car.make}/${file.name}`)
+            const carData = {id: car.id, additionalImgUrl: url}
+
+            await this.editCar(carData)
+        }
+
+        async editCar(carData) {
+            const res = await api.put(`api/cars/${carData.id}`, carData)
+            logger.log('you edited car', res.data)
+            const newCar = new Car(res.data)
+            AppState.activeCar = newCar
+          }
+
         async getCarById(carId) {
             AppState.activeCar = null;
             const res = await api.get(`api/cars/${carId}`);
