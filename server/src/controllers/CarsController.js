@@ -3,6 +3,7 @@ import { carsService } from "../services/CarsService.js";
 import BaseController from "../utils/BaseController.js";
 import { commentService } from "../services/CommentService.js";
 import { modificationService } from "../services/ModificationService.js";
+import { favoritesService } from "../services/FavoritesService.js";
 
 export class CarsController extends BaseController {
     constructor() {
@@ -12,6 +13,7 @@ export class CarsController extends BaseController {
             .get('/:carId', this.getCarById)
             .get('/:carId/comments', this.getCommentsByCarId)
             .get('/:carId/modifications', this.getModificationsByCarId)
+            .get('/:carId/favorites', this.getFavoritesByCarId)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createCar)
             .put('/:carId', this.editCar)
@@ -50,6 +52,15 @@ export class CarsController extends BaseController {
             const carId = request.params.carId
             const mods = await modificationService.getModificationsByCarId(carId)
             return response.send(mods)
+        } catch (error) {
+            next(error)
+        }
+    }
+    async getFavoritesByCarId(request, response, next) {
+        try {
+            const carId = request.params.carId
+            const favorites = await favoritesService.getFavoritesByCarId(carId)
+            return response.send(favorites)
         } catch (error) {
             next(error)
         }

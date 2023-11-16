@@ -21,6 +21,10 @@ class FavoritesService {
         }
         return favorite
     }
+    async getFavoritesByCarId(carId) {
+        const favorites = await dbContext.Favorites.find({ carId: carId }).populate('account')
+        return favorites
+    }
     async postFavorite(favData) {
         const favorite = await dbContext.Favorites.create(favData)
         return favorite

@@ -29,6 +29,14 @@ class FavoritesService {
         AppState.favorite = newFavs
         logger.log(AppState.favorite)
     }
+    async getFavoritesForCarById(carId) {
+        const res = await api.get(`api/cars/${carId}/favorites`)
+        logger.log('These are the favorites for this car:', res.data)
+        const newFavs = res.data.map((favs) => new Favorite(favs))
+        AppState.activeFavorites = newFavs
+        logger.log(AppState.activeFavorites)
+    }
+    // NOTE This causes lots of errors right now; needs a rework
     async removeFavorite(favoriteId) {
         const res = await api.delete(`api/favorites/${favoriteId}`)
     }
