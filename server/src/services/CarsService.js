@@ -56,6 +56,9 @@ class CarsService {
         carUpdating.drivetrain = carData.drivetrain || carUpdating.drivetrain
         carUpdating.hasTurbo = carData.hasTurbo || carUpdating.hasTurbo
         carUpdating.isSupercharged = carData.isSupercharged || carUpdating.isSupercharged
+        if(carData.additionalImgUrl){
+            carUpdating.imgUrls.push(carData.additionalImgUrl)
+        }
 
         await carUpdating.save()
         return carUpdating
