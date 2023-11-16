@@ -5,7 +5,7 @@
         <div class="accordion-header">
             <a class="text-center rounded display-card accordion-button mb-1 text-white px-2" role="button" type="button"
                 data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-controls="collapseOne" aria-expanded="true"
-                title="See More Options" @click="pulseEffect()" id="pulse">
+                title="See More Options">
                 <div class="car-display">
                     <img class="p-1 car-picture rounded" :src="accountProp.imgUrl" alt="Car Image">
                     <div class=" fs-6 fw-bold d-flex flex-row text-light px-4">

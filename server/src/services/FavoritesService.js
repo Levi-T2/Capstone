@@ -4,7 +4,8 @@ import { BadRequest, Forbidden } from "../utils/Errors.js";
 class FavoritesService {
     async getMyFavorites(userId) {
         const favorites = await dbContext.Favorites.find({ accountId: userId }).populate('car')
-        return favorites
+        const filteredFavorites = favorites.filter((favorite) => favorite.car != null)
+        return filteredFavorites
     }
     async getAllFavorites() {
         const favorites = await dbContext.Favorites.find().populate('car')
