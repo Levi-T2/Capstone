@@ -8,16 +8,22 @@
                 <section class="row justify-content-evenly align-items-center">
 
                     <div class="col-12 col-md-4">
+                        <router-link :to="{ name: 'Profile', params: { profileId: commentProp.creator?.id } }">
 
-                        <img class="img-fluid profile-pic rounded-circle text-center m-3" :src="commentProp.creator.picture"
-                            alt="">
-                        <p class=" underline text-light text-center fs-2">{{ commentProp.creator.name }}</p>
+                            <img class="img-fluid profile-pic rounded-circle text-center m-3"
+                                :src="commentProp.creator.picture" alt="">
+
+                        </router-link>
 
                     </div>
 
-                    <div class="col-12 col-md-4">
+                    <div class="col-12 col-md-7 transparent-bg my-3 box-shadow ">
 
-                        <p class="transparent-bg box-shadow my-3 text-light text-center fs-4">{{ commentProp.body }}</p>
+                        <p class=" underline text-light text-start fs-2">{{ commentProp.creator.name }}</p>
+                        <p class="text-light fs-5">{{ commentProp.createdAt.toLocaleDateString() }}, at {{
+                            commentProp.createdAt.toLocaleTimeString()
+                        }}</p>
+                        <p class=" text-light text-center fs-4">{{ commentProp.body }}</p>
 
                     </div>
 
@@ -87,7 +93,7 @@ export default {
     height: 30vh;
     object-position: center;
     object-fit: fill;
-
+    box-shadow: 0px 5px 10px black;
 }
 
 .underline {
