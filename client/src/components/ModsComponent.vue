@@ -1,34 +1,36 @@
 <template>
-    <div class="mod-style container-fluid text-light text-center">
-
-        <div class="row">
-
-            <section class="d-md-flex align-items-center p-3">
-
-                <div class="text-start col-12 col-md-5 p-5">
-                    <h3 class="fs-2 p-5">{{ mod.name }}</h3>
-                    <p class="fs-4">Mod Type: {{ mod.modType }}</p>
-                    <p class="fs-5">Description: {{ mod.description }}</p>
-                </div>
-                <div class="p-3 col-12 col-md-5">
-                    <img :src="mod.imgUrl" class="modImg" alt="Mod Image" :title="mod.name">
-                </div>
-
-            </section>
-
-            <div class="d-flex justify-content-evenly p-3">
-                <button class="btn purple text-light fs-5">Favorite This Mod <i
-                        class="mdi mdi-account-star-outline fs-3"></i></button>
-                <p class="fs-2">Favorites: 0 <i class="mdi mdi-star"></i></p>
+    <div class="transparent-bg text-center rounded mb-3 text-white glow box-shadow">
+            <img class="p-4 modImg img-fluid" :src="mod.imgUrl" alt="">
+            <div class="fs-2 display-4 justify-content-center  text-light fw-bold">
+                <p class="p-1">{{ mod.name }}</p>
+                <p class="p-1">{{ mod.type }}</p>
+                <p class="p-1">{{ mod.description }}</p>
             </div>
-
+        
+        <div class="d-flex  display-5 justify-content-evenly align-items-center">
+            <a @click="favoriteMod(mod.id)" class="fs-4 star-clr" role="button" type="button" title="Favorite Car">
+                <i class="mdi mdi-star-plus-outline"></i>
+                <p class="mb-0 star-clr"> {{ mod.favoriteCount }}</p>
+            </a>
         </div>
+        <!-- //NOTE - Don't change font or styling -->
+        <div v-if="mod.creator" class="d-flex justify-content-center display-5 pt-2">
+            <router-link :to="{ name: 'Profile', params: { profileId: mod.creator?.id } }">
+                <div class="d-flex flex-row align-items-center ">
+                    <p class="p-1 px-3 fs-5 text-light">Created by:</p>
+                    <img class="profile-pic rounded-circle py-2" :src="mod.creator?.picture">
+                </div>
+            </router-link>
+        </div>
+
     </div>
 </template>
 
 
 <script>
 import { Modification } from '../models/Modification';
+import { favoritesService } from '../services/FavoritesService.js';
+import Pop from '../utils/Pop.js';
 
 
 export default {
@@ -36,7 +38,15 @@ export default {
         mod: { type: Modification, required: true }
     },
     setup() {
-        return {}
+        return {
+            async favoriteMod(modId) {
+                try {
+                    await favoritesService.favoriteMod(modId)
+                } catch (error) {
+                    Pop.error(error)
+                }
+            }
+        }
     }
 };
 </script>
@@ -59,5 +69,28 @@ export default {
 
 .purple {
     background-color: purple;
+}
+
+.profile-pic {
+    max-height: 6rem;
+    max-width: 5rem;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+
+}
+
+.glow:hover {
+    box-shadow: 0px 0px 5px 4px var(--bs-success);
+    transition: ease-in-out 0.3s;
+}
+
+
+.box-shadow {
+    box-shadow: 0 5px 10px black;
+}
+
+.star-clr {
+    color: yellow;
 }
 </style>
