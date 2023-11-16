@@ -1,6 +1,6 @@
 export class Favorite {
     constructor(data){
-       this.car = data.car
+       this.car = data.car ? data.car : null
        this.carId = data.carId
        this.id = data.id
        this.accountId = data.accountId
