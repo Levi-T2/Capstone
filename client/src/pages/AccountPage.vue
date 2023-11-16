@@ -7,7 +7,7 @@
         </div>
       </section>
       <div class="row justify-content-between px-3 align-items-baseline">
-        <div class="col-12 col-md-4 bg-auto borderA text-center my-2 rounded glow">
+        <div class="col-12 col-md-4 transparent-bg text-center my-2 rounded glow box-shadow">
           <div>
             <div class="mt-3 fs-3 text-center">
               <h1 class=" fs-1 text-light display-3">{{ account.name }}</h1>
@@ -23,7 +23,7 @@
             </div>
           </div>
         </div>
-        <div class="col-12 col-md-7 bg-auto borderB my-2 rounded glow">
+        <div class="col-12 col-md-7 transparent-bg  my-2 rounded glow box-shadow">
           <section id="changerView" class="my-1">
             <div class="d-flex justify-content-between flex-row">
               <button v-if="hidden == false" @click="hidden = !hidden" title="See Your Favorites"
@@ -123,8 +123,16 @@ img {
 
 }
 
+.box-shadow {
+  box-shadow: 0 5px 10px black;
+}
+
 .bg-auto {
   background-color: #021e38;
+}
+
+.transparent-bg {
+  background-color: rgba(0, 0, 0, 0.499);
 }
 
 .underline {
