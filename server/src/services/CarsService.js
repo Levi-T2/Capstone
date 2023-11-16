@@ -23,7 +23,7 @@ class CarsService {
         delete query.pageNumber
         const limit = 12
         const skip = pageNumber * limit
-        const cars = await dbContext.Cars.find(query).limit(12).skip(skip).populate('creator favoriteCount modCount')
+        const cars = await dbContext.Cars.find(query).limit(limit).skip(skip).populate('creator favoriteCount modCount')
         const totalPages = cars.length / limit
         return { carsForPage: totalPages, cars: cars }
     }
