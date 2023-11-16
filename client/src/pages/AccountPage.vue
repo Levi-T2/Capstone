@@ -7,11 +7,11 @@
         </div>
       </section>
       <div class="row justify-content-between px-3">
-        <div class="col-12 col-md-4 bg-auto borderA text-center my-2 rounded profile-box">
+        <div class="col-12 col-md-4 bg-auto borderA text-center my-2 rounded profile-box glow">
           <div>
             <div class="mt-3 fs-3 text-center">
               <h1 class=" fs-1 text-light display-3">{{ account.name }}</h1>
-              <img class="rounded-circle my-3 borderA img-fluid" :src="account.picture" alt="" />
+              <img class="rounded-circle my-3 img-fluid" :src="account.picture" alt="" />
             </div>
             <div>
               <p class="fs-4 text display-5 text-light">{{ account.bio }}</p>
@@ -23,7 +23,7 @@
             </div>
           </div>
         </div>
-        <div class="col-12 col-md-7 bg-auto borderB my-2 rounded">
+        <div class="col-12 col-md-7 bg-auto borderB my-2 rounded glow">
           <section id="changerView" class="my-1">
             <div class="d-flex justify-content-between flex-row">
               <button v-if="hidden == false" @click="hidden = !hidden" title="See Your Favorites"
@@ -44,7 +44,7 @@
             </div>
             <div v-if="hidden == true">
               <h1 class="text-light">My Favorites</h1>
-              <div v-for="favorite in favorites" :key="favorite.id" class="col-12 p-1 my-3 car-card ">
+              <div v-for="favorite in favorites" :key="favorite.id" class="col-12 p-1 my-3 car-card">
                 <AccountFavoriteCarCard :favoriteCar="favorite"></AccountFavoriteCarCard>
               </div>
             </div>
@@ -132,11 +132,11 @@ img {
 }
 
 .borderA {
-  border: 3px solid whitesmoke
+  box-shadow: 0px 0px 5px white
 }
 
 .borderB {
-  border: 3px solid whitesmoke
+  box-shadow: 0px 0px 5px white
 }
 
 .car-card {
@@ -201,5 +201,10 @@ img {
 
 .profile-box {
   max-height: 48vh;
+}
+
+.glow:hover {
+  box-shadow: 0px 0px 5px 4px #277cf1;
+  transition: ease-in-out 0.3s;
 }
 </style>
