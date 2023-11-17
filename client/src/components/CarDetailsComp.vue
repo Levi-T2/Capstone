@@ -20,13 +20,13 @@
                     </div>
 
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="prev">
+                <button :disabled="cars.imgUrls == 0" class="carousel-control-prev" type="button"
+                    data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                     <span class="mdi fs-2 bg-light rounded-circle mdi-arrow-left text-dark" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="next">
+                <button :disabled="cars.imgUrls == 0" class="carousel-control-next" type="button"
+                    data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
                     <span class="mdi fs-2 mdi-arrow-right text-dark bg-light rounded-circle" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
@@ -132,6 +132,7 @@ import { useRoute } from 'vue-router';
 import { Favorite } from '../models/Favorite';
 import { carService } from '../services/CarService';
 import AddPictureModal from './AddPictureModal.vue';
+import { hide } from '@popperjs/core';
 export default {
     props: {
         cars: { type: Car, required: true },
