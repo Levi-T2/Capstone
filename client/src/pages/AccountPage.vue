@@ -79,6 +79,7 @@ export default {
     const hidden = ref(false)
 
     onMounted(() => {
+      clearAppState();
       getFavoritesByAccountId();
       getCarsByAccount();
     });
@@ -108,6 +109,10 @@ export default {
       favorites: computed(() => AppState.favorite),
       hidden,
     };
+    function clearAppState() {
+      AppState.favorite = []
+      AppState.cars = []
+    }
   },
   components: { AccountCarsComp, AccountFavoriteCarCard, ModFormModal }
 }

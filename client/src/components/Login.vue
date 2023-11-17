@@ -6,7 +6,8 @@
     </button>
     <div v-else>
       <div class="dropdown my-2 my-lg-0">
-        <div type="button" class="bg-dark border-0 selectable no-select account" data-bs-toggle="dropdown" aria-expanded="false">
+        <div type="button" class="bg-dark border-0 selectable no-select account" data-bs-toggle="dropdown"
+          aria-expanded="false">
           <div v-if="account.picture || user.picture">
             <img :src="account.picture || user.picture" alt="account photo" height="40" class="rounded" />
           </div>
@@ -21,13 +22,13 @@
 
             <div type="button" role="button" class="list-group-item dropdown-item list-group-item-action"
               data-bs-toggle="modal" data-bs-target="#carModal">
-              Post a Car
+              Post A Car
             </div>
 
 
             <div class="list-group-item dropdown-item list-group-item-action text-danger selectable" @click="logout">
               <i class="mdi mdi-logout"></i>
-              logout
+              Logout
             </div>
           </div>
         </div>
@@ -57,7 +58,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.account{
+.account {
   width: 10%;
 }
 </style>

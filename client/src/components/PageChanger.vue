@@ -15,7 +15,7 @@
                 <p class="d-flex justify-content-center my-2">Current Page: {{ page + 1 }} </p>
             </div>
             <div>
-                <button v-if="totalCars < 1" disabled @click="changePage(page += 1)"
+                <button v-if="totalCars < 1.00001" disabled @click="changePage(page += 1)"
                     class="btn btn-light rounded-circle m-1 btn-page-next" title="To Next Page">
                     <i class="mdi mdi-arrow-right"></i>
                 </button>
@@ -63,7 +63,7 @@ export default {
 }
 
 
-// Styles and on-hovers for the buttons
+// Styles and on-hovers for the buttons.
 .btn-page-next {
     border: 1px solid rgba(220, 220, 220, 0);
     transition: ease-in-out 0.275s;
