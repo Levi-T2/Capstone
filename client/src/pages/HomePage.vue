@@ -1,14 +1,17 @@
 <template>
   <div class="container-fluid">
     <section class="row justify-content-between align-items-center">
+      <!-- Page changer comp. -->
       <div class="col-12 col-md-3 px-3 py-2 my-1">
         <PageChanger></PageChanger>
       </div>
+      <!-- Filter Button -->
       <div class="col-12 col-md-1 text-white text-center py-2 my-1 ">
-        <button class="transparent-bg rounded-pill text-white btn fs-5 w-100" title="Filter Options"
+        <button class="transparent-bg rounded-pill text-white btn fs-5 w-100 filter-btn" title="Filter Options"
           data-bs-toggle="modal" data-bs-target="#FilterCars"><i class="mdi mdi-filter"></i></button>
       </div>
     </section>
+    <!-- Cars Comp with Masonry -->
     <section v-if="cars" class="row" data-masonry>
       <div v-for="car in cars" :key="car.id" class="col-12 col-md-4">
         <CarsComponent :carProp="car" />
@@ -17,7 +20,7 @@
   </div>
 
 
-  <!-- MODAL -->
+  <!-- MODAL FOR FILTER -->
   <div class="modal" tabindex="-1" role="dialog" id="FilterCars">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -98,7 +101,11 @@ export default {
   width: 30%;
 }
 
-.masonry {
-  columns: 350px;
+.filter-btn {
+  border: 1px solid rgba(128, 128, 128, 0);
+}
+
+.filter-btn:hover {
+  border: 1px solid rgb(209, 209, 209);
 }
 </style>
