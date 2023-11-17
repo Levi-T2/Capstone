@@ -58,4 +58,8 @@ export default {
 </script>
 
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.transparent-bg {
+    background-color: rgba(0, 0, 0, 0.278);
+}
+</style>

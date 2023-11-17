@@ -1,9 +1,9 @@
 <template>
     <div class="transparent-bg text-center rounded mb-3 text-white glow box-shadow">
         <img class="p-4 modImg img-fluid" :src="mod.imgUrl" alt="">
-        <div class="fs-2 display-4 justify-content-center  text-light fw-bold">
-            <p class="p-1">{{ mod.name }}</p>
-            <p class="p-1">{{ mod.type }}</p>
+        <div class="fs-3 display-4 justify-content-center  text-light">
+            <p class="p-1 fs-2 fw-bold">{{ mod.name }}</p>
+            <p class="p-1">{{ mod.modType }}</p>
             <p class="p-1">{{ mod.description }}</p>
         </div>
 
@@ -79,6 +79,10 @@ export default {
     height: 40vh;
     object-fit: cover;
     object-position: center;
+}
+
+.transparent-bg {
+    background-color: rgba(0, 0, 0, 0.278);
 }
 
 .purple {
