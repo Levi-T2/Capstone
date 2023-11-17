@@ -97,10 +97,10 @@
                 </a>
             </div>
             <router-link v-if="cars.creator" :to="{ name: 'Profile', params: { profileId: cars?.creator?.id } }">
-                <div class="d-flex justify-content-end align-items-center fw-bold mx-2">
-                    <p class="p-2 text-center underline text-light">Created By: {{ cars?.creator?.name }}
+                <div class="d-flex justify-content-center align-items-center creator-el py-3">
+                    <p class="p-2 text-center underline text-light mb-0">Created By: {{ cars?.creator?.name }}
                     </p>
-                    <img class="rounded-circle profile-pic mt-4" :src="cars?.creator?.picture" :alt="cars?.creator?.name">
+                    <img class="rounded-circle profile-pic" :src="cars?.creator?.picture" :alt="cars?.creator?.name">
                 </div>
             </router-link>
         </div>
@@ -108,6 +108,7 @@
     <div class="col-12 text-end">
         <button class="btn-favorite " title="See Users Who've Favorited" @click="hidden = !hidden">
             <p class="mb-0">
+                See Favorites
                 <i class="mdi mdi-arrow-down"></i>
             </p>
         </button>
@@ -211,7 +212,13 @@ export default {
     background-color: rgb(5, 9, 48);
     color: whitesmoke;
     border-radius: 50px;
-    border: 1px solid whitesmoke
+    border: 1px solid whitesmoke;
+    transition: ease-in-out 0.25s
+}
+
+.btn-favorite:hover {
+    background-color: rgb(33, 42, 127);
+
 }
 
 .fill:hover,
@@ -246,6 +253,17 @@ export default {
 
 .star-clr {
     color: yellow;
+}
+
+.creator-el {
+    border: 1px solid rgba(255, 255, 255, 0);
+    border-radius: 5px;
+    transition: ease-in-out 0.2s;
+}
+
+.creator-el:hover {
+    border: 1px solid gainsboro;
+    border-radius: 5px
 }
 
 @media (max-width: 768px) {

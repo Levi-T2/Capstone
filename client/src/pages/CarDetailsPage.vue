@@ -7,18 +7,22 @@
                 </div>
             </div>
         </section>
-        <div class="row justify-content-center ">
-            <div class=" col-8 transparent-bg text-center box-shadow my-5">
-                <h1 class="col-12 text-light text-center">Reviews <i class="mdi mdi-comment fs-2"></i></h1>
-                <button v-if="account.id" type="button" title="Open Post Form" data-bs-toggle="modal"
-                    data-bs-target="#commentModal" class=" col-5 m-5 btn box-shadow transparent-bg  fs-4 text-light">Post
-                    Review</button>
+        <section class="row justify-content-center">
+            <div class=" col-11 transparent-bg text-center box-shadow my-1 review-el">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1 class="text-light text-center p-2">Reviews <i class="mdi mdi-comment fs-2"></i></h1>
+                    <button v-if="account.id" type="button" role="button" title="Open Post Form" data-bs-toggle="modal"
+                        data-bs-target="#commentModal" class="btn btn-post fs-4">
+                        Post Review
+                        <i class="mdi mdi-pen-plus"></i>
+                    </button>
+                </div>
+                <div v-for="comment in comments" :key="comment.id" class="col-12 transparent-bg my-2 comment-el">
+                    <CommentComp :commentProp="comment" />
+                </div>
             </div>
-        </div>
+        </section>
         <div class="row justify-content-center">
-            <div v-for="comment in comments" :key="comment.id" class="col-8 transparent-bg box-shadow m-3">
-                <CommentComp :commentProp="comment" />
-            </div>
         </div>
     </div>
     <ModFormModal />
@@ -111,6 +115,25 @@ export default {
 
 .underline {
     text-decoration: underline 1px white;
+}
+
+.review-el {
+    border-radius: 6px;
+}
+
+.comment-el {
+    border-radius: 6px;
+}
+
+.btn-post {
+    background-color: #021e38;
+    border-radius: 6px;
+    color: white;
+    transition: ease-in-out 0.25s;
+}
+
+.btn-post:hover {
+    transform: translateX(-0.25em);
 }
 
 .car-picture {
